@@ -8,12 +8,6 @@
         @slot('li_1')
             Modul Artikel
         @endslot
-        @slot('li_2')
-            Kategori
-        @endslot
-        @slot('li_3')
-            Tambah Kategori
-        @endslot
         @slot('title')
             Tambah Kategori
         @endslot
@@ -26,7 +20,6 @@
                 <div class="card-header">
                     <h4 class="card-title">Form Tambah</h4>
                 </div>
-                <!--end card-header-->
                 <div class="card-body">
                     <div class="general-label">
                         <form method="post" action="{{ route('artikel.kategori.store') }}">
@@ -34,8 +27,8 @@
                             <input type="hidden" name="id" value="{{ $kategori->id }}">
                             <div class="mb-3 row">
                                 <label for="nama"
-                                    class="col-sm-2 form-label align-self-center mb-lg-0">Nama Kategori</label>
-                                <div class="col-sm-10">
+                                    class="col-sm-12 form-label align-self-center mb-lg-0">Nama Kategori</label>
+                                <div class="col-sm-12">
                                     <input type="text" class="form-control" name="nama" id="nama"
                                         placeholder="Nama Kategori" value="{{ $kategori->nama }}">
                                 </div>

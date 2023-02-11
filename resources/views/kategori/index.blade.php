@@ -47,7 +47,10 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $value->nama }}</td>
                                     <td>{{ $value->slug }}</td>
-                                    <td></td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="{{ route('artikel.kategori.edit', $value->id) }}">Edit</a>
+                                        <a class="btn btn-danger btn-sm swalDelete" href="{{ route('artikel.kategori.delete', $value->id) }}">Hapus</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

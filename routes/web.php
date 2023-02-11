@@ -30,9 +30,9 @@ Route::middleware('auth')->prefix('artikel')->group(function(){
     Route::prefix('kategori')->group(function(){
         Route::get('/', [KategoriController::class, 'index'])->name('artikel.kategori.index');
         Route::get('/add', [KategoriController::class, 'add'])->name('artikel.kategori.add');
-        Route::get('/edit/{kategori}', [KategoriController::class, 'add'])->name('artikel.kategori.edit');
+        Route::get('/edit/{kategori}', [KategoriController::class, 'edit'])->name('artikel.kategori.edit');
         Route::post('/store', [KategoriController::class, 'store'])->name('artikel.kategori.store');
-        Route::get('/delete', [KategoriController::class, 'delete'])->name('artikel.kategori.delete');
+        Route::get('/delete/{kategori}', [KategoriController::class, 'delete'])->name('artikel.kategori.delete');
     });
 });
 

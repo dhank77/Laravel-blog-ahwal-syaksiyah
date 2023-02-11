@@ -25,6 +25,16 @@ class KategoriController extends Controller
         return view('kategori.add', compact('kategori'));
     }
 
+    public function delete(Kategori $kategori)
+    {
+        $cr = $kategori->delete();
+        if($cr){
+            return redirect(route("artikel.kategori.index"))->with('success', 'Berhasil menghapus data');
+        }else{
+            return redirect(route("artikel.kategori.index"))->with('error', 'Gagal menghapus data');
+        }
+    }
+
     public function store()
     {
         $data = request()->validate([
