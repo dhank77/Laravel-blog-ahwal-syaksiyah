@@ -24,7 +24,7 @@
                         <span data-key="t-ecommerce">Artikel</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="ecommerce-products" key="t-products">Data Artikel</a></li>
+                        <li><a href="{{ route('artikel.artikel.index') }}" key="t-products">Data Artikel</a></li>
                         <li><a href="{{ route('artikel.kategori.index') }}" data-key="t-product-detail">Kategori</a></li>
                     </ul>
                 </li>

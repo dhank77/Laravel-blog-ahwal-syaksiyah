@@ -46,7 +46,10 @@
                                     <td><?php echo e($key + 1); ?></td>
                                     <td><?php echo e($value->nama); ?></td>
                                     <td><?php echo e($value->slug); ?></td>
-                                    <td></td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="<?php echo e(route('artikel.kategori.edit', $value->id)); ?>">Edit</a>
+                                        <a class="btn btn-danger btn-sm swalDelete" href="<?php echo e(route('artikel.kategori.delete', $value->id)); ?>">Hapus</a>
+                                    </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>

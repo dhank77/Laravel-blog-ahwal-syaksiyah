@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Master\KategoriController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,13 @@ Route::post('/update-password/{id}', [HomeController::class, 'updatePassword'])-
 Route::get('{any}', [HomeController::class, 'index'])->name('index');
 
 Route::middleware('auth')->prefix('artikel')->group(function(){
+    Route::prefix('data')->group(function(){
+        Route::get('/', [ArtikelController::class, 'index'])->name('artikel.artikel.index');
+        Route::get('/add', [ArtikelController::class, 'add'])->name('artikel.artikel.add');
+        Route::get('/edit/{artikel}', [ArtikelController::class, 'edit'])->name('artikel.artikel.edit');
+        Route::post('/store', [ArtikelController::class, 'store'])->name('artikel.artikel.store');
+        Route::get('/delete/{artikel}', [ArtikelController::class, 'delete'])->name('artikel.artikel.delete');
+    });
     Route::prefix('kategori')->group(function(){
         Route::get('/', [KategoriController::class, 'index'])->name('artikel.kategori.index');
         Route::get('/add', [KategoriController::class, 'add'])->name('artikel.kategori.add');
