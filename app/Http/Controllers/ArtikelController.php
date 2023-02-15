@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artikel;
 use App\Models\Master\Kategori;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ArtikelController extends Controller
@@ -38,16 +39,33 @@ class ArtikelController extends Controller
 
     public function store()
     {
-        $data = request()->validate([
-            'nama' => 'required|string'
-        ]);
-
+        $rules = [
+            'judul' => 'required|string',
+            'kategori_id' => 'required',
+            'isi' => 'required',
+            'gambar' => 'max:2048',
+        ];
+        
         $id = request('id');
         if(!$id){
-            $data["slug"] = Str::slug($data['nama']);
+            $slug = Str::slug(request('judul'));
+            $rules['gambar'] = "required|max:2048";
+        }else{
+            $slug = Artikel::where('id', $id)->value('slug');
+        }
+        $data = request()->validate($rules);
+        $data["slug"] = $slug;
+
+        if(request()->file('gambar')){
+            if($id){
+                $img = Artikel::where('id', $id)->value('gambar');
+                Storage::delete($img);
+            }
+
+            $data['gambar'] = request()->file('gambar')->storeAs("uploads/artikel", $slug . "." . request()->file('gambar')->extension());
         }
 
-        $cr = artikel::updateOrCreate(['id' => $id], $data);
+        $cr = Artikel::updateOrCreate(['id' => $id], $data);
         if($cr){
             return redirect(route("artikel.artikel.index"))->with('success', 'Berhasil memperbaharui data');
         }else{

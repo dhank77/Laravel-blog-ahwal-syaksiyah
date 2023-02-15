@@ -34,14 +34,30 @@
                     <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th style="width:1%;">No</th>
+                                <th style="width:10%;">Thumbnail</th>
                                 <th>Judul</th>
-                                <th>Status</th>
-                                <th>Tanggal Posting</th>
-                                <th>Opsi</th>
+                                <th style="width:1%;">Status</th>
+                                <th style="width:5%;">Tanggal Posting</th>
+                                <th style="width:1%;">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($artikel as $k => $a)
+                                <tr>
+                                    <td>{{ $k + 1 }}</td>
+                                    <td>
+                                        <img src="{{ asset("storage/$a->gambar") }}" style="width:100px; height:50px;" />
+                                    </td>
+                                    <td>{{ $a->judul }}</td>
+                                    <td>{{ $a->status }}</td>
+                                    <td>{{ $a->created_at }}</td>
+                                    <td>
+                                        <a href="{{ route('artikel.artikel.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ route('artikel.artikel.delete', $a->id) }}" class="btn btn-danger btn-sm swalDelete">Hapus</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
 

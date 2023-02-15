@@ -16,9 +16,10 @@
     @include('layouts.body')
 @show
 
-    <!-- Begin page -->
-    <div id="layout-wrapper">
- <body data-layout="horizontal">
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    <body data-layout="horizontal">
 
         @include('layouts.horizontal')
         <!-- ============================================================== -->
@@ -28,6 +29,15 @@
             <div class="page-content">
                 <!-- Start content -->
                 <div class="container-fluid">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     @yield('content')
                 </div> <!-- content -->
             </div>
@@ -36,14 +46,14 @@
         <!-- ============================================================== -->
         <!-- End Right content here -->
         <!-- ============================================================== -->
-    </div>
-    <!-- END wrapper -->
+</div>
+<!-- END wrapper -->
 
-    <!-- Right Sidebar -->
-    @include('layouts.right-sidebar')
-    <!-- END Right Sidebar -->
+<!-- Right Sidebar -->
+@include('layouts.right-sidebar')
+<!-- END Right Sidebar -->
 
-    @include('layouts.vendor-scripts')
+@include('layouts.vendor-scripts')
 </body>
 
 </html>
