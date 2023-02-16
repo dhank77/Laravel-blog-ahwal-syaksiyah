@@ -9,6 +9,8 @@
 <script src="<?php echo e(URL::asset('assets/libs/pace-js/pace-js.min.js')); ?>"></script>
 <?php echo $__env->yieldContent('script'); ?>
 <?php echo $__env->yieldContent('script-bottom'); ?>
+<script src="<?php echo e(asset('assets/js/app.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/app.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/libs/sweetalert2/sweetalert2.min.js')); ?>"></script>
 <script>
     $(".swalDelete").click(function(event) {

@@ -9,6 +9,8 @@
 <script src="{{ URL::asset('assets/libs/pace-js/pace-js.min.js') }}"></script>
 @yield('script')
 @yield('script-bottom')
+<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('assets/js/app.min.js') }}"></script>
 <script src="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 <script>
     $(".swalDelete").click(function(event) {
