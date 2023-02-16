@@ -17,7 +17,7 @@
             Data Artikel
         @endslot
         @slot('title')
-            Kategori
+            Modul Artikel
         @endslot
     @endcomponent
 
@@ -50,8 +50,8 @@
                                         <img src="{{ asset("storage/$a->gambar") }}" style="width:100px; height:50px;" />
                                     </td>
                                     <td>{{ $a->judul }}</td>
-                                    <td>{{ $a->status }}</td>
-                                    <td>{{ $a->created_at }}</td>
+                                    <td>{!! status($a->status) !!}</td>
+                                    <td>{{ dmyhi($a->created_at) }}</td>
                                     <td>
                                         <a href="{{ route('artikel.artikel.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                         <a href="{{ route('artikel.artikel.delete', $a->id) }}" class="btn btn-danger btn-sm swalDelete">Hapus</a>

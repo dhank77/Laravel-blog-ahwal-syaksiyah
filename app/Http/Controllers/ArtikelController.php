@@ -43,6 +43,7 @@ class ArtikelController extends Controller
             'judul' => 'required|string',
             'kategori_id' => 'required',
             'isi' => 'required',
+            'status' => 'required',
             'gambar' => 'max:2048',
         ];
         

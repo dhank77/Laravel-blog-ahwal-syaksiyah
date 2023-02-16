@@ -26,6 +26,16 @@
                             @csrf
                             <input type="hidden" name="id" value="{{ $artikel->id }}">
                             <div class="mb-3 row">
+                                <label for="kategori" class="col-sm-2 form-label align-self-center mb-lg-0">Status</label>
+                                <div class="col-sm-10">
+                                    <select name="status" data-trigger class="form-control" id="status"
+                                        placeholder="Cari Status">
+                                        <option {{ $artikel->status == "1" ? "selected" : "" }} value="1">Publish</option>
+                                        <option {{ $artikel->status == "0" ? "selected" : "" }} value="0">Draft</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
                                 <label for="kategori" class="col-sm-2 form-label align-self-center mb-lg-0">Kategori</label>
                                 <div class="col-sm-10">
                                     <select name="kategori_id" data-trigger class="form-control" id="kategori"
