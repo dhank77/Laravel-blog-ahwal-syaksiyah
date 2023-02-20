@@ -92,7 +92,6 @@
     <link href="{{ asset('assets/libs/choices.js/choices.js.min.css') }}" rel="stylesheet">
 @endsection
 @section('script')
-    <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <script>
@@ -115,5 +114,4 @@
     </script>
     <script src="{{ asset('assets/libs/choices.js/choices.js.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/form-advanced.init.js') }}"></script>
-    <script src="{{ asset('/assets/js/app.min.js') }}"></script>
 @endsection
