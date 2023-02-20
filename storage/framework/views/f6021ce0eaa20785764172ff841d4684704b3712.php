@@ -23,6 +23,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="<?php echo e(route('utama.menu.index')); ?>" data-key="t-menu">Menu Website</a></li>
+                        <li><a href="<?php echo e(route('utama.halaman.index')); ?>" data-key="t-halaman">Data Halaman</a></li>
                     </ul>
                 </li>
                 <li>

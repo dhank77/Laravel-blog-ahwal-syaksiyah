@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Master\KategoriController;
 use App\Http\Controllers\Master\MenuController;
@@ -38,6 +39,13 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit/{menu}', [MenuController::class, 'edit'])->name('utama.menu.edit');
             Route::post('/store', [MenuController::class, 'store'])->name('utama.menu.store');
             Route::get('/delete/{menu}', [MenuController::class, 'delete'])->name('utama.menu.delete');
+        });
+        Route::prefix('halaman')->group(function () {
+            Route::get('/', [HalamanController::class, 'index'])->name('utama.halaman.index');
+            Route::get('/add', [HalamanController::class, 'add'])->name('utama.halaman.add');
+            Route::get('/edit/{halaman}', [HalamanController::class, 'edit'])->name('utama.halaman.edit');
+            Route::post('/store', [HalamanController::class, 'store'])->name('utama.halaman.store');
+            Route::get('/delete/{halaman}', [HalamanController::class, 'delete'])->name('utama.halaman.delete');
         });
     });
     
