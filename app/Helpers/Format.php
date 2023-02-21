@@ -20,6 +20,11 @@ function dmyhi($tanggal)
     return date("d-m-Y H:i", strtotime($tanggal));
 }
 
+function get_menu()
+{
+    return Menu::whereNull('parent_id')->get();
+}
+
 function get_child_menu($id)
 {
     return Menu::where('parent_id', $id)->get();

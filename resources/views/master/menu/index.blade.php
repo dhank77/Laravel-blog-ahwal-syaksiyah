@@ -14,7 +14,7 @@
     @endcomponent
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-5">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title float-start">Tambah Menu</h4>
@@ -23,6 +23,7 @@
                     <div class="general-label">
                         <form method="post" action="{{ route('utama.menu.store') }}">
                             @csrf
+                            <input type="hidden" name="id" id="id">
                             <div class="mb-3 row">
                                 <div class="col-sm-12">
                                     <input type="text" class="form-control" name="nama" id="nama"
@@ -92,7 +93,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-7">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title float-start">Daftar Menu Website</h4>
@@ -101,7 +102,7 @@
                     <div class="table-responsive">
                         @foreach ($menu_utama as $key => $m)
                             <h5 class="text-truncate font-size-14 mb-2">
-                                <a href="javascript: void(0);" class="text-dark">{{ $m->nama }}</a>
+                                <a href="javascript: void(0);" onclick="editMenu('{{ $m->id }}', '{{ $m->nama }}', '{{ $m->link }}')" class="text-primary">{{ $m->nama }}</a>
                             </h5>
                             <div style="margin-left:50px;">
                                 @foreach(get_child_menu($m->id) as $key => $sub)
@@ -142,5 +143,11 @@
                 $("#show_halaman").hide();
             }
         })
+
+        function editMenu(id, nama, link){
+            $("#id").val(id);
+            $("#nama").val(nama);
+            $("#show_link").val(link);
+        }
     </script>
 @endsection
