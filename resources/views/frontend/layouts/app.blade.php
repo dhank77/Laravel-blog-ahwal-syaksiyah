@@ -4,15 +4,17 @@
 <html lang="en" class="no-js">
 
 <head>
-    <title>Studiare</title>
-
+    <title>@stack('title') Hukum Keluarga - Universitas Muhammadiyah Makassar </title>
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    @stack('meta')
+
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,500i,600,700&display=swap"
         rel="stylesheet">
-
+    <link rel="shortcut icon" href="logo.png">
     <link rel="stylesheet" href="/frontend/css/studiare-assets.min.css">
     <link rel="stylesheet" type="text/css" href="/frontend/css/fonts/font-awesome/font-awesome.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/frontend/css/fonts/elegant-icons/style.css" media="screen">
@@ -88,7 +90,7 @@
                                     @php
                                         $submenu = get_child_menu($m->id);
                                     @endphp
-                                    <a class="{{ request()->is($m->link) ? "active" : "" }}" href="{{ $m->link }}">{{ $m->nama }}
+                                    <a class="{{ request()->is(str_replace("/", "", $m->link)) ? "active" : "" }}" href="{{ $m->link }}">{{ $m->nama }}
                                         @if ($submenu->count() > 0)
                                             <i class="fa fa-angle-down"></i>
                                         @endif

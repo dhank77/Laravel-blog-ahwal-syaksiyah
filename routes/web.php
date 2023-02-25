@@ -29,6 +29,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/komplain-pelanggan', [FrontendController::class, 'komplain'])->name('komplain');
 Route::post('/store-komplain-pelanggan', [FrontendController::class, 'komplain_store'])->name('komplain.store');
 Route::get('/staff-pengajar', [FrontendController::class, 'pengajar'])->name('pengajar');
+Route::get('/berita', [FrontendController::class, 'berita'])->name('berita');
 
 Route::middleware('auth')->group(function () {
 
@@ -86,3 +87,5 @@ Route::middleware('auth')->group(function () {
         });
     });
 });
+
+Route::get('/{model}/{slug}', [FrontendController::class, 'post'])->name('post');

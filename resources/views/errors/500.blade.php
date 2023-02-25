@@ -1,6 +1,6 @@
 @extends('layouts.master-without-nav')
 @section('title')
-    @lang('translation.Error_500')
+    Terjadi Kesalahan
 @endsection
 @section('body')
 <body>

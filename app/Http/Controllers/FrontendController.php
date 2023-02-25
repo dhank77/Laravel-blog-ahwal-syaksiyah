@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artikel;
 use App\Models\Komplain;
 use App\Models\Pengajar;
 use Illuminate\Http\Request;
@@ -22,6 +23,22 @@ class FrontendController extends Controller
     {
         $pengajar = Pengajar::orderBy('nama')->get();
         return view('frontend.pengajar', compact('pengajar'));
+    }
+
+    public function berita()
+    {
+        $berita = Artikel::latest()->paginate(9);
+        return view('frontend.berita', compact('berita'));
+    }
+
+    public function post($model, $slug)
+    {
+        abort_if(!in_array($model, ['halaman', 'artikel']), 404);
+        $qry = "App\Models\\" . ucfirst($model);
+        $slug = "$model/$slug";
+        $data = $qry::where('slug', $slug)->first();
+        abort_if(!$data, 404);
+        return view('frontend.post', compact('data', 'model'));
     }
 
     public function komplain_store()

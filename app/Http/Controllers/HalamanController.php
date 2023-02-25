@@ -44,7 +44,7 @@ class HalamanController extends Controller
         
         $id = request('id');
         if(!$id){
-            $slug = Str::slug(request('judul'));
+            $slug = "halaman/" . Str::slug(request('judul'));
             $rules['gambar'] = "required|max:2048";
         }else{
             $slug = Halaman::where('id', $id)->value('slug');
