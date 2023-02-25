@@ -21,10 +21,10 @@
 					@foreach($berita as $key => $value)
 						<div class="col-lg-4 col-md-6">
 							<div class="blog-post">
-								<a href="single-post.html"><img src="{{ asset("storage/$value->gambar") }}" style="width:385px; height:200px;" alt=""></a>
+								<a href="{{ url($value->slug) }}"><img src="{{ asset("storage/$value->gambar") }}" style="width:385px; height:200px;" alt=""></a>
 								<div class="post-content">
 									<a class="category" href="#">Academics</a>
-									<h2><a href="single-post.html">{{ $value->judul }}</a></h2>
+									<h2><a href="{{ url($value->slug) }}">{{ $value->judul }}</a></h2>
 									<div class="post-meta date">
 										<i class="material-icons">access_time</i> {{ tanggal_indo($value->created_at) }}
 									</div>

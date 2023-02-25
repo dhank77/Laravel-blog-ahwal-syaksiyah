@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Artikel;
 use App\Models\Master\Kategori;
 use App\Models\Master\Menu;
 
@@ -91,4 +92,9 @@ function get_child_menu($id)
 function get_kategori()
 {
     return Kategori::orderBy('nama')->get();
+}
+
+function get_5artikel($slug)
+{
+    return Artikel::where("slug", "!=", $slug)->latest()->limit(5)->get();
 }

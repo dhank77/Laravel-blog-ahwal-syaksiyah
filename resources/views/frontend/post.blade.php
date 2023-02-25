@@ -54,14 +54,9 @@
                         <div class="category-widget widget">
                             <h2>Artikel Lainnya</h2>
                             <ul class="category-list">
-                                <li><a href="#">Academics</a></li>
-                                <li><a href="#">Advertisement</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Campus Life</a></li>
-                                <li><a href="#">Design</a></li>
-                                <li><a href="#">Government</a></li>
-                                <li><a href="#">Schools</a></li>
-                                <li><a href="#">Uncategorized</a></li>
+								@foreach(get_5artikel($data->slug) as $key => $artikel)
+                                	<li><a href="{{ url($artikel->slug) }}">{{ $artikel->judul }}</a></li>
+								@endforeach
                             </ul>
                         </div>
 
