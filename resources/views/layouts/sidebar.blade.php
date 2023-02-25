@@ -36,6 +36,18 @@
                         <li class="{{ request()->is('artikel/kategori/*') ? "mm-active" : "" }}" data-key="t-kategori"><a href="{{ route('artikel.kategori.index') }}">Kategori</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#">
+                        <i data-feather="users"></i>
+                        <span data-key="t-staff">Staff Pengajar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i data-feather="rss"></i>
+                        <span data-key="t-komplain">Data Komplain</span>
+                    </a>
+                </li>
 
             </ul>
         </div>

@@ -18,7 +18,8 @@
     <link rel="stylesheet" type="text/css" href="/frontend/css/fonts/elegant-icons/style.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/frontend/css/fonts/iconfont/material-icons.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/frontend/css/style.css">
-
+    <link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+    @stack('css')
 </head>
 
 <body>
@@ -36,7 +37,8 @@
                                     <div class="text-white" style="font-size:20px;"><b>Hukum
                                             Keluarga</b></div>
                                     <div class="text-white" style="font-size:14px; margin-top:0px !important;">
-                                        <b>Universitas Muhammadiyah Makassar</b></div>
+                                        <b>Universitas Muhammadiyah Makassar</b>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -79,14 +81,14 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="drop-link">
-                                <a class="active" href="/">Home</a>
+                                <a class="{{ request()->is("/") ? "active" : "" }}" href="/">Home</a>
                             </li>
                             @foreach (get_menu() as $m)
                                 <li class="drop-link">
                                     @php
                                         $submenu = get_child_menu($m->id);
                                     @endphp
-                                    <a href="{{ $m->link }}">{{ $m->nama }}
+                                    <a class="{{ request()->is($m->link) ? "active" : "" }}" href="{{ $m->link }}">{{ $m->nama }}
                                         @if ($submenu->count() > 0)
                                             <i class="fa fa-angle-down"></i>
                                         @endif
@@ -196,6 +198,15 @@
 
         </header>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @yield('content')
         <!-- footer
    ================================================== -->
@@ -293,7 +304,7 @@
     </script>
     <script src="/frontend/js/gmap3.min.js"></script>
     <script src="/frontend/js/script.js"></script>
-
+    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script>
         var tpj = jQuery;
         var revapi202;
@@ -398,7 +409,17 @@
             }
         }); /*ready*/
     </script>
-
+    @if (session()->has('success'))
+        <script>
+            Swal.fire({
+                title: "{{ session('success') }}",
+                icon: "success",
+            })
+        </script>
+    @endif
+    @if (session()->has('error'))
+        <script src="/frontend/js/studiare-plugins.min.js"></script>
+    @endif
 
 </body>
 

@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-{{-- @section('content')
+@section('content')
     <section id="home-section">
         <div id="rev_slider_202_1_wrapper" class="rev_slider_wrapper" data-alias="concept1"
             style="background-color:#000000;padding:0px;">
@@ -798,4 +798,4 @@
         </div>
     </section>
     <!-- End testimonial section -->
-@endsection --}}
+@endsection

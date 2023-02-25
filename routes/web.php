@@ -24,13 +24,16 @@ Auth::routes();
 Route::get('index/{locale}', [HomeController::class, 'lang']);
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
-Route::get('/dashboard', [HomeController::class, 'root'])->name('root');
-
-//Update User Details
-Route::post('/update-profile/{id}', [HomeController::class, 'updateProfile'])->name('updateProfile');
-Route::post('/update-password/{id}', [HomeController::class, 'updatePassword'])->name('updatePassword');
+Route::get('/komplain-pelanggan', [FrontendController::class, 'komplain'])->name('komplain');
+Route::post('/store-komplain-pelanggan', [FrontendController::class, 'komplain_store'])->name('komplain.store');
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/dashboard', [HomeController::class, 'root'])->name('root');
+    
+    //Update User Details
+    Route::post('/update-profile/{id}', [HomeController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('/update-password/{id}', [HomeController::class, 'updatePassword'])->name('updatePassword');
 
     Route::prefix('menu-utama')->group(function () {
         Route::prefix('menu')->group(function () {
