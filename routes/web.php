@@ -4,8 +4,10 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KomplainController;
 use App\Http\Controllers\Master\KategoriController;
 use App\Http\Controllers\Master\MenuController;
+use App\Http\Controllers\PengajarController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,6 +28,7 @@ Route::get('index/{locale}', [HomeController::class, 'lang']);
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/komplain-pelanggan', [FrontendController::class, 'komplain'])->name('komplain');
 Route::post('/store-komplain-pelanggan', [FrontendController::class, 'komplain_store'])->name('komplain.store');
+Route::get('/staff-pengajar', [FrontendController::class, 'pengajar'])->name('pengajar');
 
 Route::middleware('auth')->group(function () {
 
@@ -50,6 +53,20 @@ Route::middleware('auth')->group(function () {
             Route::post('/store', [HalamanController::class, 'store'])->name('utama.halaman.store');
             Route::get('/delete/{halaman}', [HalamanController::class, 'delete'])->name('utama.halaman.delete');
         });
+    });
+
+    Route::prefix('komplain')->group(function () {
+        Route::get('/', [KomplainController::class, 'index'])->name('komplain.index');
+        Route::get('/add', [KomplainController::class, 'add'])->name('komplain.add');
+        Route::get('/edit/{komplain}', [KomplainController::class, 'edit'])->name('komplain.edit');
+        Route::get('/delete/{komplain}', [KomplainController::class, 'delete'])->name('komplain.delete');
+    });
+    Route::prefix('pengajar')->group(function () {
+        Route::get('/', [PengajarController::class, 'index'])->name('pengajar.index');
+        Route::get('/add', [PengajarController::class, 'add'])->name('pengajar.add');
+        Route::post('/store', [PengajarController::class, 'store'])->name('pengajar.store');
+        Route::get('/edit/{pengajar}', [PengajarController::class, 'edit'])->name('pengajar.edit');
+        Route::get('/delete/{pengajar}', [PengajarController::class, 'delete'])->name('pengajar.delete');
     });
     
     Route::prefix('artikel')->group(function () {

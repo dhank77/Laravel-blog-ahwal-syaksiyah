@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="index" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="<?php echo e(asset('assets/images/logo-sm.svg')); ?>" alt="" height="30">
+                        <img src="<?php echo e(asset('logo.png')); ?>" alt="" height="30">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?php echo e(asset('assets/images/logo-sm.svg')); ?>" alt="" height="24"> <span class="logo-txt">Dason</span>
+                        <img src="<?php echo e(asset('logo.png')); ?>" alt="" height="24"> <span class="logo-txt" style="font-size:15px;">Hukum Keluarga</span>
                     </span>
                 </a>
 
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="<?php echo e(asset('assets/images/logo-sm.svg')); ?>" alt="" height="30">
+                        <img src="<?php echo e(asset('logo.png')); ?>" alt="" height="30">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?php echo e(asset('assets/images/logo-sm.svg')); ?>" alt="" height="24"> <span class="logo-txt">Dason</span>
+                        <img src="<?php echo e(asset('logo.png')); ?>" alt="" height="24"> <span class="logo-txt" style="font-size:15px;">Hukum Keluarga</span>
                     </span>
                 </a>
             </div>

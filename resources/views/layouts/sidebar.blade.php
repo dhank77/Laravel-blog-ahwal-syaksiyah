@@ -7,12 +7,12 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">@lang('translation.Menu')</li>
+                <li class="menu-title">Menu Utama</li>
 
                 <li>
-                    <a href="index">
+                    <a class="{{ request()->is('dashboard/*') ? "mm-active" : "" }}" href="/dashboard">
                         <i data-feather="home"></i>
-                        <span data-key="t-dashboard">@lang('translation.Dashboards')</span>
+                        <span data-key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
 
@@ -37,13 +37,13 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="{{ request()->is('pengajar/*') ? "mm-active" : "" }}" href="{{ route('pengajar.index') }}">
                         <i data-feather="users"></i>
                         <span data-key="t-staff">Staff Pengajar</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="{{ request()->is('komplain/*') ? "mm-active" : "" }}" href="{{ route('komplain.index') }}">
                         <i data-feather="rss"></i>
                         <span data-key="t-komplain">Data Komplain</span>
                     </a>

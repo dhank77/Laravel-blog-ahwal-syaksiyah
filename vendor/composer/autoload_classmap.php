@@ -37,6 +37,7 @@ return array(
     'App\\Models\\Komplain' => $baseDir . '/app/Models/Komplain.php',
     'App\\Models\\Master\\Kategori' => $baseDir . '/app/Models/Master/Kategori.php',
     'App\\Models\\Master\\Menu' => $baseDir . '/app/Models/Master/Menu.php',
+    'App\\Models\\Pengajar' => $baseDir . '/app/Models/Pengajar.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

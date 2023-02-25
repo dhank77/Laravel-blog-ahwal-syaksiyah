@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Komplain;
+use App\Models\Pengajar;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -15,6 +16,12 @@ class FrontendController extends Controller
     public function komplain()
     {
         return view('frontend.komplain');
+    }
+
+    public function pengajar()
+    {
+        $pengajar = Pengajar::orderBy('nama')->get();
+        return view('frontend.pengajar', compact('pengajar'));
     }
 
     public function komplain_store()

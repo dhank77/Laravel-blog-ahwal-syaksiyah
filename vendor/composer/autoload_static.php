@@ -576,6 +576,7 @@ class ComposerStaticInitda61cbaf43b5f7e7941fb89aac5a9ef8
         'App\\Models\\Komplain' => __DIR__ . '/../..' . '/app/Models/Komplain.php',
         'App\\Models\\Master\\Kategori' => __DIR__ . '/../..' . '/app/Models/Master/Kategori.php',
         'App\\Models\\Master\\Menu' => __DIR__ . '/../..' . '/app/Models/Master/Menu.php',
+        'App\\Models\\Pengajar' => __DIR__ . '/../..' . '/app/Models/Pengajar.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
