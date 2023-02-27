@@ -36,6 +36,7 @@ Route::post('/store-komplain-pelanggan', [FrontendController::class, 'komplain_s
 Route::get('/staff-pengajar', [FrontendController::class, 'pengajar'])->name('pengajar');
 Route::get('/berita', [FrontendController::class, 'berita'])->name('berita');
 Route::get('/pengumuman', [FrontendController::class, 'pengumuman'])->name('pengumuman');
+Route::get('/kategori/{kategori}', [FrontendController::class, 'kategori'])->name('kategori');
 
 Route::middleware('auth')->group(function () {
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artikel;
 use App\Models\Banner;
 use App\Models\Komplain;
+use App\Models\Master\Kategori;
 use App\Models\Master\Komponen;
 use App\Models\Pengajar;
 use App\Models\Pengumuman;
@@ -43,6 +44,12 @@ class FrontendController extends Controller
     {
         $pengumuman = Pengumuman::latest()->paginate(9);
         return view('frontend.pengumuman', compact('pengumuman'));
+    }
+
+    public function kategori(Kategori $kategori)
+    {
+        $berita = Artikel::with('kategori')->where('kategori_id', $kategori->id)->latest()->paginate(9);
+        return view('frontend.kategori', compact('berita', 'kategori'));
     }
 
     public function post($model, $slug)
