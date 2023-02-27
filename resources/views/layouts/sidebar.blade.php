@@ -54,7 +54,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('setting.banner.index') }}" data-key="t-banner">Banner</a></li>
-                        <li><a href="{{ route('utama.halaman.index') }}" data-key="t-halaman">Data Halaman</a></li>
+                        <li><a href="{{ route('setting.sambutan.index') }}" data-key="t-sambutan">Sambutan</a></li>
                     </ul>
                 </li>
             </ul>

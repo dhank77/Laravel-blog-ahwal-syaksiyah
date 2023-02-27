@@ -9,6 +9,7 @@ use App\Http\Controllers\KomplainController;
 use App\Http\Controllers\Master\KategoriController;
 use App\Http\Controllers\Master\MenuController;
 use App\Http\Controllers\PengajarController;
+use App\Http\Controllers\SambutanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -94,6 +95,10 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit/{banner}', [BannerController::class, 'edit'])->name('setting.banner.edit');
             Route::post('/store', [BannerController::class, 'store'])->name('setting.banner.store');
             Route::get('/delete/{banner}', [BannerController::class, 'delete'])->name('setting.banner.delete');
+        });
+        Route::prefix('sambutan')->group(function () {
+            Route::get('/', [SambutanController::class, 'index'])->name('setting.sambutan.index');
+            Route::post('/store', [SambutanController::class, 'store'])->name('setting.sambutan.store');
         });
     });
 });
