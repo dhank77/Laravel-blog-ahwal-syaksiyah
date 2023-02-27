@@ -10,7 +10,7 @@ class SambutanController extends Controller
 {
     public function index()
     {
-        $Komponen = Komponen::where('nama', 'sambutan')->first();
+        $komponen = Komponen::where('nama', 'sambutan')->first();
         return view('sambutan.index', compact('komponen'));
     }
 
@@ -32,7 +32,9 @@ class SambutanController extends Controller
         if(request()->file('komponen3')){
             if($id){
                 $img = Komponen::where('id', $id)->value('komponen3');
-                Storage::delete($img);
+                if($img){
+                    Storage::delete($img);
+                }
             }
 
             $data['komponen3'] = request()->file('komponen3')->storeAs("uploads/sambutan", date("ymdhis") . "." . request()->file('komponen3')->extension());

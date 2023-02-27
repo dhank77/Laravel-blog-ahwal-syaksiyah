@@ -125,12 +125,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1>{{ $sambutan->komponen1 }}</h1>
+                    <h4>{{ $sambutan->komponen1 }}</h4>
                     <img src="{{ asset("storage/$sambutan->komponen3") }}" class="rounded" style="width:500px; height:400px;" alt="">
+                    <br/>
+                    <br/>
                     <h4>{{ $sambutan->komponen2 }}</h4>
                 </div>
                 <div class="col-lg-6 text-left">
-                    {{ $sambutan->komponen4 }}
+                    {!! $sambutan->komponen4 !!}
                 </div>
             </div>
         </div>
@@ -155,10 +157,10 @@
                     @foreach (get_5artikel('/') as $key => $artikel)
                         <div class="col-lg-3 col-md-6">
                             <div class="blog-post">
-                                <a href="{{ url($artikel->slug) }}"><img src="{{ asset("storage/$artikel->gambar") }}"
+                                <a href="{{ url($artikel->slug) }}"><img src="{{ asset("storage/$artikel->gambar") }}" style="width:385px; height:200px;"
                                         alt=""></a>
-                                <div class="post-content">
-                                    <h2><a href="{{ url($artikel->slug) }}">{{ $artikel->judul }}</a></h2>
+                                <div class="post-content" style="height:150px;">
+                                    <h2><a href="{{ url($artikel->slug) }}">{{ str_limit($artikel->judul, 45) }}</a></h2>
                                     <div class="post-meta date">
                                         <i class="material-icons">access_time</i> {{ tanggal_indo($artikel->created_at) }}
                                     </div>
@@ -178,73 +180,23 @@
     <section class="testimonial-section">
         <div class="container">
             <div class="testimonial-box owl-wrapper">
-
                 <div class="owl-carousel" data-num="1">
-
-                    <div class="item">
-                        <div class="testimonial-post">
-                            <p> “Design-driven, customized and reliable solution for your token development and
-                                management system to automate sales processes.”</p>
-                            <div class="profile-test">
-                                <div class="avatar-holder">
-                                    <img src="upload/testimonials/testimonial-avatar-1.jpg" alt="">
-                                </div>
-                                <div class="profile-data">
-                                    <h2>Nicole Alatorre</h2>
-                                    <p>Designer</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="testimonial-post">
-                            <p> “Design-driven, customized and reliable solution for your token development and
-                                management system to automate sales processes.”</p>
-                            <div class="profile-test">
-                                <div class="avatar-holder">
-                                    <img src="upload/testimonials/testimonial-avatar-2.jpg" alt="">
-                                </div>
-                                <div class="profile-data">
-                                    <h2>Nicole Alatorre</h2>
-                                    <p>Designer</p>
+                    @foreach($testimoni as $t)
+                        <div class="item">
+                            <div class="testimonial-post d-flex justify-content-between">
+                                <p>{!! $t->isi !!}</p>
+                                <div class="profile-test">
+                                    <div class="avatar-holder">
+                                        <img src="{{ asset("storage/$t->gambar") }}" alt="">
+                                    </div>
+                                    <div class="profile-data">
+                                        <h2>{{ $t->nama }}</h2>
+                                        <p>{{ $t->jabatan }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="testimonial-post">
-                            <p> “Design-driven, customized and reliable solution for your token development and
-                                management system to automate sales processes.”</p>
-                            <div class="profile-test">
-                                <div class="avatar-holder">
-                                    <img src="upload/testimonials/testimonial-avatar-3.jpg" alt="">
-                                </div>
-                                <div class="profile-data">
-                                    <h2>Nicole Alatorre</h2>
-                                    <p>Designer</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="testimonial-post">
-                            <p> “Design-driven, customized and reliable solution for your token development and
-                                management system to automate sales processes.”</p>
-                            <div class="profile-test">
-                                <div class="avatar-holder">
-                                    <img src="upload/testimonials/testimonial-avatar-4.jpg" alt="">
-                                </div>
-                                <div class="profile-data">
-                                    <h2>Nicole Alatorre</h2>
-                                    <p>Designer</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>

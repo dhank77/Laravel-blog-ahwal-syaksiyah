@@ -54,7 +54,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="<?php echo e(route('setting.banner.index')); ?>" data-key="t-banner">Banner</a></li>
-                        <li><a href="<?php echo e(route('utama.halaman.index')); ?>" data-key="t-halaman">Data Halaman</a></li>
+                        <li><a href="<?php echo e(route('setting.sambutan.index')); ?>" data-key="t-sambutan">Sambutan</a></li>
+                        <li><a href="<?php echo e(route('setting.testimoni.index')); ?>" data-key="t-testimoni">Testimoni</a></li>
                     </ul>
                 </li>
             </ul>

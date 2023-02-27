@@ -43,15 +43,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($Testimoni as $k => $a)
+                            @foreach ($testimoni as $k => $a)
                                 <tr>
                                     <td>{{ $k + 1 }}</td>
                                     <td>
-                                        <img src="{{ asset("storage/$a->gambar") }}" style="width:100px; height:50px;" />
+                                        <img src="{{ asset("storage/$a->gambar") }}" style="width:80px; height:80px;" class="rounded" />
                                     </td>
                                     <td>{{ $a->nama }}</td>
                                     <td>{{ $a->jabatan }}</td>
-                                    <td>{!! $a->isi !!}</td>
+                                    <td>{{ str_limit(strip_tags($a->isi)) }}</td>
                                     <td>
                                         <a href="{{ route('setting.testimoni.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                         <a href="{{ route('setting.testimoni.delete', $a->id) }}" class="btn btn-danger btn-sm swalDelete">Hapus</a>

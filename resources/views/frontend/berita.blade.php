@@ -22,9 +22,9 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="blog-post">
 								<a href="{{ url($value->slug) }}"><img src="{{ asset("storage/$value->gambar") }}" style="width:385px; height:200px;" alt=""></a>
-								<div class="post-content">
-									<a class="category" href="#">Academics</a>
-									<h2><a href="{{ url($value->slug) }}">{{ $value->judul }}</a></h2>
+								<div class="post-content" style="height:170px;">
+									<a class="category" href="#">{{ optional($value->kategori)->nama }}</a>
+									<h2><a href="{{ url($value->slug) }}">{{ str_limit($value->judul, 70) }}</a></h2>
 									<div class="post-meta date">
 										<i class="material-icons">access_time</i> {{ tanggal_indo($value->created_at) }}
 									</div>

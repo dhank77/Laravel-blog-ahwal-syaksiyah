@@ -3,6 +3,7 @@
 use App\Models\Artikel;
 use App\Models\Master\Kategori;
 use App\Models\Master\Menu;
+use Illuminate\Support\Str;
 
 function status($status)
 {
@@ -96,5 +97,11 @@ function get_kategori()
 
 function get_5artikel($slug)
 {
-    return Artikel::where("slug", "!=", $slug)->latest()->limit(5)->get();
+    $artikel = Artikel::with('kategori')->where("slug", "!=", $slug)->latest()->limit(5)->get();
+    return $artikel;
+}
+
+function str_limit($text, $limit = 50)
+{
+    return Str::limit($text, $limit);
 }

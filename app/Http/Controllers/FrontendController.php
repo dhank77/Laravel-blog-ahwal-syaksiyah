@@ -7,6 +7,7 @@ use App\Models\Banner;
 use App\Models\Komplain;
 use App\Models\Master\Komponen;
 use App\Models\Pengajar;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -15,7 +16,8 @@ class FrontendController extends Controller
     {
         $banner = Banner::latest()->get();
         $sambutan = Komponen::where('nama', 'sambutan')->first();
-        return view('frontend.index', compact('banner', 'sambutan'));
+        $testimoni = Testimoni::latest()->get();
+        return view('frontend.index', compact('banner', 'sambutan', 'testimoni'));
     }
 
     public function komplain()
@@ -31,7 +33,7 @@ class FrontendController extends Controller
 
     public function berita()
     {
-        $berita = Artikel::latest()->paginate(9);
+        $berita = Artikel::with('kategori')->latest()->paginate(9);
         return view('frontend.berita', compact('berita'));
     }
 

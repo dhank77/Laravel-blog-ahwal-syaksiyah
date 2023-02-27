@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body">
                     <div class="general-label">
-                        <form method="post" action="{{ route('testimoni.testimoni.store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('setting.testimoni.store') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{ $testimoni->id }}">
                             <div class="mb-3 row">

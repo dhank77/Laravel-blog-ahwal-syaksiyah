@@ -79,13 +79,12 @@
 
     <script>
         $(document).ready(function() {
-
-            $('#isi').summernote({
+            $('#komponen4').summernote({
                 height: 400,
             });
         });
         $(document).ready(function(e) {
-            $('#gambar').change(function() {
+            $('#komponen3').change(function() {
                 let reader = new FileReader();
                 reader.onload = (e) => {
                     $('#preview-image-before-upload').attr('src', e.target.result);

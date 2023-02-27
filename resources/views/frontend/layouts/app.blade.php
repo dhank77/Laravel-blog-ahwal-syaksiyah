@@ -217,13 +217,18 @@
 
                 <div class="up-footer">
                     <div class="row">
-
                         <div class="col-lg-4 col-md-6">
                             <div class="footer-widget text-widget">
-                                <a href="index.html" class="footer-logo"><img src="images/logo_light.svg"
-                                        alt=""></a>
+                                <a href="/" class="footer-logo"><img src="{{ asset("logo.png") }}"
+                                        alt="footer-gambar" style="height:300px; width:300px;"></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="footer-widget text-widget">
                                 <p>We named our theme Studiare because to us,<br> the best brands are simple ones.
+                                    Brands thrive<br> on their ability to be understood, We named our theme Studiare because to us,<br> the best brands are simple ones.
                                     Brands thrive<br> on their ability to be understood.</p>
+                                <h2>Alamat Lengkap </h2>
                                 <ul>
                                     <li>
                                         <div class="contact-info-icon">
@@ -240,10 +245,9 @@
                                 </ul>
                             </div>
                         </div>
-
                         <div class="col-lg-4 col-md-6">
                             <div class="footer-widget quick-widget">
-                                <h2>Quick Links</h2>
+                                <h2>Link Terkait</h2>
                                 <ul class="quick-list">
                                     <li><a href="/frontend/contact.html">Contact</a></li>
                                     <li><a href="pricing.html">Pricing Packages</a></li>
@@ -256,18 +260,6 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="footer-widget subscribe-widget">
-                                <h2>Newsletter</h2>
-                                <p>Don’t miss anything, sign up now and keep informed about our company.</p>
-                                <div class="newsletter-form">
-                                    <input class="form-control" type="email" name="EMAIL"
-                                        placeholder="Enter Your E-mail" required="">
-                                    <input type="submit" value="Subscribe">
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
@@ -276,14 +268,14 @@
             <div class="footer-copyright copyrights-layout-default">
                 <div class="container">
                     <div class="copyright-inner">
-                        <div class="copyright-cell"> &copy; 2019 <span class="highlight">Studiare</span>. Created by
-                            CodeBean Team.</div>
+                        <div class="copyright-cell"> &copy; 2023 <span class="highlight text-white">Hukum Keluarga</span>. Developed by
+                            Universitas Muhammadiyah Makassar.</div>
                         <div class="copyright-cell">
                             <ul class="studiare-social-links">
                                 <li><a href="#" class="facebook"><i class="fa fa-facebook-f"></i></a></li>
                                 <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
