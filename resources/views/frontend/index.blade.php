@@ -101,7 +101,7 @@
                             <div class="col-lg-6 col-md-12">
                                 <div class="collection-post">
                                     <div class="inner-collection">
-                                        <img src="{{ asset("storage/$peng->gambar") }}" alt="pengumuman" style="width:620px; height:469px;">
+                                        <img src="{{ asset("storage/$peng->gambar") }}" alt="pengumuman" style="width:110%; height:469px;">
                                         <a href="{{ url($peng->slug) }}" class="hover-post">
                                             <span class="title">{{ $peng->judul }}</span>
                                             <span class="numb-courses">Selengkapnya</span>
@@ -118,7 +118,7 @@
                         @if ($key != 0)
                             <div class="collection-post">
                                 <div class="inner-collection">
-                                    <img src="{{ asset("storage/$peng->gambar") }}" alt="pengumuman" style="width:294px; height:223px;">
+                                    <img src="{{ asset("storage/$peng->gambar") }}" alt="pengumuman" style="width:110%; height:223px;">
                                     <a href="{{ url($peng->slug) }}" class="hover-post">
                                         <span class="title">{{ $peng->judul }}</span>
                                         <span class="numb-courses">Selengkapnya</span>
