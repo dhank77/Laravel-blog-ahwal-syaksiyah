@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
+use App\Models\Banner;
 use App\Models\Komplain;
 use App\Models\Pengajar;
 use Illuminate\Http\Request;
@@ -11,7 +12,8 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $banner = Banner::latest()->get();
+        return view('frontend.index', compact('banner'));
     }
 
     public function komplain()

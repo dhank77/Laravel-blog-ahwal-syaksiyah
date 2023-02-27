@@ -37,8 +37,8 @@ class BannerController extends Controller
     public function store()
     {
         $rules = [
-            'judul' => 'required|string',
-            'deskripsi' => 'required',
+            'judul' => 'nullable|string',
+            'deskripsi' => 'nullable',
             'link' => 'nullable',
             'gambar' => 'max:2048',
         ];
