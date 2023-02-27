@@ -83,12 +83,12 @@ function dmyhi($tanggal)
 
 function get_menu()
 {
-    return Menu::whereNull('parent_id')->get();
+    return Menu::whereNull('parent_id')->orderBy('urutan')->get();
 }
 
 function get_child_menu($id)
 {
-    return Menu::where('parent_id', $id)->get();
+    return Menu::where('parent_id', $id)->orderBy('urutan')->get();
 }
 
 function get_kategori()

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->string('parent_id')->nullable();
+            $table->string('urutan')->nullable();
             $table->string('nama');
             $table->string('link');
             $table->timestamps();

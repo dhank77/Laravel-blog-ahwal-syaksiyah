@@ -49,8 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('menu-utama')->group(function () {
         Route::prefix('menu')->group(function () {
             Route::get('/', [MenuController::class, 'index'])->name('utama.menu.index');
-            Route::get('/add', [MenuController::class, 'add'])->name('utama.menu.add');
-            Route::get('/edit/{menu}', [MenuController::class, 'edit'])->name('utama.menu.edit');
+            Route::get('/up/{menu}', [MenuController::class, 'up'])->name('utama.menu.up');
+            Route::get('/down/{menu}', [MenuController::class, 'down'])->name('utama.menu.down');
             Route::post('/store', [MenuController::class, 'store'])->name('utama.menu.store');
             Route::get('/delete/{menu}', [MenuController::class, 'delete'])->name('utama.menu.delete');
         });
