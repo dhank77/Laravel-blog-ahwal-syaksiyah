@@ -40,12 +40,12 @@ class BannerController extends Controller
             'judul' => 'nullable|string',
             'deskripsi' => 'nullable',
             'link' => 'nullable',
-            'gambar' => 'max:2048',
+            'gambar' => 'max:2048|mimes:png,jpg,jpeg',
         ];
         
         $id = request('id');
         if(!$id){
-            $rules['gambar'] = "required|max:2048";
+            $rules['gambar'] = "required|max:2048|mimes:png,jpg,jpeg";
         }
         $data = request()->validate($rules);
 

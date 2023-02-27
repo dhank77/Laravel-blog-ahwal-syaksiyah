@@ -39,13 +39,13 @@ class HalamanController extends Controller
         $rules = [
             'judul' => 'required|string',
             'isi' => 'required',
-            'gambar' => 'max:2048',
+            'gambar' => 'max:2048|mimes:png,jpg,jpeg',
         ];
         
         $id = request('id');
         if(!$id){
             $slug = "halaman/" . Str::slug(request('judul'));
-            $rules['gambar'] = "required|max:2048";
+            $rules['gambar'] = "required|max:2048|mimes:png,jpg,jpeg";
         }else{
             $slug = Halaman::where('id', $id)->value('slug');
         }

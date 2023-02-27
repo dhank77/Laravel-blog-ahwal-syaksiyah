@@ -44,13 +44,13 @@ class ArtikelController extends Controller
             'kategori_id' => 'required',
             'isi' => 'required',
             'status' => 'required',
-            'gambar' => 'max:2048',
+            'gambar' => 'max:2048|mimes:png,jpg,jpeg',
         ];
         
         $id = request('id');
         if(!$id){
             $slug = "artikel/" . Str::slug(request('judul'));
-            $rules['gambar'] = "required|max:2048";
+            $rules['gambar'] = "required|max:2048|mimes:png,jpg,jpeg";
         }else{
             $slug = Artikel::where('id', $id)->value('slug');
         }

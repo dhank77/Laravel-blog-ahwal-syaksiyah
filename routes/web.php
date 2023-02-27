@@ -10,6 +10,7 @@ use App\Http\Controllers\Master\KategoriController;
 use App\Http\Controllers\Master\MenuController;
 use App\Http\Controllers\PengajarController;
 use App\Http\Controllers\SambutanController;
+use App\Http\Controllers\TestimoniController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -95,6 +96,13 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit/{banner}', [BannerController::class, 'edit'])->name('setting.banner.edit');
             Route::post('/store', [BannerController::class, 'store'])->name('setting.banner.store');
             Route::get('/delete/{banner}', [BannerController::class, 'delete'])->name('setting.banner.delete');
+        });
+        Route::prefix('testimoni')->group(function () {
+            Route::get('/', [TestimoniController::class, 'index'])->name('setting.testimoni.index');
+            Route::get('/add', [TestimoniController::class, 'add'])->name('setting.testimoni.add');
+            Route::get('/edit/{testimoni}', [TestimoniController::class, 'edit'])->name('setting.testimoni.edit');
+            Route::post('/store', [TestimoniController::class, 'store'])->name('setting.testimoni.store');
+            Route::get('/delete/{testimoni}', [TestimoniController::class, 'delete'])->name('setting.testimoni.delete');
         });
         Route::prefix('sambutan')->group(function () {
             Route::get('/', [SambutanController::class, 'index'])->name('setting.sambutan.index');
