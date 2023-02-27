@@ -83,132 +83,41 @@
     </section>
     <!-- End home section -->
 
-    <!-- feature-section
+     <!-- news-section
                ================================================== -->
-    <section class="feature-section">
-        <div class="container">
-            <div class="feature-box">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="feature-post">
-                            <div class="icon-holder">
-                                <i class="fa fa-umbrella"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h2>
-                                    Online Learn Courses Management
-                                </h2>
-                                <p>Analyzing negative materials about your brand and addressing them with sentiment
-                                    analysis and press.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="feature-post">
-                            <div class="icon-holder color2">
-                                <i class="fa fa-id-card-o"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h2>
-                                    Learn from the masters of the field online
-                                </h2>
-                                <p>Analyzing negative materials about your brand and addressing them with sentiment
-                                    analysis and press.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="feature-post">
-                            <div class="icon-holder color3">
-                                <i class="fa fa-handshake-o"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h2>
-                                    An Introduction-Skills For Learners
-                                </h2>
-                                <p>Analyzing negative materials about your brand and addressing them with sentiment
-                                    analysis and press.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End feature section -->
-
-    <!-- collection-section
-               ================================================== -->
-    <section class="collection-section">
+    <section class="news-section">
         <div class="container">
             <div class="title-section">
                 <div class="left-part">
-                    <span>Categories</span>
-                    <h1>Trending Collection</h1>
+                    <span>Artikel</span>
+                    <h1>Berita Terbaru</h1>
                 </div>
                 <div class="right-part">
-                    <a class="button-one" href="#">View All Courses</a>
+                    <a class="button-one" href="/berita">Semua Berita</a>
                 </div>
             </div>
-            <div class="collection-box">
+            <div class="news-box">
                 <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="collection-post">
-                            <div class="inner-collection">
-                                <img src="upload/collection/web-development.jpg" alt="">
-                                <a href="#" class="hover-post">
-                                    <span class="title">Web Development</span>
-                                    <span class="numb-courses">3 Courses</span>
-                                </a>
+                    @foreach (get_5artikel('/') as $key => $artikel)
+                        <div class="col-lg-3 col-md-6">
+                            <div class="blog-post">
+                                <a href="{{ url($artikel->slug) }}"><img src="{{ asset("storage/$artikel->gambar") }}"
+                                        alt=""></a>
+                                <div class="post-content">
+                                    <h2><a href="{{ url($artikel->slug) }}">{{ $artikel->judul }}</a></h2>
+                                    <div class="post-meta date">
+                                        <i class="material-icons">access_time</i> {{ tanggal_indo($artikel->created_at) }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="collection-post">
-                            <div class="inner-collection">
-                                <img src="upload/collection/web-design.jpg" alt="">
-                                <a href="#" class="hover-post">
-                                    <span class="title">Web Design</span>
-                                    <span class="numb-courses">2 Courses</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="collection-post">
-                            <div class="inner-collection">
-                                <img src="upload/collection/technology.jpg" alt="">
-                                <a href="#" class="hover-post">
-                                    <span class="title">Technology</span>
-                                    <span class="numb-courses">3 Courses</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="collection-post">
-                            <div class="inner-collection">
-                                <img src="upload/collection/photography.jpg" alt="">
-                                <a href="#" class="hover-post">
-                                    <span class="title">Photography</span>
-                                    <span class="numb-courses">3 Courses</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="collection-post">
-                            <div class="inner-collection">
-                                <img src="upload/collection/design.jpg" alt="">
-                                <a href="#" class="hover-post">
-                                    <span class="title">Design</span>
-                                    <span class="numb-courses">3 Courses</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
             </div>
         </div>
     </section>
-    <!-- End collection section -->
+    <!-- End news section -->
 
     <!-- countdown-section
                ================================================== -->
@@ -216,28 +125,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1>Sambutan Ketua Prodi</h1>
-                    <img src="{{ asset('uploads/pengajar/230226054401.jpg') }}" class="rounded" style="width:500px; height:400px;" alt="">
-                    <h4>Hasan bin Juhanis, Lc., MS</h4>
+                    <h1>{{ $sambutan->komponen1 }}</h1>
+                    <img src="{{ asset("storage/$sambutan->komponen3") }}" class="rounded" style="width:500px; height:400px;" alt="">
+                    <h4>{{ $sambutan->komponen2 }}</h4>
                 </div>
                 <div class="col-lg-6 text-left">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde amet rerum, pariatur, qui totam autem
-                    consectetur quos voluptates, dolore quasi ut? Quisquam alias praesentium reprehenderit quo vero nemo
-                    illo voluptas doloribus quod iure voluptatibus velit numquam blanditiis tenetur natus incidunt quaerat
-                    harum, tempora culpa autem voluptatum aperiam voluptatem! Asperiores ad exercitationem, quo inventore
-                    facere dignissimos labore ea sunt sapiente aliquid iusto at tempora qui repellat, vitae officiis odio
-                    explicabo a incidunt ducimus laborum laboriosam autem maiores aliquam. Rem dolorum optio necessitatibus
-                    ipsam voluptatum vitae minus culpa tenetur expedita, totam officia illo a nesciunt eum doloribus.
-                    Voluptatum impedit error reiciendis ducimus.
-
+                    {{ $sambutan->komponen4 }}
                 </div>
             </div>
         </div>
     </section>
     <!-- End countdown section -->
 
-
-    <!-- news-section
+     <!-- news-section
                ================================================== -->
     <section class="news-section">
         <div class="container">

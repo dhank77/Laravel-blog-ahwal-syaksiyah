@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artikel;
 use App\Models\Banner;
 use App\Models\Komplain;
+use App\Models\Master\Komponen;
 use App\Models\Pengajar;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class FrontendController extends Controller
     public function index()
     {
         $banner = Banner::latest()->get();
-        return view('frontend.index', compact('banner'));
+        $sambutan = Komponen::where('nama', 'sambutan')->first();
+        return view('frontend.index', compact('banner', 'sambutan'));
     }
 
     public function komplain()

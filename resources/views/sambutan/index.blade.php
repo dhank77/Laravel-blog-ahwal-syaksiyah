@@ -36,16 +36,23 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="komponen1" class="col-sm-2 form-label align-self-center mb-lg-0">Judul</label>
+                                <label for="komponen1" class="col-sm-2 form-label align-self-center mb-lg-0">Nama Komponen</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="komponen1" id="komponen1"
                                         placeholder="komponen1" value="{{ $komponen->komponen1 }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="deskripsi" class="col-sm-2 form-label align-self-center mb-lg-0">Deskripsi Singkat</label>
+                                <label for="komponen2" class="col-sm-2 form-label align-self-center mb-lg-0">Nama Ketua Prodi</label>
                                 <div class="col-sm-10">
-                                    <textarea name="komponen2" id="komponen2" cols="30" rows="5">{{ $komponen->komponen2 }}</textarea>
+                                    <input type="text" class="form-control" name="komponen2" id="komponen2"
+                                        placeholder="komponen2" value="{{ $komponen->komponen2 }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="deskripsi" class="col-sm-2 form-label align-self-center mb-lg-0">Isi Sambutan</label>
+                                <div class="col-sm-10">
+                                    <textarea name="komponen4" id="komponen4" cols="30" rows="5">{{ $komponen->komponen4 }}</textarea>
                                 </div>
                             </div>
                             <div class="row">

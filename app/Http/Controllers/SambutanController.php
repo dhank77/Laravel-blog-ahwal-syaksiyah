@@ -19,6 +19,7 @@ class SambutanController extends Controller
         $rules = [
             'komponen1' => 'required|string',
             'komponen2' => 'nullable',
+            'komponen4' => 'nullable',
             'komponen3' => 'max:2048',
         ];
         
