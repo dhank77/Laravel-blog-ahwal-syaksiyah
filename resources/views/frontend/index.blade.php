@@ -145,7 +145,7 @@
                 <div class="col-lg-6">
                     <h4>{{ $sambutan->komponen1 }}</h4>
                     <img src="{{ asset("storage/$sambutan->komponen3") }}" class="rounded"
-                        style="width:500px; height:400px;" alt="">
+                        style="width:100%; height:400px;" alt="">
                     <br />
                     <br />
                     <h4>{{ $sambutan->komponen2 }}</h4>
