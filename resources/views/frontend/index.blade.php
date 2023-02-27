@@ -87,7 +87,7 @@
             <div class="title-section">
                 <div class="left-part">
                     <span>Pengumuman</span>
-                    <h1>Dafter Pengumuman Terbaru</h1>
+                    <h1>Pengumuman Terbaru</h1>
                 </div>
                 <div class="right-part">
                     <a class="button-one" href="/pengumuman">Semua Pengumuman</a>
