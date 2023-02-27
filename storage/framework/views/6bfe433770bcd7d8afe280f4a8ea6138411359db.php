@@ -1,4 +1,4 @@
-<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Dashboards'); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Dashboard <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
 
 <link href="<?php echo e(URL::asset('/assets/libs/admin-resources/admin-resources.min.css')); ?>" rel="stylesheet">

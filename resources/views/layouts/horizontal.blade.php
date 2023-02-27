@@ -290,7 +290,7 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="index " id="topnav-dashboard" role="button">
-                            <i data-feather="home"></i><span data-key="t-dashboard">@lang('translation.Dashboards')</span>
+                            <i data-feather="home"></i><span data-key="t-dashboard">Dashboard</span>
                         </a>
                     </li>
 

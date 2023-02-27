@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') @lang('translation.Dashboards') @endsection
+@section('title') Dashboard @endsection
 @section('css')
 
 <link href="{{ URL::asset('/assets/libs/admin-resources/admin-resources.min.css') }}" rel="stylesheet">

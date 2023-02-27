@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\HomeController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes(['register' => false]);
 //Language Translation
 Route::get('index/{locale}', [HomeController::class, 'lang']);
 
@@ -84,6 +85,15 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit/{kategori}', [KategoriController::class, 'edit'])->name('artikel.kategori.edit');
             Route::post('/store', [KategoriController::class, 'store'])->name('artikel.kategori.store');
             Route::get('/delete/{kategori}', [KategoriController::class, 'delete'])->name('artikel.kategori.delete');
+        });
+    });
+    Route::prefix('setting')->group(function () {
+        Route::prefix('banner')->group(function () {
+            Route::get('/', [BannerController::class, 'index'])->name('setting.banner.index');
+            Route::get('/add', [BannerController::class, 'add'])->name('setting.banner.add');
+            Route::get('/edit/{banner}', [BannerController::class, 'edit'])->name('setting.banner.edit');
+            Route::post('/store', [BannerController::class, 'store'])->name('setting.banner.store');
+            Route::get('/delete/{banner}', [BannerController::class, 'delete'])->name('setting.banner.delete');
         });
     });
 });
