@@ -36,6 +36,12 @@
                     </ul>
                 </li>
                 <li>
+                    <a class="<?php echo e(request()->is('pengumuman/*') ? "mm-active" : ""); ?>" href="<?php echo e(route('pengumuman.index')); ?>">
+                        <i data-feather="list"></i>
+                        <span data-key="t-pengumuman">Pengumuman</span>
+                    </a>
+                </li>
+                <li>
                     <a class="<?php echo e(request()->is('pengajar/*') ? "mm-active" : ""); ?>" href="<?php echo e(route('pengajar.index')); ?>">
                         <i data-feather="users"></i>
                         <span data-key="t-staff">Staff Pengajar</span>
@@ -56,6 +62,7 @@
                         <li><a href="<?php echo e(route('setting.banner.index')); ?>" data-key="t-banner">Banner</a></li>
                         <li><a href="<?php echo e(route('setting.sambutan.index')); ?>" data-key="t-sambutan">Sambutan</a></li>
                         <li><a href="<?php echo e(route('setting.testimoni.index')); ?>" data-key="t-testimoni">Testimoni</a></li>
+                        <li><a href="<?php echo e(route('setting.footer.index')); ?>" data-key="t-footer">Footer</a></li>
                     </ul>
                 </li>
             </ul>

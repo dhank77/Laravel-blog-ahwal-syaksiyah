@@ -33,16 +33,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="d-flex align-items-center mt-1">
-                                <img src="/logo.png" style="width:50px; height:50px;" />
-                                <div class="ml-3">
-                                    <div class="text-white" style="font-size:20px;"><b>Hukum
-                                            Keluarga</b></div>
-                                    <div class="text-white" style="font-size:14px; margin-top:0px !important;">
-                                        <b>Universitas Muhammadiyah Makassar</b>
+                            <a href="/">
+                                <div class="d-flex align-items-center mt-1">
+                                    <img src="/logo.png" style="width:50px; height:50px;" />
+                                    <div class="ml-3">
+                                        <div class="text-white" style="font-size:20px;"><b>Hukum
+                                                Keluarga</b></div>
+                                        <div class="text-white" style="font-size:14px; margin-top:0px !important;">
+                                            <b>Universitas Muhammadiyah Makassar</b>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-lg-6">
                             <div class="right-top-line">
@@ -90,7 +92,7 @@
                                     @php
                                         $submenu = get_child_menu($m->id);
                                     @endphp
-                                    <a class="{{ request()->is(str_replace("/", "", $m->link)) ? "active" : "" }}" href="{{ $m->link }}">{{ $m->nama }}
+                                    <a class="{{ request()->is(str_replace("/", "", $m->link) . "*") ? "active" : "" }}" href="{{ $m->link }}">{{ $m->nama }}
                                         @if ($submenu->count() > 0)
                                             <i class="fa fa-angle-down"></i>
                                         @endif
@@ -113,87 +115,27 @@
             </nav>
 
             <div class="mobile-menu">
-                <div class="search-form-box">
-                    <form class="search-form">
-                        <input type="search" class="search-field" placeholder="Enter keyword...">
-                        <button type="submit" class="search-submit">
-                            <i class="material-icons open-search">search</i>
-                        </button>
-                    </form>
-                </div>
-                <div class="shopping-cart-box">
-                    <a class="shop-icon" href="/frontend/cart.html">
-                        <i class="material-icons">shopping_cart</i>
-                        Cart
-                        <span class="studiare-cart-number">0</span>
-                    </a>
-                </div>
                 <nav class="mobile-nav">
                     <ul class="mobile-menu-list">
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="/">Home</a>
                         </li>
+                        @foreach (get_menu() as $m)
                         <li class="drop-link">
-                            <a href="#">Pages</a>
-                            <ul class="drop-level">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="pricing.html">Pricing Packages</a></li>
-                                <li><a href="portfolio.html">Portfolio</a></li>
-                                <li><a href="single-project.html">Portfolio Single</a></li>
-                                <li><a href="teachers.html">Teachers</a></li>
-                                <li><a href="single-teacher.html">Teacher Single</a></li>
-                                <li><a href="/frontend/cart.html">Shopping Cart</a></li>
-                                <li><a href="/frontend/checkout.html">Checkout</a></li>
-                                <li><a href="single-teacher.html">Teacher Single</a></li>
-                                <li class="drop-link">
-                                    <a href="#">Submenu Level 1</a>
-                                    <ul class="drop-level">
-                                        <li><a href="#">Submenu Level 2</a></li>
-                                        <li class="drop-link">
-                                            <a href="#">Submenu Level 2</a>
-                                            <ul class="drop-level">
-                                                <li><a href="#">Submenu Level 3</a></li>
-                                                <li><a href="#">Submenu Level 3</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Submenu Level 2</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            @php
+                                $submenu = get_child_menu($m->id);
+                            @endphp
+                            <a class="{{ request()->is(str_replace("/", "", $m->link) . "*") ? "active" : "" }}" href="{{ $m->link }}">{{ $m->nama }}
+                            </a>
+                            @if ($submenu->count() > 0)
+                                <ul class="drop-level">
+                                    @foreach ($submenu as $sm)
+                                        <li><a href="{{ $sm->link }}">{{ $sm->nama }}</li></a>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </li>
-                        <li class="drop-link">
-                            <a href="blog.html">Blog</a>
-                            <ul class="drop-level">
-                                <li class="drop-link">
-                                    <a href="blog-list.html">Blog List</a>
-                                    <ul class="drop-level">
-                                        <li><a href="blog-list-leftsidebar.html">Blog List - Sidebar Left</a></li>
-                                        <li><a href="blog-list-rightsidebar.html">Blog List - Sidebar Right</a></li>
-                                        <li><a href="blog-list.html">No Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="drop-link">
-                                    <a href="blog-grid-3.html">Blog Grid</a>
-                                    <ul class="drop-level">
-                                        <li><a href="blog-grid-3.html">3 Column</a></li>
-                                        <li><a href="blog-grid-4.html">4 Column</a></li>
-                                        <li><a href="blog-grid-leftsidebar.html">Sidebar Left</a></li>
-                                        <li><a href="blog-grid-rightsidebar.html">Sidebar Right</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="blog.html">Blog Classic</a></li>
-                                <li><a href="single-post.html">Post Single</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="/frontend/courses.html">Courses</a>
-                        </li>
-                        <li>
-                            <a href="events.html">Events</a>
-                        </li>
-                        <li>
-                            <a href="/frontend/contact.html">Contact</a>
-                        </li>
+                    @endforeach
                     </ul>
                 </nav>
             </div>
@@ -214,33 +156,33 @@
    ================================================== -->
         <footer>
             <div class="container">
-
+                @php
+                    $footer = get_footer();
+                @endphp
                 <div class="up-footer">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
                             <div class="footer-widget text-widget">
-                                <a href="/" class="footer-logo"><img src="{{ asset("logo.png") }}"
+                                <a href="/" class="footer-logo"><img src="{{ asset("storage/$footer->komponen1") }}"
                                         alt="footer-gambar" style="height:300px; width:300px;"></a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="footer-widget text-widget">
-                                <p>We named our theme Studiare because to us,<br> the best brands are simple ones.
-                                    Brands thrive<br> on their ability to be understood, We named our theme Studiare because to us,<br> the best brands are simple ones.
-                                    Brands thrive<br> on their ability to be understood.</p>
+                                {!! $footer->komponen2 !!}
                                 <h2>Alamat Lengkap </h2>
                                 <ul>
                                     <li>
                                         <div class="contact-info-icon">
                                             <i class="material-icons">location_on</i>
                                         </div>
-                                        <div class="contact-info-value">127 Elizabeth Street, NY New York</div>
+                                        <div class="contact-info-value">{{ $footer->komponen3 }}</div>
                                     </li>
                                     <li>
                                         <div class="contact-info-icon">
                                             <i class="material-icons">phone_android</i>
                                         </div>
-                                        <div class="contact-info-value">+55-11-3097-0508</div>
+                                        <div class="contact-info-value">{{ $footer->komponen4 }}</div>
                                     </li>
                                 </ul>
                             </div>
@@ -249,13 +191,7 @@
                             <div class="footer-widget quick-widget">
                                 <h2>Link Terkait</h2>
                                 <ul class="quick-list">
-                                    <li><a href="/frontend/contact.html">Contact</a></li>
-                                    <li><a href="pricing.html">Pricing Packages</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="/frontend/courses.html">Courses</a></li>
-                                    <li><a href="blog.html">News</a></li>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="#">Sample Page</a></li>
+                                    {!! $footer->komponen5 !!}
                                 </ul>
                             </div>
                         </div>
@@ -272,10 +208,10 @@
                             Universitas Muhammadiyah Makassar.</div>
                         <div class="copyright-cell">
                             <ul class="studiare-social-links">
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook-f"></i></a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-                                <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="{{ $footer->komponen6 }}" target="_blank" class="facebook"><i class="fa fa-facebook-f"></i></a></li>
+                                <li><a href="{{ $footer->komponen7 }}" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="{{ $footer->komponen8 }}" target="_blank" class="youtube"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="{{ $footer->komponen9 }}" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>

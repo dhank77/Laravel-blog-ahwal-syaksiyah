@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\HomeController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\KomplainController;
 use App\Http\Controllers\Master\KategoriController;
 use App\Http\Controllers\Master\MenuController;
 use App\Http\Controllers\PengajarController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\SambutanController;
 use App\Http\Controllers\TestimoniController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +35,7 @@ Route::get('/komplain-pelanggan', [FrontendController::class, 'komplain'])->name
 Route::post('/store-komplain-pelanggan', [FrontendController::class, 'komplain_store'])->name('komplain.store');
 Route::get('/staff-pengajar', [FrontendController::class, 'pengajar'])->name('pengajar');
 Route::get('/berita', [FrontendController::class, 'berita'])->name('berita');
+Route::get('/pengumuman', [FrontendController::class, 'pengumuman'])->name('pengumuman');
 
 Route::middleware('auth')->group(function () {
 
@@ -72,6 +75,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{pengajar}', [PengajarController::class, 'edit'])->name('pengajar.edit');
         Route::get('/delete/{pengajar}', [PengajarController::class, 'delete'])->name('pengajar.delete');
     });
+    Route::prefix('admin-pengumuman')->group(function () {
+        Route::get('/', [PengumumanController::class, 'index'])->name('pengumuman.index');
+        Route::get('/add', [PengumumanController::class, 'add'])->name('pengumuman.add');
+        Route::post('/store', [PengumumanController::class, 'store'])->name('pengumuman.store');
+        Route::get('/edit/{pengumuman}', [PengumumanController::class, 'edit'])->name('pengumuman.edit');
+        Route::get('/delete/{pengumuman}', [PengumumanController::class, 'delete'])->name('pengumuman.delete');
+    });
     
     Route::prefix('artikel')->group(function () {
         Route::prefix('data')->group(function () {
@@ -107,6 +117,10 @@ Route::middleware('auth')->group(function () {
         Route::prefix('sambutan')->group(function () {
             Route::get('/', [SambutanController::class, 'index'])->name('setting.sambutan.index');
             Route::post('/store', [SambutanController::class, 'store'])->name('setting.sambutan.store');
+        });
+        Route::prefix('footer')->group(function () {
+            Route::get('/', [FooterController::class, 'index'])->name('setting.footer.index');
+            Route::post('/store', [FooterController::class, 'store'])->name('setting.footer.store');
         });
     });
 });

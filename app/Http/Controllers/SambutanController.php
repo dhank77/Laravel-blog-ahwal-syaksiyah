@@ -20,12 +20,12 @@ class SambutanController extends Controller
             'komponen1' => 'required|string',
             'komponen2' => 'nullable',
             'komponen4' => 'nullable',
-            'komponen3' => 'max:2048',
+            'komponen3' => 'max:2048|mimes:png,jpg,jpeg',
         ];
         
         $id = request('id');
         if(!$id){
-            $rules['komponen3'] = "required|max:2048";
+            $rules['komponen3'] = "required|max:2048|mimes:png,jpg,jpeg";
         }
         $data = request()->validate($rules);
 

@@ -7,21 +7,21 @@
             <!-- START REVOLUTION SLIDER 5.1.1RC fullscreen mode -->
             <div id="rev_slider_202_1" class="rev_slider" data-version="5.1.1RC">
                 <ul>
-                    @foreach($banner as $key => $b)
-                        <li data-index="rs-67{{ $key }}" data-transition="fade" data-slotamount="default" data-easein="default"
-                            data-easeout="default" data-masterspeed="default"
+                    @foreach ($banner as $key => $b)
+                        <li data-index="rs-67{{ $key }}" data-transition="fade" data-slotamount="default"
+                            data-easein="default" data-easeout="default" data-masterspeed="default"
                             data-thumb="{{ asset("storage/$b->gambar") }}" data-rotate="0" data-saveperformance="off"
                             data-title="ideas" data-description="">
                             <!-- MAIN IMAGE -->
                             <img src="{{ asset("storage/$b->gambar") }}" alt="" data-bgposition="center center"
                                 data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 
-                            @if($b->judul != "" && $b->deskripsi != "")
-                                <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme" id="slide-67{{ $key }}-layer-1"
-                                    data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
-                                    data-y="['top','top','top','top']" data-voffset="['130','130','130','130']"
-                                    data-width="['530','530','430','420']" data-height="330" data-whitespace="nowrap"
-                                    data-transform_idle="o:1;"
+                            @if ($b->judul != '' && $b->deskripsi != '')
+                                <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme"
+                                    id="slide-67{{ $key }}-layer-1" data-x="['left','left','left','left']"
+                                    data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                    data-voffset="['130','130','130','130']" data-width="['530','530','430','420']"
+                                    data-height="330" data-whitespace="nowrap" data-transform_idle="o:1;"
                                     data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeOut;"
                                     data-transform_out="x:left;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
                                     data-start="500" data-responsive_offset="on"
@@ -29,36 +29,35 @@
                                 </div>
                                 <div class="tp-caption Woo-TitleLarge tp-resizeme" id="slide-67{{ $key }}-layer-2"
                                     data-x="['left','left','left','left']" data-hoffset="['40','40','40','35']"
-                                    data-y="['top','top','top','top']" data-voffset="['170','170','170','170']" data-width="450"
-                                    data-height="none" data-whitespace="normal" data-transform_idle="o:1;"
+                                    data-y="['top','top','top','top']" data-voffset="['170','170','170','170']"
+                                    data-width="450" data-height="none" data-whitespace="normal" data-transform_idle="o:1;"
                                     data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeOut;"
                                     data-transform_out="x:left;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
                                     data-start="700" data-splitin="none" data-splitout="none" data-responsive_offset="on"
                                     style="z-index: 6; min-width: 370px; max-width: 450px; white-space: normal;text-align:left;">
                                     {{ $b->judul }}
                                 </div>
-                                <div class="tp-caption tp-shape tp-shapewrapper tp-line-shape tp-resizeme" id="slide-67{{ $key }}-layer-3"
-                                    data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
-                                    data-y="['top','top','top','top']" data-voffset="['165','165','165','165']"
-                                    data-width="['3','3','3','3']" data-height="100" data-whitespace="nowrap"
-                                    data-transform_idle="o:1;"
+                                <div class="tp-caption tp-shape tp-shapewrapper tp-line-shape tp-resizeme"
+                                    id="slide-67{{ $key }}-layer-3" data-x="['left','left','left','left']"
+                                    data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                    data-voffset="['165','165','165','165']" data-width="['3','3','3','3']"
+                                    data-height="100" data-whitespace="nowrap" data-transform_idle="o:1;"
                                     data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeOut;"
                                     data-transform_out="x:left;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
                                     data-start="700" data-responsive_offset="on" style="z-index: 6;">
                                 </div>
                                 <div class="tp-caption Woo-Rating tp-resizeme" id="slide-67{{ $key }}-layer-4"
                                     data-x="['left','left','left','left']" data-hoffset="['40','40','40','35']"
-                                    data-y="['top','top','top','top']" data-voffset="['286','286','286','286']" data-width="450"
-                                    data-height="none" data-whitespace="normal" data-transform_idle="o:1;"
+                                    data-y="['top','top','top','top']" data-voffset="['286','286','286','286']"
+                                    data-width="450" data-height="none" data-whitespace="normal" data-transform_idle="o:1;"
                                     data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeOut;"
                                     data-transform_out="x:left;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
                                     data-start="800" data-splitin="none" data-splitout="none" data-responsive_offset="on"
                                     style="z-index: 8; min-width: 370px; max-width: 450px; white-space: normal; text-align:left;">
                                     {{ $b->deskripsi }}
                                 </div>
-                                <a class="tp-caption Woo-ProductInfo rev-btn tp-resizeme"
-                                    href="{{ $b->link }}" target="_self"
-                                    id="slide-674-layer-6" data-x="['left','left','left','left']"
+                                <a class="tp-caption Woo-ProductInfo rev-btn tp-resizeme" href="{{ $b->link }}"
+                                    target="_self" id="slide-674-layer-6" data-x="['left','left','left','left']"
                                     data-hoffset="['40','40','40','35']" data-y="['top','top','top','top']"
                                     data-voffset="['370','370','370','370']" data-width="none" data-height="none"
                                     data-whitespace="nowrap" data-transform_idle="o:1;"
@@ -74,7 +73,7 @@
 
                         </li>
                     @endforeach
-                   
+
                 </ul>
                 <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
             </div>
@@ -83,8 +82,84 @@
     </section>
     <!-- End home section -->
 
-     <!-- news-section
-               ================================================== -->
+    <section class="collection-section">
+        <div class="container">
+            <div class="title-section">
+                <div class="left-part">
+                    <span>Pengumuman</span>
+                    <h1>Dafter Pengumuman Terbaru</h1>
+                </div>
+                <div class="right-part">
+                    <a class="button-one" href="/pengumuman">Semua Pengumuman</a>
+                </div>
+            </div>
+            <div class="collection-box">
+                <div class="row">
+                    @foreach ($pengumuman as $key => $peng)
+                        
+                        @if ($key == 0)
+                            <div class="col-lg-6 col-md-12">
+                                <div class="collection-post">
+                                    <div class="inner-collection">
+                                        <img src="{{ asset("storage/$peng->gambar") }}" alt="pengumuman" style="width:620px; height:469px;">
+                                        <a href="{{ url($peng->slug) }}" class="hover-post">
+                                            <span class="title">{{ $peng->judul }}</span>
+                                            <span class="numb-courses">Selengkapnya</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        
+                        @if ($key == 1 || $key == 3)
+                            <div class="col-lg-3 col-md-6">
+                        @endif
+
+                        @if ($key != 0)
+                            <div class="collection-post">
+                                <div class="inner-collection">
+                                    <img src="{{ asset("storage/$peng->gambar") }}" alt="pengumuman" style="width:294px; height:223px;">
+                                    <a href="{{ url($peng->slug) }}" class="hover-post">
+                                        <span class="title">{{ $peng->judul }}</span>
+                                        <span class="numb-courses">Selengkapnya</span>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+
+                        @if ($key == 2 || $key == 4)
+                            </div>
+                        @endif
+                @endforeach
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <!-- countdown-section
+                       ================================================== -->
+    <section class="countdown-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>{{ $sambutan->komponen1 }}</h4>
+                    <img src="{{ asset("storage/$sambutan->komponen3") }}" class="rounded"
+                        style="width:500px; height:400px;" alt="">
+                    <br />
+                    <br />
+                    <h4>{{ $sambutan->komponen2 }}</h4>
+                </div>
+                <div class="col-lg-6 text-left">
+                    {!! $sambutan->komponen4 !!}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End countdown section -->
+
+    <!-- news-section
+                       ================================================== -->
     <section class="news-section">
         <div class="container">
             <div class="title-section">
@@ -102,63 +177,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="blog-post">
                                 <a href="{{ url($artikel->slug) }}"><img src="{{ asset("storage/$artikel->gambar") }}"
-                                        alt=""></a>
-                                <div class="post-content">
-                                    <h2><a href="{{ url($artikel->slug) }}">{{ $artikel->judul }}</a></h2>
-                                    <div class="post-meta date">
-                                        <i class="material-icons">access_time</i> {{ tanggal_indo($artikel->created_at) }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End news section -->
-
-    <!-- countdown-section
-               ================================================== -->
-    <section class="countdown-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h4>{{ $sambutan->komponen1 }}</h4>
-                    <img src="{{ asset("storage/$sambutan->komponen3") }}" class="rounded" style="width:500px; height:400px;" alt="">
-                    <br/>
-                    <br/>
-                    <h4>{{ $sambutan->komponen2 }}</h4>
-                </div>
-                <div class="col-lg-6 text-left">
-                    {!! $sambutan->komponen4 !!}
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End countdown section -->
-
-     <!-- news-section
-               ================================================== -->
-    <section class="news-section">
-        <div class="container">
-            <div class="title-section">
-                <div class="left-part">
-                    <span>Artikel</span>
-                    <h1>Berita Terbaru</h1>
-                </div>
-                <div class="right-part">
-                    <a class="button-one" href="/berita">Semua Berita</a>
-                </div>
-            </div>
-            <div class="news-box">
-                <div class="row">
-                    @foreach (get_5artikel('/') as $key => $artikel)
-                        <div class="col-lg-3 col-md-6">
-                            <div class="blog-post">
-                                <a href="{{ url($artikel->slug) }}"><img src="{{ asset("storage/$artikel->gambar") }}" style="width:385px; height:200px;"
-                                        alt=""></a>
+                                        style="width:385px; height:200px;" alt=""></a>
                                 <div class="post-content" style="height:150px;">
                                     <h2><a href="{{ url($artikel->slug) }}">{{ str_limit($artikel->judul, 45) }}</a></h2>
                                     <div class="post-meta date">
@@ -176,12 +195,12 @@
     <!-- End news section -->
 
     <!-- testimonial-section
-               ================================================== -->
+                       ================================================== -->
     <section class="testimonial-section">
         <div class="container">
             <div class="testimonial-box owl-wrapper">
                 <div class="owl-carousel" data-num="1">
-                    @foreach($testimoni as $t)
+                    @foreach ($testimoni as $t)
                         <div class="item">
                             <div class="testimonial-post d-flex justify-content-between">
                                 <p>{!! $t->isi !!}</p>

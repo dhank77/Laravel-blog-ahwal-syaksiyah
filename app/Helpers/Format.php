@@ -2,6 +2,7 @@
 
 use App\Models\Artikel;
 use App\Models\Master\Kategori;
+use App\Models\Master\Komponen;
 use App\Models\Master\Menu;
 use Illuminate\Support\Str;
 
@@ -99,6 +100,11 @@ function get_5artikel($slug)
 {
     $artikel = Artikel::with('kategori')->where("slug", "!=", $slug)->latest()->limit(5)->get();
     return $artikel;
+}
+
+function get_footer()
+{
+    return Komponen::where('nama', 'footer')->first();
 }
 
 function str_limit($text, $limit = 50)

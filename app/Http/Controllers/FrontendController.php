@@ -7,6 +7,7 @@ use App\Models\Banner;
 use App\Models\Komplain;
 use App\Models\Master\Komponen;
 use App\Models\Pengajar;
+use App\Models\Pengumuman;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class FrontendController extends Controller
         $banner = Banner::latest()->get();
         $sambutan = Komponen::where('nama', 'sambutan')->first();
         $testimoni = Testimoni::latest()->get();
-        return view('frontend.index', compact('banner', 'sambutan', 'testimoni'));
+        $pengumuman = Pengumuman::latest()->limit(5)->get();
+        return view('frontend.index', compact('banner', 'sambutan', 'testimoni', 'pengumuman'));
     }
 
     public function komplain()
@@ -37,9 +39,15 @@ class FrontendController extends Controller
         return view('frontend.berita', compact('berita'));
     }
 
+    public function pengumuman()
+    {
+        $pengumuman = Pengumuman::latest()->paginate(9);
+        return view('frontend.pengumuman', compact('pengumuman'));
+    }
+
     public function post($model, $slug)
     {
-        abort_if(!in_array($model, ['halaman', 'artikel']), 404);
+        abort_if(!in_array($model, ['halaman', 'artikel', 'pengumuman']), 404);
         $qry = "App\Models\\" . ucfirst($model);
         $slug = "$model/$slug";
         $data = $qry::where('slug', $slug)->first();
