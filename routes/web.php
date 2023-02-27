@@ -44,7 +44,8 @@ Route::middleware('auth')->group(function () {
     
     //Update User Details
     Route::post('/update-profile/{id}', [HomeController::class, 'updateProfile'])->name('updateProfile');
-    Route::post('/update-password/{id}', [HomeController::class, 'updatePassword'])->name('updatePassword');
+    Route::get('/ubah-password', [HomeController::class, 'passwordIndex'])->name('passwordIndex');
+    Route::post('/update-password', [HomeController::class, 'updatePassword'])->name('updatePassword');
 
     Route::prefix('menu-utama')->group(function () {
         Route::prefix('menu')->group(function () {

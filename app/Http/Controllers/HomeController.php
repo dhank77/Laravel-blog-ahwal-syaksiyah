@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artikel;
+use App\Models\Komplain;
+use App\Models\Pengajar;
+use App\Models\Pengumuman;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -36,7 +40,11 @@ class HomeController extends Controller
 
     public function root()
     {
-        return view('index');
+        $berita = Artikel::count();
+        $pengumuman = Pengumuman::count();
+        $pengajar = Pengajar::count();
+        $komplain = Komplain::count();
+        return view('index', compact('berita', 'pengumuman', 'pengajar', 'komplain'));
     }
 
     /*Language Translation*/
@@ -90,37 +98,31 @@ class HomeController extends Controller
         }
     }
 
-    public function updatePassword(Request $request, $id)
+    public function passwordIndex()
     {
-        $request->validate([
-            'current_password' => ['required', 'string'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
+        return view('password');
+    }
 
-        if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
-            return response()->json([
-                'isSuccess' => false,
-                'Message' => "Your Current password does not matches with the password you provided. Please try again."
-            ], 200); // Status code
-        } else {
-            $user = User::find($id);
-            $user->password = Hash::make($request->get('password'));
-            $user->update();
-            if ($user) {
-                Session::flash('message', 'Password updated successfully!');
-                Session::flash('alert-class', 'alert-success');
-                return response()->json([
-                    'isSuccess' => true,
-                    'Message' => "Password updated successfully!"
-                ], 200); // Status code here
-            } else {
-                Session::flash('message', 'Something went wrong!');
-                Session::flash('alert-class', 'alert-danger');
-                return response()->json([
-                    'isSuccess' => true,
-                    'Message' => "Something went wrong!"
-                ], 200); // Status code here
+    public function updatePassword()
+    {
+        $lama = request('password_lama');
+        $baru = request('password_baru');
+        $konfirmasi = request('password_konfirmasi');
+
+        if($baru == $konfirmasi){
+            if(password_verify($lama, auth()->user()->password)){
+                $cek = User::where('id', auth()->user()->id)->update(['password' => password_hash($baru, PASSWORD_BCRYPT)]);
+
+                if($cek){
+                    return redirect()->back()->with('success', 'Berhasil mengubah password!');
+                }else{
+                    return redirect()->back()->with('error', 'Gagal, Berhasil mengubah password!');
+                }
+            }else{
+                return redirect()->back()->with('error', 'Gagal, Password Lama tidak benar!');
             }
+        }else{
+            return redirect()->back()->with('error', 'Gagal, Password Konfirmasi tidak benar!');
         }
     }
 }
