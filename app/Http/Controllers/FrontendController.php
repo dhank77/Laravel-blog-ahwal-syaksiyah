@@ -10,7 +10,7 @@ use App\Models\Master\Komponen;
 use App\Models\Pengajar;
 use App\Models\Pengumuman;
 use App\Models\Testimoni;
-use Illuminate\Http\Request;
+use Share;
 
 class FrontendController extends Controller
 {
@@ -59,7 +59,15 @@ class FrontendController extends Controller
         $slug = "$model/$slug";
         $data = $qry::where('slug', $slug)->first();
         abort_if(!$data, 404);
-        return view('frontend.post', compact('data', 'model'));
+        $share = Share::currentPage()
+                        ->facebook()
+                        ->twitter()
+                        ->linkedin()
+                        ->telegram()
+                        ->whatsapp()
+                        ->getRawLinks();
+
+        return view('frontend.post', compact('data', 'model', 'share'));
     }
 
     public function komplain_store()

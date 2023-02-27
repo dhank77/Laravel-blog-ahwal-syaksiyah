@@ -339,6 +339,7 @@
             }
         }); /*ready*/
     </script>
+    <script src="{{ asset('js/share.js') }}"></script>
     @if (session()->has('success'))
         <script>
             Swal.fire({

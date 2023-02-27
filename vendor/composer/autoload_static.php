@@ -130,6 +130,10 @@ class ComposerStaticInitda61cbaf43b5f7e7941fb89aac5a9ef8
             'Laravel\\Sanctum\\' => 16,
             'Laravel\\Sail\\' => 13,
         ),
+        'J' => 
+        array (
+            'Jorenvh\\Share\\' => 14,
+        ),
         'I' => 
         array (
             'Illuminate\\Support\\' => 19,
@@ -429,6 +433,10 @@ class ComposerStaticInitda61cbaf43b5f7e7941fb89aac5a9ef8
         array (
             0 => __DIR__ . '/..' . '/laravel/sail/src',
         ),
+        'Jorenvh\\Share\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jorenvanhocht/laravel-share/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -564,6 +572,7 @@ class ComposerStaticInitda61cbaf43b5f7e7941fb89aac5a9ef8
         'App\\Http\\Controllers\\Master\\KategoriController' => __DIR__ . '/../..' . '/app/Http/Controllers/Master/KategoriController.php',
         'App\\Http\\Controllers\\Master\\MenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/Master/MenuController.php',
         'App\\Http\\Controllers\\PengajarController' => __DIR__ . '/../..' . '/app/Http/Controllers/PengajarController.php',
+        'App\\Http\\Controllers\\PengumumanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PengumumanController.php',
         'App\\Http\\Controllers\\SambutanController' => __DIR__ . '/../..' . '/app/Http/Controllers/SambutanController.php',
         'App\\Http\\Controllers\\TestimoniController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestimoniController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -2641,6 +2650,9 @@ class ComposerStaticInitda61cbaf43b5f7e7941fb89aac5a9ef8
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Jorenvh\\Share\\Providers\\ShareServiceProvider' => __DIR__ . '/..' . '/jorenvanhocht/laravel-share/src/Providers/ShareServiceProvider.php',
+        'Jorenvh\\Share\\Share' => __DIR__ . '/..' . '/jorenvanhocht/laravel-share/src/Share.php',
+        'Jorenvh\\Share\\ShareFacade' => __DIR__ . '/..' . '/jorenvanhocht/laravel-share/src/ShareFacade.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',
         'Laravel\\Sail\\Console\\PublishCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/PublishCommand.php',
         'Laravel\\Sail\\SailServiceProvider' => __DIR__ . '/..' . '/laravel/sail/src/SailServiceProvider.php',
