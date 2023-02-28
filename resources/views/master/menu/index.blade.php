@@ -133,11 +133,11 @@
                                             href="javascript: void(0);" class="text-dark">{{ $sub->nama }}</a>
                                         <div>
                                             @if ($key != 0)
-                                                <a href="" class="btn btn-sm btn-success"><i
+                                                <a href="{{ route('utama.menu.up', $sub->id) }}" class="btn btn-sm btn-success"><i
                                                         class="fas fa-arrow-alt-circle-up"></i></a>
                                             @endif
-                                            @if ($key != count($menu_utama) - 1)
-                                                <a href="" class="btn btn-sm btn-dark"><i
+                                            @if ($key != count($submenu) - 1)
+                                                <a href="{{ route('utama.menu.down', $sub->id) }}" class="btn btn-sm btn-dark"><i
                                                         class="fas fa-arrow-circle-down"></i></a>
                                             @endif
                                             <a href="#"
