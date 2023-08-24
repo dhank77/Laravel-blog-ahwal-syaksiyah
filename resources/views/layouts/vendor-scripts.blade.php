@@ -29,6 +29,22 @@
             }
         })
     })
+    $(".swalUmum").click(function(event) {
+        event.preventDefault();
+        const href = event.currentTarget.href;
+        Swal.fire({
+            title: "Anda yakin ini?",
+            text: "Data tidak dapat dikembalikan!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#1c84ee",
+            cancelButtonColor: "#fd625e",
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+            }
+        })
+    })
    
 </script>
 @if (session()->has('success'))

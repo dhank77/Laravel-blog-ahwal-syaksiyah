@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BerkasController;
@@ -50,7 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/ubah-password', [HomeController::class, 'passwordIndex'])->name('passwordIndex');
     Route::post('/update-password', [HomeController::class, 'updatePassword'])->name('updatePassword');
 
-    Route::prefix('menu-utama')->group(function () {
+    Route::prefix('menu-utama')->middleware('role:admin')->group(function () {
         Route::prefix('menu')->group(function () {
             Route::get('/', [MenuController::class, 'index'])->name('utama.menu.index');
             Route::get('/up/{menu}', [MenuController::class, 'up'])->name('utama.menu.up');
@@ -67,20 +68,20 @@ Route::middleware('auth')->group(function () {
         });
     });
 
-    Route::prefix('komplain')->group(function () {
+    Route::prefix('komplain')->middleware('role:admin')->group(function () {
         Route::get('/', [KomplainController::class, 'index'])->name('komplain.index');
         Route::get('/add', [KomplainController::class, 'add'])->name('komplain.add');
         Route::get('/edit/{komplain}', [KomplainController::class, 'edit'])->name('komplain.edit');
         Route::get('/delete/{komplain}', [KomplainController::class, 'delete'])->name('komplain.delete');
     });
-    Route::prefix('pengajar')->group(function () {
+    Route::prefix('pengajar')->middleware('role:admin')->group(function () {
         Route::get('/', [PengajarController::class, 'index'])->name('pengajar.index');
         Route::get('/add', [PengajarController::class, 'add'])->name('pengajar.add');
         Route::post('/store', [PengajarController::class, 'store'])->name('pengajar.store');
         Route::get('/edit/{pengajar}', [PengajarController::class, 'edit'])->name('pengajar.edit');
         Route::get('/delete/{pengajar}', [PengajarController::class, 'delete'])->name('pengajar.delete');
     });
-    Route::prefix('admin-pengumuman')->group(function () {
+    Route::prefix('admin-pengumuman')->middleware('role:admin')->group(function () {
         Route::get('/', [PengumumanController::class, 'index'])->name('pengumuman.index');
         Route::get('/add', [PengumumanController::class, 'add'])->name('pengumuman.add');
         Route::post('/store', [PengumumanController::class, 'store'])->name('pengumuman.store');
@@ -88,14 +89,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/delete/{pengumuman}', [PengumumanController::class, 'delete'])->name('pengumuman.delete');
     });
 
-    Route::prefix('download')->group(function () {
+    Route::prefix('download')->middleware('role:admin')->group(function () {
         Route::get('/', [DownloadController::class, 'index'])->name('download.index');
         Route::get('/add', [DownloadController::class, 'add'])->name('download.add');
         Route::get('/edit/{download}', [DownloadController::class, 'edit'])->name('download.edit');
         Route::post('/store', [DownloadController::class, 'store'])->name('download.store');
         Route::get('/delete/{download}', [DownloadController::class, 'delete'])->name('download.delete');
     });
-    Route::prefix('berkas')->group(function () {
+    Route::prefix('berkas')->middleware('role:admin')->group(function () {
         Route::get('/', [BerkasController::class, 'index'])->name('berkas.index');
         Route::get('/add', [BerkasController::class, 'add'])->name('berkas.add');
         Route::get('/edit/{download}', [BerkasController::class, 'edit'])->name('berkas.edit');
@@ -104,14 +105,14 @@ Route::middleware('auth')->group(function () {
     });
     
     Route::prefix('artikel')->group(function () {
-        Route::prefix('data')->group(function () {
+        Route::prefix('data')->middleware('role:admin|publisher')->group(function () {
             Route::get('/', [ArtikelController::class, 'index'])->name('artikel.artikel.index');
             Route::get('/add', [ArtikelController::class, 'add'])->name('artikel.artikel.add');
             Route::get('/edit/{artikel}', [ArtikelController::class, 'edit'])->name('artikel.artikel.edit');
             Route::post('/store', [ArtikelController::class, 'store'])->name('artikel.artikel.store');
             Route::get('/delete/{artikel}', [ArtikelController::class, 'delete'])->name('artikel.artikel.delete');
         });
-        Route::prefix('kategori')->group(function () {
+        Route::prefix('kategori')->middleware('role:admin')->group(function () {
             Route::get('/', [KategoriController::class, 'index'])->name('artikel.kategori.index');
             Route::get('/add', [KategoriController::class, 'add'])->name('artikel.kategori.add');
             Route::get('/edit/{kategori}', [KategoriController::class, 'edit'])->name('artikel.kategori.edit');
@@ -119,7 +120,17 @@ Route::middleware('auth')->group(function () {
             Route::get('/delete/{kategori}', [KategoriController::class, 'delete'])->name('artikel.kategori.delete');
         });
     });
-    Route::prefix('setting')->group(function () {
+    Route::prefix('admin')->middleware('role:admin')->group(function () {
+        Route::prefix('publisher')->group(function () {
+            Route::get('/', [PublisherController::class, 'index'])->name('admin.publisher.index');
+            Route::get('/add', [PublisherController::class, 'add'])->name('admin.publisher.add');
+            Route::get('/reset/{user}', [PublisherController::class, 'reset'])->name('admin.publisher.reset');
+            Route::get('/edit/{user}', [PublisherController::class, 'edit'])->name('admin.publisher.edit');
+            Route::post('/store', [PublisherController::class, 'store'])->name('admin.publisher.store');
+            Route::get('/delete/{user}', [PublisherController::class, 'delete'])->name('admin.publisher.delete');
+        });
+    });
+    Route::prefix('setting')->middleware('role:admin')->group(function () {
         Route::prefix('banner')->group(function () {
             Route::get('/', [BannerController::class, 'index'])->name('setting.banner.index');
             Route::get('/add', [BannerController::class, 'add'])->name('setting.banner.add');

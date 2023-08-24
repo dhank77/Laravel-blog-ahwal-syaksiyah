@@ -77,6 +77,16 @@
                         <li><a href="{{ route('setting.footer.index') }}" data-key="t-footer">Footer</a></li>
                     </ul>
                 </li>
+                  <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="users"></i>
+                        <span data-key="t-admin">Admin</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('setting.sambutan.index') }}" data-key="t-super">Super Admin</a></li>
+                        <li><a href="{{ route('admin.publisher.index') }}" data-key="t-publisher">Publisher</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

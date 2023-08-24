@@ -96,6 +96,20 @@ function get_kategori()
     return Kategori::orderBy('nama')->get();
 }
 
+function get_kategori_all($id)
+{
+    $exp = explode(',', $id);
+    $send = '';
+    foreach ($exp as $key => $value) {
+        if($key == 0){
+            $send = Kategori::where('id', $value)->value('nama');
+        }else{
+            $send .= ", " . Kategori::where('id', $value)->value('nama');
+        }
+    }
+    return $send;
+}
+
 function get_5artikel($slug)
 {
     $artikel = Artikel::with('kategori')->where("slug", "!=", $slug)->latest()->limit(5)->get();

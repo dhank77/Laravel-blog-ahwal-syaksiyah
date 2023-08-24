@@ -114,7 +114,7 @@
                                         <a href="{{ route('utama.menu.down', $m->id) }}" class="btn btn-sm btn-dark"><i
                                                 class="fas fa-arrow-circle-down"></i></a>
                                     @endif
-                                    @if (!in_array($m->nama, ['Berita', 'Pengumuman', 'Staff Pengajar', 'Komplain Pelanggan']))
+                                    @if (!in_array($m->nama, ['Berita', 'Pengumuman', 'Staff Pengajar', 'Komplain Pelanggan', 'Download File']))
                                         <a href="#"
                                             onclick="editMenu('{{ $m->id }}', '{{ $m->nama }}', '{{ $m->link }}', '{{ $m->parent_id }}')"
                                             class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
