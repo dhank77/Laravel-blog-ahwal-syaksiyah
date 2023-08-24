@@ -11,19 +11,34 @@ class ArtikelController extends Controller
 {
     public function index()
     {
-        $artikel = Artikel::latest()->get();
+        if(roles() == 'publisher'){
+            $kategori_id = auth()->user()->kategori_id;
+            $artikel = Artikel::latest()->whereRaw("kategori_id IN ($kategori_id)")->get();
+        }else{
+            $artikel = Artikel::latest()->get();
+        }
         return view('artikel.index', compact('artikel'));
     }
 
     public function add()
     {
         $artikel  = new Artikel();
-        $kategori = Kategori::orderBy('nama')->get();
+        if(roles() == 'publisher'){
+            $kategori_id = auth()->user()->kategori_id;
+            $kategori = Kategori::orderBy('nama')->whereRaw("id IN ($kategori_id)")->get();
+        }else{
+            $kategori = Kategori::orderBy('nama')->get();
+        }
         return view('artikel.add', compact('artikel', 'kategori'));
     }
     public function edit(Artikel $artikel)
     {
-        $kategori = Kategori::orderBy('nama')->get();
+        if(roles() == 'publisher'){
+            $kategori_id = auth()->user()->kategori_id;
+            $kategori = Kategori::orderBy('nama')->whereRaw("id IN ($kategori_id)")->get();
+        }else{
+            $kategori = Kategori::orderBy('nama')->get();
+        }
         return view('artikel.add', compact('artikel', 'kategori'));
     }
 

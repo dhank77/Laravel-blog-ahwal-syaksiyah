@@ -15,6 +15,7 @@
                         <span data-key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
+                @role('admin')
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="menu"></i>
@@ -83,10 +84,19 @@
                         <span data-key="t-admin">Admin</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('setting.sambutan.index') }}" data-key="t-super">Super Admin</a></li>
+                        <li><a href="{{ route('admin.super.index') }}" data-key="t-super">Super Admin</a></li>
                         <li><a href="{{ route('admin.publisher.index') }}" data-key="t-publisher">Publisher</a></li>
                     </ul>
                 </li>
+                @endrole
+                @role('publisher')
+                    <li>
+                        <a class="{{ request()->is('artikel/data/*') ? "mm-active" : "" }}" href="{{ route('artikel.artikel.index') }}">
+                            <i data-feather="archive"></i>
+                            <span data-key="t-artikel">Artikel</span>
+                        </a>
+                    </li>
+                @endrole
             </ul>
         </div>
     </div>

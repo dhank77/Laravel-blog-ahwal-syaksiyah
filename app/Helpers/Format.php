@@ -125,3 +125,8 @@ function str_limit($text, $limit = 50)
 {
     return Str::limit($text, $limit);
 }
+
+function roles()
+{
+    return auth()->user()->getRoleNames()[0];
+}

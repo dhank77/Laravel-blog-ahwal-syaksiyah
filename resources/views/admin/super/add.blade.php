@@ -6,10 +6,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Modul Admin Publisher
+            Modul Superadmin
         @endslot
         @slot('title')
-            Tambah Admin Publisher
+            Tambah Superadmin
         @endslot
     @endcomponent
 
@@ -22,22 +22,9 @@
                 </div>
                 <div class="card-body">
                     <div class="general-label">
-                        <form method="post" action="{{ route('admin.publisher.store') }}">
+                        <form method="post" action="{{ route('admin.super.store') }}">
                             @csrf
                             <input type="hidden" name="id" value="{{ $user->id }}">
-                            <div class="mb-3 row">
-                                <label for="kategori" class="col-sm-2 form-label align-self-center mb-lg-0">Kategori</label>
-                                <div class="col-sm-10">
-                                    @php
-                                        $arr = explode(",", $user->kategori_id);
-                                    @endphp
-                                    @foreach ($kategori as $k)
-                                        <div>
-                                            <input name="kategori[]" id="k{{ $k->id }}" {{ in_array($k->id, $arr) ? "checked" : "" }} type="checkbox" value="{{ $k->id }}" /> <label for="k{{ $k->id }}">&nbsp;&nbsp;&nbsp;{{ $k->nama }}</label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
                             <div class="mb-3 row">
                                 <label for="name" class="col-sm-2 form-label align-self-center mb-lg-0">Nama Lengkap</label>
                                 <div class="col-sm-10">

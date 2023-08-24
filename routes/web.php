@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PublisherController;
+use App\Http\Controllers\Admin\SuperadminController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BerkasController;
@@ -128,6 +129,14 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit/{user}', [PublisherController::class, 'edit'])->name('admin.publisher.edit');
             Route::post('/store', [PublisherController::class, 'store'])->name('admin.publisher.store');
             Route::get('/delete/{user}', [PublisherController::class, 'delete'])->name('admin.publisher.delete');
+        });
+        Route::prefix('super')->group(function () {
+            Route::get('/', [SuperadminController::class, 'index'])->name('admin.super.index');
+            Route::get('/add', [SuperadminController::class, 'add'])->name('admin.super.add');
+            Route::get('/reset/{user}', [SuperadminController::class, 'reset'])->name('admin.super.reset');
+            Route::get('/edit/{user}', [SuperadminController::class, 'edit'])->name('admin.super.edit');
+            Route::post('/store', [SuperadminController::class, 'store'])->name('admin.super.store');
+            Route::get('/delete/{user}', [SuperadminController::class, 'delete'])->name('admin.super.delete');
         });
     });
     Route::prefix('setting')->middleware('role:admin')->group(function () {
