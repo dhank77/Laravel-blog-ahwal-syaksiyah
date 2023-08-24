@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BerkasController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HalamanController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\PengajarController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\SambutanController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\DownloadController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +38,7 @@ Route::post('/store-komplain-pelanggan', [FrontendController::class, 'komplain_s
 Route::get('/staff-pengajar', [FrontendController::class, 'pengajar'])->name('pengajar');
 Route::get('/berita', [FrontendController::class, 'berita'])->name('berita');
 Route::get('/pengumuman', [FrontendController::class, 'pengumuman'])->name('pengumuman');
+Route::get('/download-file', [FrontendController::class, 'download'])->name('download');
 Route::get('/kategori/{kategori}', [FrontendController::class, 'kategori'])->name('kategori');
 
 Route::middleware('auth')->group(function () {
@@ -83,6 +86,21 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', [PengumumanController::class, 'store'])->name('pengumuman.store');
         Route::get('/edit/{pengumuman}', [PengumumanController::class, 'edit'])->name('pengumuman.edit');
         Route::get('/delete/{pengumuman}', [PengumumanController::class, 'delete'])->name('pengumuman.delete');
+    });
+
+    Route::prefix('download')->group(function () {
+        Route::get('/', [DownloadController::class, 'index'])->name('download.index');
+        Route::get('/add', [DownloadController::class, 'add'])->name('download.add');
+        Route::get('/edit/{download}', [DownloadController::class, 'edit'])->name('download.edit');
+        Route::post('/store', [DownloadController::class, 'store'])->name('download.store');
+        Route::get('/delete/{download}', [DownloadController::class, 'delete'])->name('download.delete');
+    });
+    Route::prefix('berkas')->group(function () {
+        Route::get('/', [BerkasController::class, 'index'])->name('berkas.index');
+        Route::get('/add', [BerkasController::class, 'add'])->name('berkas.add');
+        Route::get('/edit/{download}', [BerkasController::class, 'edit'])->name('berkas.edit');
+        Route::post('/store', [BerkasController::class, 'store'])->name('berkas.store');
+        Route::get('/delete/{download}', [BerkasController::class, 'delete'])->name('berkas.delete');
     });
     
     Route::prefix('artikel')->group(function () {

@@ -53,6 +53,18 @@
                         <span data-key="t-komplain">Data Komplain</span>
                     </a>
                 </li>
+                <li>
+                    <a class="{{ request()->is('download/*') ? "mm-active" : "" }}" href="{{ route('download.index') }}">
+                        <i data-feather="download"></i>
+                        <span data-key="t-download">File Download</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ request()->is('berkas/*') ? "mm-active" : "" }}" href="{{ route('berkas.index') }}">
+                        <i data-feather="archive"></i>
+                        <span data-key="t-download">Berkas</span>
+                    </a>
+                </li>
                   <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="settings"></i>

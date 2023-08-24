@@ -351,6 +351,7 @@
     @if (session()->has('error'))
         <script src="/frontend/js/studiare-plugins.min.js"></script>
     @endif
+    @stack('js')
 
 </body>
 

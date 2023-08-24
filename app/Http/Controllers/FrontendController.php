@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artikel;
 use App\Models\Banner;
+use App\Models\Download;
 use App\Models\Komplain;
 use App\Models\Master\Kategori;
 use App\Models\Master\Komponen;
@@ -44,6 +45,12 @@ class FrontendController extends Controller
     {
         $pengumuman = Pengumuman::latest()->paginate(9);
         return view('frontend.pengumuman', compact('pengumuman'));
+    }
+
+    public function download()
+    {
+        $download = Download::orderBy('nama')->where('is_public', 1)->get();
+        return view('frontend.download', compact('download'));
     }
 
     public function kategori(Kategori $kategori)
