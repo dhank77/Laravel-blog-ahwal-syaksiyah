@@ -119,7 +119,7 @@
                                             onclick="editMenu('{{ $m->id }}', '{{ $m->nama }}', '{{ $m->link }}', '{{ $m->parent_id }}')"
                                             class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
                                         <a href="{{ route('utama.menu.delete', $m->id) }}"
-                                            class="btn btn-sm btn-danger swalDelete"><i class="fas fa-trash"></i></a>
+                                            class="btn btn-sm btn-danger swalUmum"><i class="fas fa-trash"></i></a>
                                     @endif
                                 </div>
                             </h5>
@@ -144,7 +144,7 @@
                                                 onclick="editMenu('{{ $sub->id }}', '{{ $sub->nama }}', '{{ $sub->link }}', '{{ $sub->parent_id }}')"
                                                 class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
                                             <a href="{{ route('utama.menu.delete', $sub->id) }}"
-                                                class="btn btn-sm btn-danger swalDelete"><i class="fas fa-trash"></i></a>
+                                                class="btn btn-sm btn-danger swalUmum"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </h5>
                                 @endforeach

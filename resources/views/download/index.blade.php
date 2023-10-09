@@ -50,7 +50,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('download.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('download.delete', $a->id) }}" class="btn btn-danger btn-sm swalDelete">Hapus</a>
+                                        <a href="{{ route('download.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

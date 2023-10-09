@@ -54,7 +54,7 @@
                                     <td>{{ $a->link }}</td>
                                     <td>
                                         <a href="{{ route('setting.banner.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('setting.banner.delete', $a->id) }}" class="btn btn-danger btn-sm swalDelete">Hapus</a>
+                                        <a href="{{ route('setting.banner.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

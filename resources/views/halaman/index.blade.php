@@ -52,7 +52,7 @@
                                     <td>{{ dmyhi($a->created_at) }}</td>
                                     <td>
                                         <a href="{{ route('utama.halaman.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('utama.halaman.delete', $a->id) }}" class="btn btn-danger btn-sm swalDelete">Hapus</a>
+                                        <a href="{{ route('utama.halaman.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

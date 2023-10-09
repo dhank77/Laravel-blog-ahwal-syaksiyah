@@ -54,7 +54,7 @@
                                     <td>{{ $a->keahlian }}</td>
                                     <td>
                                         <a href="{{ route('pengajar.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('pengajar.delete', $a->id) }}" class="btn btn-danger btn-sm swalDelete">Hapus</a>
+                                        <a href="{{ route('pengajar.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

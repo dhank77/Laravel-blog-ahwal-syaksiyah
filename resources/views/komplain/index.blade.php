@@ -48,7 +48,7 @@
                                     <td>{{ $a->no_hp }}</td>
                                     <td>{{ $a->isi }}</td>
                                     <td>
-                                        <a href="{{ route('komplain.delete', $a->id) }}" class="btn btn-danger btn-sm swalDelete">Hapus</a>
+                                        <a href="{{ route('komplain.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -54,7 +54,7 @@
                                     <td>{{ str_limit(strip_tags($a->isi)) }}</td>
                                     <td>
                                         <a href="{{ route('setting.testimoni.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('setting.testimoni.delete', $a->id) }}" class="btn btn-danger btn-sm swalDelete">Hapus</a>
+                                        <a href="{{ route('setting.testimoni.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

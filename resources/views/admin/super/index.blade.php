@@ -49,7 +49,7 @@
                                     <td>
                                         <a href="{{ route('admin.super.reset', $a->id) }}" class="btn btn-primary btn-sm swalUmum">Reset</a>
                                         <a href="{{ route('admin.super.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('admin.super.delete', $a->id) }}" class="btn btn-danger btn-sm swalDelete">Hapus</a>
+                                        <a href="{{ route('admin.super.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach
