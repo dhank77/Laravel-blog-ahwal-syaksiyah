@@ -6,18 +6,42 @@ use App\Models\Artikel;
 use App\Models\Master\Kategori;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class ArtikelController extends Controller
 {
     public function index()
     {
+        return view('artikel.index');
+    }
+
+    function json()
+    {
         if(roles() == 'publisher'){
             $kategori_id = auth()->user()->kategori_id;
-            $artikel = Artikel::latest()->whereRaw("kategori_id IN ($kategori_id)")->get();
+            $data = Artikel::latest()->whereRaw("kategori_id IN ($kategori_id)");
         }else{
-            $artikel = Artikel::latest()->get();
+            $data = Artikel::latest();
         }
-        return view('artikel.index', compact('artikel'));
+
+        return DataTables::of($data)
+            ->addIndexColumn()
+            ->editColumn('gambar', function ($data) {
+                return '<img src=' . asset("storage/$data->gambar") .' style="width:100px; height:50px;" />';
+            })
+            ->editColumn('tanggal', function ($data) {
+                return dmyhi($data->created_at);
+            })
+            ->editColumn('status', function ($data) {
+                return status($data->status);
+            })
+            ->addColumn('action', function ($data) {
+                $button = '<a href='. route("artikel.artikel.edit", $data->id) . ' class="btn btn-primary btn-sm">Edit</a>';
+                $button .= '<a href='. route("artikel.artikel.delete", $data->id) . ' class="btn btn-danger btn-sm swalUmum" onclick="deleted(event)">Hapus</a>';
+                return $button;
+            })
+            ->rawColumns(['action', 'gambar', 'status'])
+            ->make(true);
     }
 
     public function add()
@@ -31,6 +55,7 @@ class ArtikelController extends Controller
         }
         return view('artikel.add', compact('artikel', 'kategori'));
     }
+
     public function edit(Artikel $artikel)
     {
         if(roles() == 'publisher'){

@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::prefix('halaman')->group(function () {
             Route::get('/', [HalamanController::class, 'index'])->name('utama.halaman.index');
+            Route::get('/json', [HalamanController::class, 'json'])->name('utama.halaman.json');
             Route::get('/add', [HalamanController::class, 'add'])->name('utama.halaman.add');
             Route::get('/edit/{halaman}', [HalamanController::class, 'edit'])->name('utama.halaman.edit');
             Route::post('/store', [HalamanController::class, 'store'])->name('utama.halaman.store');
@@ -108,6 +109,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('artikel')->group(function () {
         Route::prefix('data')->middleware('role:admin|publisher')->group(function () {
             Route::get('/', [ArtikelController::class, 'index'])->name('artikel.artikel.index');
+            Route::get('/json', [ArtikelController::class, 'json'])->name('artikel.artikel.json');
             Route::get('/add', [ArtikelController::class, 'add'])->name('artikel.artikel.add');
             Route::get('/edit/{artikel}', [ArtikelController::class, 'edit'])->name('artikel.artikel.edit');
             Route::post('/store', [ArtikelController::class, 'store'])->name('artikel.artikel.store');
