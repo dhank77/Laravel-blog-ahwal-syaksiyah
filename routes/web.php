@@ -71,8 +71,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('komplain')->middleware('role:admin')->group(function () {
         Route::get('/', [KomplainController::class, 'index'])->name('komplain.index');
-        Route::get('/add', [KomplainController::class, 'add'])->name('komplain.add');
-        Route::get('/edit/{komplain}', [KomplainController::class, 'edit'])->name('komplain.edit');
+        Route::get('/json', [KomplainController::class, 'json'])->name('komplain.json');
         Route::get('/delete/{komplain}', [KomplainController::class, 'delete'])->name('komplain.delete');
     });
     Route::prefix('pengajar')->middleware('role:admin')->group(function () {
@@ -84,6 +83,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix('admin-pengumuman')->middleware('role:admin')->group(function () {
         Route::get('/', [PengumumanController::class, 'index'])->name('pengumuman.index');
+        Route::get('/json', [PengumumanController::class, 'json'])->name('pengumuman.json');
         Route::get('/add', [PengumumanController::class, 'add'])->name('pengumuman.add');
         Route::post('/store', [PengumumanController::class, 'store'])->name('pengumuman.store');
         Route::get('/edit/{pengumuman}', [PengumumanController::class, 'edit'])->name('pengumuman.edit');

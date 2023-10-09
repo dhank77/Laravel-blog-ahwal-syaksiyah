@@ -28,7 +28,7 @@
                     <h4 class="card-title float-start">Daftar Komplain Pelanggan</h4>
                 </div>
                 <div class="card-body">
-                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                    <table id="table" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
                             <tr>
                                 <th style="width:1%;">No</th>
@@ -39,20 +39,6 @@
                                 <th style="width:1%;">Opsi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach ($komplain as $k => $a)
-                                <tr>
-                                    <td>{{ $k + 1 }}</td>
-                                    <td>{{ $a->email }}</td>
-                                    <td>{{ $a->nama }}</td>
-                                    <td>{{ $a->no_hp }}</td>
-                                    <td>{{ $a->isi }}</td>
-                                    <td>
-                                        <a href="{{ route('komplain.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
                     </table>
 
                 </div>
@@ -64,11 +50,34 @@
 @section('script')
     <script src="{{ asset('assets/libs/datatables.net/datatables.net.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-bs4/datatables.net-bs4.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/datatables.net-buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive/datatables.net-responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+    <script>
+        $(function() {
+            let table = $('#table').dataTable({
+                processing: true,
+                serverSide: true,
+                scrollX: true,
+                ajax: '{{ route("komplain.json") }}',
+                "lengthMenu": [
+                    [10, 25, 50],
+                    [10, 25, 50]
+                ],
+                columns: [{
+                    data: "DT_RowIndex",
+                    orderable: false,
+                    searchable: false,
+                }, {
+                    data: "email"
+                }, {
+                    data: "nama"
+                }, {
+                    data: "no_hp"
+                }, {
+                    data: "isi"
+                }, {
+                    data: "action"
+                }],
+            });
+        });
+    </script>
 @endsection

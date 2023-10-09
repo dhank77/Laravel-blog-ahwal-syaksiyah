@@ -30,7 +30,11 @@
         })
     })
     $(".swalUmum").click(function(event) {
-        event.preventDefault();
+        deleted(event);
+    })
+
+    function deleted(e) {
+        e.preventDefault();
         const href = event.currentTarget.href;
         Swal.fire({
             title: "Anda yakin ini?",
@@ -44,7 +48,7 @@
                 document.location.href = href;
             }
         })
-    })
+    }
    
 </script>
 @if (session()->has('success'))

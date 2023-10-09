@@ -5,13 +5,34 @@ namespace App\Http\Controllers;
 use App\Models\Pengumuman;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class PengumumanController extends Controller
 {
     public function index()
     {
-        $pengumuman = Pengumuman::latest()->get();
-        return view('pengumuman.index', compact('pengumuman'));
+        return view('pengumuman.index');
+    }
+
+    function json()
+    {
+        $data = Pengumuman::latest();
+
+        return DataTables::of($data)
+            ->addIndexColumn()
+            ->editColumn('gambar', function ($data) {
+                return '<img src=' . asset("storage/$data->gambar") .' style="width:100px; height:50px;" />';
+            })
+            ->editColumn('tanggal', function ($data) {
+                return dmyhi($data->created_at);
+            })
+            ->addColumn('action', function ($data) {
+                $button = '<a href='. route("pengumuman.edit", $data->id) . ' class="btn btn-primary btn-sm">Edit</a>';
+                $button .= '<a href='. route("pengumuman.delete", $data->id) . ' class="btn btn-danger btn-sm swalUmum" onclick="deleted(event)">Hapus</a>';
+                return $button;
+            })
+            ->rawColumns(['action', 'gambar'])
+            ->make(true);
     }
 
     public function add()
@@ -19,6 +40,7 @@ class PengumumanController extends Controller
         $pengumuman  = new Pengumuman();
         return view('pengumuman.add', compact('pengumuman'));
     }
+
     public function edit(Pengumuman $pengumuman)
     {
         return view('pengumuman.add', compact('pengumuman'));
@@ -45,7 +67,7 @@ class PengumumanController extends Controller
         $id = request('id');
         if(!$id){
             $slug = "pengumuman/" . Str::slug(request('judul'));
-            $rules['gambar'] = "required|max:2048|mimes:png,jpg,jpeg";
+            $rules['gambar'] = "required|max:2048|mimes:png,jpg,jpeg,webp";
         }else{
             $slug = Pengumuman::where('id', $id)->value('slug');
         }

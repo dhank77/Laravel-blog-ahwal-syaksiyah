@@ -217,13 +217,8 @@
                     </div>
                 </div>
             </div>
-
         </footer>
-        <!-- End footer -->
-
     </div>
-    <!-- End Container -->
-
 
     <script src="/frontend/js/studiare-plugins.min.js"></script>
     <script src="/frontend/js/jquery.countTo.js"></script>
