@@ -25,9 +25,10 @@
                                 <tr>
                                     <th class="text-center" width="1%">No</th>
                                     @if($data->is_nama == 1)
+                                        <th>Nama</th>
                                     @endif
                                     @if($data->is_nim == 1)
-                                    <th>NIM</th>
+                                        <th>NIM</th>
                                     @endif
                                     @for($i = 1; $i <= 9; $i++)
                                         @php
