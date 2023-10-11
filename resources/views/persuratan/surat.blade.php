@@ -36,17 +36,21 @@
                             <tr>
                                 <th style="width:1%;">No</th>
                                 <th>Download</th>
-                                <th>Nama</th>
-                                <th style="width:10%;">Nim</th>
-                                <th style="width:1%;">Param1</th>
-                                <th style="width:1%;">Param2</th>
-                                <th style="width:1%;">Param3</th>
-                                <th style="width:1%;">Param4</th>
-                                <th style="width:1%;">Param5</th>
-                                <th style="width:1%;">Param6</th>
-                                <th style="width:1%;">Param7</th>
-                                <th style="width:1%;">Param8</th>
-                                <th style="width:1%;">Param9</th>
+                                @if($data->is_nama == 1)
+                                    <th>Nama</th>
+                                @endif
+                                @if($data->is_nim == 1)
+                                    <th style="width:10%;">Nim</th>
+                                @endif
+                                @for($i = 1; $i <= 9; $i++)
+                                        @php
+                                            $params = "param$i";
+                                            $param_nama = "param_nama$i";
+                                        @endphp
+                                    @if($data->$params == 1)
+                                        <th style="width:1%;">{{ $data->$param_nama }}</th>
+                                    @endif
+                                @endfor
                                 <th style="width:1%;">Opsi</th>
                             </tr>
                         </thead>
@@ -57,17 +61,21 @@
                                     <td>
                                         <a href="{{ route('persuratan.download', $a->id) }}" class="btn btn-warning btn-sm">Download</a>
                                     </td>
-                                    <td>{{ $a->nama }}</td>
-                                    <td>{{ $a->nim }}</td>
-                                    <td>{{ $a->param1 }}</td>
-                                    <td>{{ $a->param2 }}</td>
-                                    <td>{{ $a->param3 }}</td>
-                                    <td>{{ $a->param4 }}</td>
-                                    <td>{{ $a->param5 }}</td>
-                                    <td>{{ $a->param6 }}</td>
-                                    <td>{{ $a->param7 }}</td>
-                                    <td>{{ $a->param8 }}</td>
-                                    <td>{{ $a->param9 }}</td>
+                                    @if($data->is_nama == 1)
+                                        <td>{{ $a->nama }}</td>
+                                    @endif
+                                    @if($data->is_nim == 1)
+                                        <td>{{ $a->nim }}</td>
+                                    @endif
+                                    @for($i = 1; $i <= 9; $i++)
+                                            @php
+                                                $params = "param$i";
+                                                $param_nama = "param_nama$i";
+                                            @endphp
+                                        @if($data->$params == 1)
+                                            <td>{{ $a->$params }}</td>
+                                        @endif
+                                    @endfor
                                     <td>
                                         <a href="{{ route('persuratan.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                         <a href="{{ route('persuratan.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>

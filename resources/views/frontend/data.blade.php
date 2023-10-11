@@ -5,10 +5,10 @@
        ================================================== -->
     <section class="page-banner-section">
         <div class="container">
-            <h1>Download File</h1>
+            <h1>Daftar Data</h1>
             <ul class="page-depth">
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Download File</a></li>
+                <li><a href="#">Daftar Data</a></li>
             </ul>
         </div>
     </section>
@@ -17,7 +17,7 @@
     <section class="blog-section">
         <div class="container">
             <div class="blog-box">
-                <h4>Download Data</h4>
+                <h4>Daftar Data : {{ $data->nama }}</h4>
                 <div class="card">
                     <div class="card-body">
                         <table id="datatable" class="table table-striped table-bordered table-hover" width="100%">
@@ -43,34 +43,7 @@
                     </div>
                 </div>
             </div>
-            <br><br>
-            <div class="blog-box">
-                <h4>Download Format</h4>
-                <div class="card">
-                    <div class="card-body">
-                        <table id="datatable" class="table table-striped table-bordered table-hover" width="100%">
-                            <thead>
-                                <tr>
-                                    <th class="text-center" width="1%">No</th>
-                                    <th width="70%">Nama File</th>
-                                    <th class="text-center" >Opsi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($download as $k => $j)
-                                    <tr>
-                                        <td class="text-center" width="1%">{{ $k + 1 }}</td>
-                                        <td class="text-left" width="70%">{{ $j->nama }}</td>
-                                        <td class="text-center">
-                                            <a href="{{ asset("storage/$j->file") }}" class="btn btn-primary btn-sm"> Download</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </section>
 @endsection

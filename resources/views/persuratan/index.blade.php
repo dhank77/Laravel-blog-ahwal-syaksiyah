@@ -37,7 +37,8 @@
                                 <th style="width:1%;">No</th>
                                 <th>Nama</th>
                                 <th style="width:10%;">File</th>
-                                <th style="width:1%;">Surat</th>
+                                <th>Surat</th>
+                                <th style="width:1%;">Publik?</th>
                                 <th style="width:1%;">Opsi</th>
                             </tr>
                         </thead>
@@ -52,6 +53,13 @@
                                     <td>
                                         <a href="{{ route('persuratan.param', $a->id) }}" class="btn btn-primary btn-sm">Buat Surat</a>
                                         <a href="{{ route('persuratan.surat', $a->id) }}" class="btn btn-primary btn-sm">Lihat Surat</a>
+                                    </td>
+                                    <td>
+                                        @if($a->is_public == 1)
+                                            <span class="text-primary">YA</span>
+                                        @else
+                                            <span class="text-danger">TIDAK</span>
+                                        @endif
                                     </td>
                                     <td>
                                         <a href="{{ route('persuratan.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>

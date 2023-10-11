@@ -26,6 +26,7 @@ Buat Surat
                             @csrf
                             <input type="hidden" name="id" value="{{ $dataDetail->id }}">
                             <input type="hidden" name="data_id" value="{{ $data->id }}">
+                            @if($data->is_nama == 1)
                             <div class="mb-3 row">
                                 <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Nama</label>
                                 <div class="col-sm-10">
@@ -33,6 +34,8 @@ Buat Surat
                                         placeholder="Nama" value="{{ $dataDetail->nama }}">
                                 </div>
                             </div>
+                            @endif
+                            @if($data->is_nim == 1)
                             <div class="mb-3 row">
                                 <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">NIM</label>
                                 <div class="col-sm-10">
@@ -40,69 +43,22 @@ Buat Surat
                                         placeholder="NIM" value="{{ $dataDetail->nim }}">
                                 </div>
                             </div>
-                            <div class="mb-3 row">
-                                <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Param1</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="param1" id="param1"
-                                        placeholder="Param1" value="{{ $dataDetail->param1 }}">
+                            @endif
+                            @for($i = 1; $i <= 9; $i++)
+                                        @php
+                                            $params = "param$i";
+                                            $param_nama = "param_nama$i";
+                                        @endphp
+                                @if($data->$params == 1)
+                                <div class="mb-3 row">
+                                    <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">{{ $data->$param_nama }}</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="{{ $params }}" id="{{ $params }}"
+                                            placeholder="{{ $data->$param_nama }}" value="{{ $dataDetail->$params }}">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Param2</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="param2" id="param2"
-                                        placeholder="Param2" value="{{ $dataDetail->param2 }}">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Param3</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="param3" id="param3"
-                                        placeholder="Param3" value="{{ $dataDetail->param3 }}">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Param4</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="param4" id="param4"
-                                        placeholder="Param4" value="{{ $dataDetail->param4 }}">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Param5</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="param5" id="param5"
-                                        placeholder="Param5" value="{{ $dataDetail->param5 }}">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Param6</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="param6" id="param6"
-                                        placeholder="Param6" value="{{ $dataDetail->param6 }}">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Param7</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="param7" id="param7"
-                                        placeholder="Param7" value="{{ $dataDetail->param7 }}">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Param8</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="param8" id="param8"
-                                        placeholder="Param8" value="{{ $dataDetail->param8 }}">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Param9</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="param9" id="param9"
-                                        placeholder="Param9" value="{{ $dataDetail->param9 }}">
-                                </div>
-                            </div>
+                                @endif
+                            @endfor
                             <div class="row">
                                 <div class="col-sm-10 ms-auto">
                                     <button type="submit" class="btn btn-primary">Submit</button>

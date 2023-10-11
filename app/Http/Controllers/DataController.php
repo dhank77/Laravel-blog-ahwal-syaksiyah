@@ -42,12 +42,15 @@ class DataController extends Controller
             'nama' => 'required|string',
             'file' => 'max:2048|max:2048|mimes:docx,doc',
         ];
+
         
         $id = request('id');
         if(!$id){
             $rules['file'] = "required|max:2048|mimes:docx,doc";
         }
-        $data = request()->validate($rules);
+        request()->validate($rules);
+        
+        $data = request()->except('_token', 'id');
 
         if(request()->file('file')){
             if($id){

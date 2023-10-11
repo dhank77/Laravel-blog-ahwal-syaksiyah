@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Artikel;
 use App\Models\Banner;
+use App\Models\Data;
+use App\Models\DataDetail;
 use App\Models\Download;
 use App\Models\Komplain;
 use App\Models\Master\Kategori;
@@ -50,7 +52,14 @@ class FrontendController extends Controller
     public function download()
     {
         $download = Download::orderBy('nama')->where('is_public', 1)->get();
-        return view('frontend.download', compact('download'));
+        $data = Data::orderBy('nama')->where('is_public', 1)->get();
+        return view('frontend.download', compact('download', 'data'));
+    }
+
+    function daftar_data(Data $data)
+    {
+        $dataDetail = DataDetail::where('data_id', $data->id)->get();
+        return view('frontend.data', compact('dataDetail', 'data'));
     }
 
     public function kategori(Kategori $kategori)
