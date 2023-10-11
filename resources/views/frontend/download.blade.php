@@ -34,7 +34,7 @@
                                         <td class="text-center" width="1%">{{ $k + 1 }}</td>
                                         <td class="text-left">{{ $d->nama }}</td>
                                         <td class="text-center">
-                                            <a href="{{ asset("storage/$d->file") }}" class="btn btn-primary btn-sm"> Lihat Daftar Data</a>
+                                            <a href="{{ route('daftar_data', $d->id) }}" class="btn btn-primary btn-sm"> Lihat Daftar Data</a>
                                         </td>
                                     </tr>
                                 @endforeach

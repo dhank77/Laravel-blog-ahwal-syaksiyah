@@ -24,17 +24,44 @@
                             <thead>
                                 <tr>
                                     <th class="text-center" width="1%">No</th>
-                                    <th width="70%">Nama Data</th>
+                                    @if($data->is_nama == 1)
+                                    @endif
+                                    @if($data->is_nim == 1)
+                                    <th>NIM</th>
+                                    @endif
+                                    @for($i = 1; $i <= 9; $i++)
+                                        @php
+                                            $params = "param$i";
+                                            $param_nama = "param_nama$i";
+                                        @endphp
+                                        @if($data->$params == 1)
+                                            <th class="text-center">{{ $data->$param_nama }}</th>
+                                        @endif
+                                    @endfor
                                     <th class="text-center" >Opsi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $k => $d)
+                                @foreach($dataDetail as $k => $d)
                                     <tr>
                                         <td class="text-center" width="1%">{{ $k + 1 }}</td>
-                                        <td class="text-left">{{ $d->nama }}</td>
+                                        @if($data->is_nama == 1)
+                                            <td class="text-left">{{ $d->nama }}</td>
+                                            @endif
+                                        @if($data->is_nim == 1)
+                                            <td class="text-left">{{ $d->nim }}</td>
+                                        @endif
+                                        @for($i = 1; $i <= 9; $i++)
+                                            @php
+                                                $params = "param$i";
+                                                $param_nama = "param_nama$i";
+                                            @endphp
+                                            @if($data->$params == 1)
+                                                <th class="text-center">{{ $d->$params }}</th>
+                                            @endif
+                                        @endfor
                                         <td class="text-center">
-                                            <a href="{{ asset("storage/$d->file") }}" class="btn btn-primary btn-sm"> Lihat Daftar Data</a>
+                                            <a href="{{ route('create_pdf', base64_encode($d->id)) }}" class="btn btn-primary btn-sm"> Download</a>
                                         </td>
                                     </tr>
                                 @endforeach

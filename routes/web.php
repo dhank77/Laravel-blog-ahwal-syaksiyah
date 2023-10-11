@@ -43,6 +43,7 @@ Route::get('/berita', [FrontendController::class, 'berita'])->name('berita');
 Route::get('/pengumuman', [FrontendController::class, 'pengumuman'])->name('pengumuman');
 Route::get('/download-file', [FrontendController::class, 'download'])->name('download');
 Route::get('/daftar-data/{data}', [FrontendController::class, 'daftar_data'])->name('daftar_data');
+Route::get('/create-pdf/{id}', [FrontendController::class, 'create_pdf'])->name('create_pdf');
 Route::get('/kategori/{kategori}', [FrontendController::class, 'kategori'])->name('kategori');
 
 Route::middleware('auth')->group(function () {

@@ -45,18 +45,18 @@ Buat Surat
                             </div>
                             @endif
                             @for($i = 1; $i <= 9; $i++)
-                                        @php
-                                            $params = "param$i";
-                                            $param_nama = "param_nama$i";
-                                        @endphp
+                                @php
+                                    $params = "param$i";
+                                    $param_nama = "param_nama$i";
+                                @endphp
                                 @if($data->$params == 1)
-                                <div class="mb-3 row">
-                                    <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">{{ $data->$param_nama }}</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="{{ $params }}" id="{{ $params }}"
-                                            placeholder="{{ $data->$param_nama }}" value="{{ $dataDetail->$params }}">
+                                    <div class="mb-3 row">
+                                        <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">{{ $data->$param_nama }}</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="{{ $params }}" id="{{ $params }}"
+                                                placeholder="{{ $data->$param_nama }}" value="{{ $dataDetail->$params }}">
+                                        </div>
                                     </div>
-                                </div>
                                 @endif
                             @endfor
                             <div class="row">
