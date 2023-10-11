@@ -48,7 +48,7 @@
                                     <td>{{ $k + 1 }}</td>
                                     <td>{{ $a->nama }}</td>
                                     <td>
-                                        <a href="{{ asset("storage/$a->file") }}">Lihat File</a>
+                                        <a href="{{ asset("storage/$a->file") }}">Lihat Format</a>
                                     </td>
                                     <td>
                                         <a href="{{ route('persuratan.param', $a->id) }}" class="btn btn-primary btn-sm">Buat Surat</a>
