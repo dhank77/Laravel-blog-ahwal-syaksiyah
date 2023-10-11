@@ -73,10 +73,6 @@ class FrontendController extends Controller
         $dataDetail= DataDetail::where('id', $id)->first();
         $data = Data::where('id', $dataDetail->data_id)->first();
 
-        $domPdfPath = base_path('vendor/dompdf/dompdf');
-        \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
-        \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
-        
         $template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path("app/public/$data->file"));
 
         $template->setValue('nama', $dataDetail->nama);
@@ -87,34 +83,32 @@ class FrontendController extends Controller
             $template->setValue($params, $dataDetail->$params);
         }
  
-        $saveDocPath = public_path('new-result.docx');
+        $saveDocPath = public_path('sampah/new-result' . date("ymdhis") . '.docx');
         $template->saveAs($saveDocPath);
-         
-        $Content = \PhpOffice\PhpWord\IOFactory::load($saveDocPath); 
- 
-        $savePdfPath = public_path('new-result.pdf');
-        if ( file_exists($savePdfPath) ) {
+
+        $paramsUrl = url("sampah/new-result" . date("ymdhis") . ".docx");
+        set_time_limit(0); 
+        $link = "https://psg4-word-view.officeapps.live.com/wv/WordViewer/request.pdf?WOPIsrc=http%3A%2F%2Fpsg3-view-wopi%2Ewopi%2Eonline%2Eoffice%2Enet%3A808%2Foh%2Fwopi%2Ffiles%2F%40%2FwFileId%3FwFileId%3D$paramsUrl&access_token=1&access_token_ttl=0&z=dce785126488e4f952cc69b50e330603d7517b89c1f01bd14796eee9b097a030&type=downloadpdf&useNamedAction=1";
+        $file = file_get_contents($link);
+
+        $name = 'new-result.pdf';
+        $savePdfPath = public_path($name);
+        if (file_exists($savePdfPath) ) {
             unlink($savePdfPath);
         }
- 
-        $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
-        $PDFWriter->save($savePdfPath); 
- 
-        if ( file_exists($saveDocPath) ) {
+        file_put_contents($name, $file);
+        
+        if (file_exists($saveDocPath) ) {
             unlink($saveDocPath);
         }
 
-        return redirect('new-result.pdf');
+        return redirect($name);
     }
 
     function form_data_store($id)
     {
         $id = base64_decode($id);
         $data = Data::where('id', $id)->first();
-
-        $domPdfPath = base_path('vendor/dompdf/dompdf');
-        \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
-        \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
 
         $template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path("app/public/$data->file"));
 
@@ -126,31 +120,24 @@ class FrontendController extends Controller
             $template->setValue($params, request($params));
         }
  
-        $saveDocPath = public_path('new-result' . date("ymdhis") . '.docx');
+        $saveDocPath = public_path('sampah/new-result' . date("ymdhis") . '.docx');
         $template->saveAs($saveDocPath);
 
-        // Cara 2
-        $paramsUrl = url("new-result" . date("ymdhis") . ".docx");
+        $paramsUrl = url("sampah/new-result" . date("ymdhis") . ".docx");
         set_time_limit(0); 
         $link = "https://psg4-word-view.officeapps.live.com/wv/WordViewer/request.pdf?WOPIsrc=http%3A%2F%2Fpsg3-view-wopi%2Ewopi%2Eonline%2Eoffice%2Enet%3A808%2Foh%2Fwopi%2Ffiles%2F%40%2FwFileId%3FwFileId%3D$paramsUrl&access_token=1&access_token_ttl=0&z=dce785126488e4f952cc69b50e330603d7517b89c1f01bd14796eee9b097a030&type=downloadpdf&useNamedAction=1";
         $file = file_get_contents($link);
-        $name = 'new-result-' . date("ymdhis") . ' .pdf';
+
+        $name = 'new-result.pdf';
+        $savePdfPath = public_path($name);
+        if (file_exists($savePdfPath) ) {
+            unlink($savePdfPath);
+        }
         file_put_contents($name, $file);
         
-        // Cara 1 
-        // $name = 'new-result-' . date("ymdhis") . ' .pdf';
-        // $Content = \PhpOffice\PhpWord\IOFactory::load($saveDocPath); 
-        // $savePdfPath = public_path($name);
-        // if ( file_exists($savePdfPath) ) {
-        //     unlink($savePdfPath);
-        // }
- 
-        // $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
-        // $PDFWriter->save($savePdfPath); 
- 
-        // if ( file_exists($saveDocPath) ) {
-        //     unlink($saveDocPath);
-        // }
+        if (file_exists($saveDocPath) ) {
+            unlink($saveDocPath);
+        }
 
         return redirect($name);
     }
