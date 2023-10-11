@@ -34,7 +34,11 @@
                                         <td class="text-center" width="1%">{{ $k + 1 }}</td>
                                         <td class="text-left">{{ $d->nama }}</td>
                                         <td class="text-center">
-                                            <a href="{{ route('daftar_data', $d->id) }}" class="btn btn-primary btn-sm"> Lihat Daftar Data</a>
+                                            @if($d->is_form == 1)
+                                                <a href="{{ route('form_data', $d->id) }}" class="btn btn-primary btn-sm"> Isi Data</a>
+                                            @else
+                                                <a href="{{ route('daftar_data', $d->id) }}" class="btn btn-primary btn-sm"> Lihat Daftar Data</a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

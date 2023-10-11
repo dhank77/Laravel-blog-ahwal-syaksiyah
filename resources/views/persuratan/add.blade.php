@@ -54,6 +54,16 @@
                             </div>
                             <div class="mb-3 row">
                                 <label for="gambar"
+                                    class="col-sm-2 form-label align-self-center mb-lg-0">Apakah Publik Dapat Mengisi Form Pada Website ?</label>
+                                <div class="col-sm-10">
+                                    <select name="is_form" id="is_form" class="form-control">
+                                        <option {{ $data->is_form == 0 ? "selected" : "" }} value="0">Tidak</option>
+                                        <option {{ $data->is_form == 1 ? "selected" : "" }} value="1">Ya</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="gambar"
                                     class="col-sm-2 form-label align-self-center mb-lg-0">Parameter Yang Digunakan</label>
                                 <div class="col-sm-10">
                                     <div class="form-check">
