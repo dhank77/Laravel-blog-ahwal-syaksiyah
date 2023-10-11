@@ -48,7 +48,7 @@
                 <h4>Download Format</h4>
                 <div class="card">
                     <div class="card-body">
-                        <table id="datatable" class="table table-striped table-bordered table-hover" width="100%">
+                        <table id="datatable2" class="table table-striped table-bordered table-hover" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center" width="1%">No</th>
@@ -84,5 +84,6 @@
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $('#datatable').DataTable()
+        $('#datatable2').DataTable()
     </script>
 @endpush
