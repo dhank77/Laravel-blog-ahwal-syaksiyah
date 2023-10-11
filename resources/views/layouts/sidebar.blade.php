@@ -66,7 +66,13 @@
                         <span data-key="t-download">Berkas</span>
                     </a>
                 </li>
-                  <li>
+                <li>
+                    <a class="{{ request()->is('persuratan/*') ? "mm-active" : "" }}" href="{{ route('persuratan.index') }}">
+                        <i data-feather="mail"></i>
+                        <span data-key="t-persuratan">Persuratan</span>
+                    </a>
+                </li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="settings"></i>
                         <span data-key="t-setting">Setting Website</span>

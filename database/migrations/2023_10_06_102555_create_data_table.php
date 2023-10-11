@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('data', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
             $table->string('file');
             $table->string('param1')->nullable();
             $table->string('param2')->nullable();
