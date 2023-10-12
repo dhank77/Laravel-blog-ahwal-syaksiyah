@@ -27,7 +27,7 @@
                 <div class="card-header">
                     <h4 class="card-title float-start">Daftar Surat : {{ $data->nama }}</h4>
                     <div class="float-end">
-                        <a class="btn btn-primary" href="{{ route('persuratan.param', $data->id) }}">+ Tambah</a>
+                        <a class="btn btn-primary" href="{{ route('persuratan.param', $data->id) }}">+ Buat Surat</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -77,8 +77,8 @@
                                         @endif
                                     @endfor
                                     <td>
-                                        <a href="{{ route('persuratan.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('persuratan.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
+                                        <a href="{{ route('persuratan.param_edit', [$data->id, $a->id]) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ route('persuratan.param_delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum" onclick="deleted(event)">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -113,13 +113,16 @@ Route::middleware('auth')->group(function () {
     Route::prefix('persuratan')->middleware('role:admin')->group(function () {
         Route::get('/', [DataController::class, 'index'])->name('persuratan.index');
         Route::get('/add', [DataController::class, 'add'])->name('persuratan.add');
-        Route::get('/download/{id}', [DataController::class, 'download'])->name('persuratan.download');
-        Route::get('/surat/{data}', [DataController::class, 'surat'])->name('persuratan.surat');
-        Route::get('/param/{data}', [DataController::class, 'param'])->name('persuratan.param');
         Route::get('/edit/{data}', [DataController::class, 'edit'])->name('persuratan.edit');
         Route::post('/store', [DataController::class, 'store'])->name('persuratan.store');
-        Route::post('/param_store', [DataController::class, 'param_store'])->name('persuratan.param_store');
         Route::get('/delete/{data}', [DataController::class, 'delete'])->name('persuratan.delete');
+
+        Route::get('/surat/{data}', [DataController::class, 'surat'])->name('persuratan.surat');
+        Route::get('/param/{data}', [DataController::class, 'param'])->name('persuratan.param');
+        Route::get('/param_edit/{data}/{dataDetail}', [DataController::class, 'param_edit'])->name('persuratan.param_edit');
+        Route::post('/param_store', [DataController::class, 'param_store'])->name('persuratan.param_store');
+        Route::get('/param_delete/{dataDetail}', [DataController::class, 'param_delete'])->name('persuratan.param_delete');
+        Route::get('/download/{id}', [DataController::class, 'download'])->name('persuratan.download');
     });
     
     Route::prefix('artikel')->group(function () {

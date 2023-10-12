@@ -529,7 +529,7 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="layouts-horizontal " role="button">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" role="button">
                             <i data-feather="layout"></i><span data-key="t-horizontal">@lang('translation.Horizontal')</span>
                         </a>
                     </li>

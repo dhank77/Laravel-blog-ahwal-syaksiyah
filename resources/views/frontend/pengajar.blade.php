@@ -24,7 +24,7 @@
                             <div class="col-lg-4 col-md-4">
                                 <div class="teacher-post">
                                     <a href="#">
-                                        <img src="{{ asset("storage/$value->gambar") }}" alt="foto-{{ $value->nama }}">
+                                        <img src="{{ asset("storage/$value->gambar") }}" alt="foto-{{ $value->nama }}" style="height:400px;">
                                         <div class="hover-post">
                                             <h4 class="mb-2">{{ $value->nama }}</h4>
                                             <span>Jabatan : {{ $value->jabatan }}</span> <br/>

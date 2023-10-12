@@ -4,7 +4,6 @@
     <section id="home-section">
         <div id="rev_slider_202_1_wrapper" class="rev_slider_wrapper" data-alias="concept1"
             style="background-color:#000000;padding:0px;">
-            <!-- START REVOLUTION SLIDER 5.1.1RC fullscreen mode -->
             <div id="rev_slider_202_1" class="rev_slider" data-version="5.1.1RC">
                 <ul>
                     @foreach ($banner as $key => $b)
@@ -73,14 +72,11 @@
 
                         </li>
                     @endforeach
-
                 </ul>
                 <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
             </div>
         </div>
-        <!-- END REVOLUTION SLIDER -->
     </section>
-    <!-- End home section -->
 
     <section class="collection-section">
         <div class="container">
@@ -137,29 +133,24 @@
         </div>
     </section>
 
-    <!-- countdown-section
-                       ================================================== -->
     <section class="countdown-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <h4>{{ $sambutan->komponen1 }}</h4>
                     <img src="{{ asset("storage/$sambutan->komponen3") }}" class="rounded"
-                        style="width:100%; height:400px;" alt="">
+                        style="width:100%; height:500px;" alt="sambutan ketua prodi">
                     <br />
                     <br />
                     <h4>{{ $sambutan->komponen2 }}</h4>
                 </div>
-                <div class="col-lg-6 text-left">
+                <div class="col-lg-7 text-left">
                     {!! $sambutan->komponen4 !!}
                 </div>
             </div>
         </div>
     </section>
-    <!-- End countdown section -->
 
-    <!-- news-section
-                       ================================================== -->
     <section class="news-section">
         <div class="container">
             <div class="title-section">
@@ -192,10 +183,7 @@
             </div>
         </div>
     </section>
-    <!-- End news section -->
 
-    <!-- testimonial-section
-                       ================================================== -->
     <section class="testimonial-section">
         <div class="container">
             <h1>Apa Kata Mereka ?</h1>
@@ -221,5 +209,4 @@
             </div>
         </div>
     </section>
-    <!-- End testimonial section -->
 @endsection

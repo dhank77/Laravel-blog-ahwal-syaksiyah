@@ -28,6 +28,9 @@ class DataController extends Controller
 
     public function delete(Data $data)
     {
+        if($data->file != ""){
+            Storage::delete($data->file);
+        }
         $cr = $data->delete();
         if($cr){
             return redirect(route("persuratan.index"))->with('success', 'Berhasil menghapus data');
@@ -43,7 +46,6 @@ class DataController extends Controller
             'file' => 'max:2048|max:2048|mimes:docx',
         ];
 
-        
         $id = request('id');
         if(!$id){
             $rules['file'] = "required|max:2048|mimes:docx";
@@ -79,6 +81,11 @@ class DataController extends Controller
     public function param(Data $data)
     {
         $dataDetail = new DataDetail();
+        return view('persuratan.param', compact('data', 'dataDetail'));
+    }
+
+    public function param_edit(Data $data, DataDetail $dataDetail)
+    {
         return view('persuratan.param', compact('data', 'dataDetail'));
     }
 
@@ -145,6 +152,16 @@ class DataController extends Controller
             return redirect(route('persuratan.surat', request('data_id')))->with('success', 'Berhasil memperbaharui data');
         }else{
             return redirect(route('persuratan.surat', request('data_id')))->with('error', 'Gagal memperbaharui data');
+        }
+    }
+
+    public function param_delete(DataDetail $dataDetail)
+    {
+        $cr = $dataDetail->delete();
+        if($cr){
+            return redirect(route("persuratan.index"))->with('success', 'Berhasil menghapus data');
+        }else{
+            return redirect(route("persuratan.index"))->with('error', 'Gagal menghapus data');
         }
     }
 }
