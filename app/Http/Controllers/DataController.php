@@ -98,6 +98,8 @@ class DataController extends Controller
 
         $template->setValue('nama', $dataDetail->nama);
         $template->setValue('nim', $dataDetail->nim);
+        $template->setValue('bulan_romawi', getRomawi(date("m")));
+        $template->setValue('tahun_ini', date("Y"));
         $template->setValue('tanggal_hari_ini', tanggal_indo(date("Y-m-d")));
         for ($i=1; $i <= 9 ; $i++) { 
             $params = "param$i";
