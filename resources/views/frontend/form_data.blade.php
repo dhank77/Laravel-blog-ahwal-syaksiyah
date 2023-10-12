@@ -56,10 +56,11 @@
                                     </div>
                                 @endif
                             @endfor
-                            <div class="row">
+                            <div class="row mt-4">
+                                <div class="col-sm-2"></div>
                                 <div class="col-sm-10 ms-auto">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="button" class="btn btn-danger">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Simpan & Download</button>
+                                    <button onclick="history.back()"  type="button" class="btn btn-danger">Kembali</button>
                                 </div>
                             </div>
                         </form>
