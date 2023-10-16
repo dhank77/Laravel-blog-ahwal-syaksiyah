@@ -54,6 +54,8 @@ class SuperadminController extends Controller
         
         $id = request('id');
         $data = request()->validate($rules);
+        $data['mobilenumber'] = "000";
+        $data['avatar'] = "logo.png";
         if(!$id){
             $data['password'] = bcrypt($data['email']);
             $cr = User::create($data);

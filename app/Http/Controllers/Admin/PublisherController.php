@@ -66,6 +66,7 @@ class PublisherController extends Controller
         }
         $data['kategori_id'] = $kategori;
         $data['mobilenumber'] = "000";
+        $data['avatar'] = "logo.png";
         if(!$id){
             $data['password'] = bcrypt($data['email']);
             $cr = User::create($data);
