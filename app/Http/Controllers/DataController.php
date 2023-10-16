@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\SuratImport;
 use App\Models\Data;
 use App\Models\DataDetail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DataController extends Controller
 {
@@ -155,6 +157,30 @@ class DataController extends Controller
         }else{
             return redirect(route('persuratan.surat', request('data_id')))->with('error', 'Gagal memperbaharui data');
         }
+    }
+
+    function import()
+    {
+        $rules = [
+            'data_id' => 'required|string',
+            'file' => 'max:2048|max:2048|mimes:xls,xlsx,csv',
+        ];
+
+        request()->validate($rules);
+
+        $file = request()->file('file');
+
+        try {
+            Excel::import(new SuratImport, $file);
+            return redirect(route('persuratan.surat', request('data_id')))->with('success', 'Berhasil import data');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            return redirect(route('persuratan.surat', request('data_id')))->with('error', 'Terjadi Kesalahan');
+        }
+
+
+
+
     }
 
     public function param_delete(DataDetail $dataDetail)

@@ -152,8 +152,6 @@
             </div>
         @endif
         @yield('content')
-        <!-- footer
-   ================================================== -->
         <footer>
             <div class="container">
                 @php
@@ -164,7 +162,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="footer-widget text-widget">
                                 <a href="/" class="footer-logo"><img src="{{ asset("storage/$footer->komponen1") }}"
-                                        alt="footer-gambar" style="height:300px; width:300px;"></a>
+                                        alt="footer-gambar" style="width:300px;"></a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">

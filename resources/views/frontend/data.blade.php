@@ -1,8 +1,6 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <!-- page-banner-section
-       ================================================== -->
     <section class="page-banner-section">
         <div class="container">
             <h1>Daftar Data</h1>
@@ -12,7 +10,6 @@
             </ul>
         </div>
     </section>
-    <!-- End page-banner-section -->
 
     <section class="blog-section">
         <div class="container">
@@ -45,12 +42,12 @@
                             <tbody>
                                 @foreach($dataDetail as $k => $d)
                                     <tr>
-                                        <td class="text-center" width="1%">{{ $k + 1 }}</td>
+                                        <td class="text-center" width="1%">{{ $k + 1 }}.</td>
                                         @if($data->is_nama == 1)
-                                            <td class="text-left">{{ $d->nama }}</td>
+                                            <th class="text-left">{{ $d->nama }}</th>
                                             @endif
                                         @if($data->is_nim == 1)
-                                            <td class="text-left">{{ $d->nim }}</td>
+                                            <th class="text-left">{{ $d->nim }}</th>
                                         @endif
                                         @for($i = 1; $i <= 9; $i++)
                                             @php
@@ -58,7 +55,7 @@
                                                 $param_nama = "param_nama$i";
                                             @endphp
                                             @if($data->$params == 1)
-                                                <th class="text-center">{{ $d->$params }}</th>
+                                                <td class="text-center">{{ $d->$params }}</td>
                                             @endif
                                         @endfor
                                         <td class="text-center">
@@ -87,3 +84,4 @@
         $('#datatable').DataTable()
     </script>
 @endpush
+

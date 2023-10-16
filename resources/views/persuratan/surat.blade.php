@@ -25,8 +25,61 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-start">Daftar Surat : {{ $data->nama }}</h4>
+                    <h4 class="card-title float-start">Daftar Surat : {{ $data->nama }} <br/>
+                    Data ID : {{ $data->id }}
+                    </h4>
                     <div class="float-end">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Import Surat
+                          </button>
+                          <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
+                            <div class="modal-dialog">
+                                <form action="{{ route('persuratan.import') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="myModalLabel">Import Surat</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6>Keterangan</h6>
+                                            <p style="margin-left:15px">
+                                            Data ID : {{ $data->id }} <br/>
+                                            @if($data->is_nama == 1)
+                                                <span class="text-danger">Nama : Wajib diisi</span> <br/>
+                                            @endif
+                                            @if($data->is_nim == 1)
+                                                <span class="text-danger">Nim : Wajib diisi</span> <br/>
+                                            @endif
+                                            @for($i = 1; $i <= 9; $i++)
+                                                    @php
+                                                        $params = "param$i";
+                                                        $param_nama = "param_nama$i";
+                                                    @endphp
+                                                @if($data->$params == 1)
+                                                    {{ $params }} : {{ $data->$param_nama }} <br/>
+                                                @endif
+                                            @endfor
+                                            </p>
+                                            <hr>
+                                            <input type="hidden" name="data_id" id="data_id" value="{{ $data->id }}">
+                                            <div class="mb-3 row">
+                                                <label for="gambar"
+                                                    class="col-sm-2 form-label align-self-center mb-lg-0">File</label>
+                                                <div class="col-sm-10">
+                                                    <a href="{{ asset("import/surat.xlsx") }}" class="text-primary"><b>Dowmload Format</b></a>
+                                                    <input type="file" class="form-control" name="file" id="file" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Import</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <a class="btn btn-primary" href="{{ route('persuratan.param', $data->id) }}">+ Buat Surat</a>
                     </div>
                 </div>

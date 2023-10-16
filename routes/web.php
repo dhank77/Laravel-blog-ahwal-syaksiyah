@@ -121,6 +121,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/param/{data}', [DataController::class, 'param'])->name('persuratan.param');
         Route::get('/param_edit/{data}/{dataDetail}', [DataController::class, 'param_edit'])->name('persuratan.param_edit');
         Route::post('/param_store', [DataController::class, 'param_store'])->name('persuratan.param_store');
+        Route::post('/import', [DataController::class, 'import'])->name('persuratan.import');
         Route::get('/param_delete/{dataDetail}', [DataController::class, 'param_delete'])->name('persuratan.param_delete');
         Route::get('/download/{id}', [DataController::class, 'download'])->name('persuratan.download');
     });
