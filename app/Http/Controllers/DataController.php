@@ -178,9 +178,6 @@ class DataController extends Controller
             return redirect(route('persuratan.surat', request('data_id')))->with('error', 'Terjadi Kesalahan');
         }
 
-
-
-
     }
 
     public function param_delete(DataDetail $dataDetail)

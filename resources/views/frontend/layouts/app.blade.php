@@ -74,8 +74,8 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container">
 
-                    <a class="navbar-brand" href="index.html">
-                        <img src="images/logo.svg" alt="">
+                    <a class="navbar-brand" href="/">
+                        {{-- <img src="/images/logo.png" alt="logo.png" style="width: 40px;"> --}}
                     </a>
 
                     <a href="#" class="mobile-nav-toggle">

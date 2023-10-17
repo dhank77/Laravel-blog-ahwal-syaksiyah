@@ -109,8 +109,27 @@ class FrontendController extends Controller
 
     function form_data_store($id)
     {
+        
+
         $id = base64_decode($id);
         $data = Data::where('id', $id)->first();
+        $rules = [
+            'captcha' => 'required|captcha',
+        ];
+
+        if($data->is_nama == 1){
+            $rules['nama'] = "required";
+        }
+        if($data->is_nim == 1){
+            $rules['nim'] = "required";
+        }
+        for ($i=1; $i <= 9 ; $i++) { 
+            $params = "param$i";
+            if($data->$params == 1){
+                $rules[$params] = "required";
+            }
+        }
+        request()->validate($rules);
 
         $template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path("app/public/$data->file"));
 
@@ -172,13 +191,16 @@ class FrontendController extends Controller
 
     public function komplain_store()
     {
-        $data = request()->validate([
+        request()->validate([
             'nama' => 'required|string',
             'email' => 'required|email',
             'no_hp' => 'required|integer',
             'isi' => 'required|string',
             'posisi' => 'required|string',
+            'captcha' => 'required|captcha',
         ]);
+
+        $data = request()->except(['_token', 'captcha']);
 
         $cr = Komplain::create($data);
         if($cr){

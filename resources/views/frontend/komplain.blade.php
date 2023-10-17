@@ -47,6 +47,13 @@
                                 <p class="help-block">Masukan dan saran demi peningkatan mutu Universitas Muhammadiyah
                                     Makassar</p>
                             </div>
+                            <div class="mb-3 row">
+                                <div class="col-sm-12">
+                                    <div>{!! captcha_img() !!}</div>
+                                    <input type="number" class="form-control" name="captcha" id="captcha"
+                                        placeholder="Validasi Captcha">
+                                </div>
+                            </div>
                             <button type="submit">Kirim Komplain</button>
                         </form>
                     </div>

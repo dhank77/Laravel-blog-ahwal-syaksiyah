@@ -1,22 +1,6 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <!-- page-banner-section
-                   ================================================== -->
-    <section class="page-banner-section">
-        <div class="container">
-            <h1>{{ $data->judul }}</h1>
-            <ul class="page-depth">
-                <li><a href="/">Home</a></li>
-                <li><a href="/">{{ ucfirst($model) }}</a></li>
-                <li><a href="{{ $data->slug }}">{{ $data->judul }}</a></li>
-            </ul>
-        </div>
-    </section>
-    <!-- End page-banner-section -->
-
-    <!-- blog-section
-                   ================================================== -->
     <section class="blog-section">
         <div class="container">
             <div class="row">

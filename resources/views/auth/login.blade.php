@@ -51,6 +51,19 @@
                                             <i data-feather="lock"></i>
                                         </div>
                                     </div>
+                                    <div>{!! captcha_img() !!}</div>
+                                    <div class="form-floating form-floating-custom mb-4 auth-pass-inputgroup">
+                                        <input type="text" class="form-control pe-5 @error('captcha') is-invalid @enderror" name="captcha" id="password-input" placeholder="Enter Captcha" />
+                                        @error('captcha')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        <label for="input-password">Captcha</label>
+                                        <div class="form-floating-icon">
+                                            <i data-feather="lock"></i>
+                                        </div>
+                                    </div>
 
                                     <div class="row mb-4">
                                         <div class="col">

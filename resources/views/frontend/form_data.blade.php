@@ -56,6 +56,14 @@
                                     </div>
                                 @endif
                             @endfor
+                            <div class="mb-3 row">
+                                <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Validasi Captcha</label>
+                                <div class="col-sm-10">
+                                    <div>{!! captcha_img() !!}</div>
+                                    <input type="number" class="form-control" name="captcha" id="captcha"
+                                        placeholder="Captcha">
+                                </div>
+                            </div>
                             <div class="row mt-4">
                                 <div class="col-sm-2"></div>
                                 <div class="col-sm-10 ms-auto">
