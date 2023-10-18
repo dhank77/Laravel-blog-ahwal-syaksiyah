@@ -24,6 +24,8 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('utama.menu.index') }}" data-key="t-menu">Menu Website</a></li>
                         <li><a href="{{ route('utama.halaman.index') }}" data-key="t-halaman">Data Halaman</a></li>
+                        <li><a href="{{ route('pengajar.index') }}" data-key="t-pengajar">Staff Pengajar</a></li>
+                        <li><a href="{{ route('komplain.index') }}" data-key="t-komplain">Data Komplain</a></li>
                     </ul>
                 </li>
                 <li>
@@ -32,45 +34,21 @@
                         <span data-key="t-artikel">Artikel</span>
                     </a>
                     <ul class="sub-menu {{ request()->is('artikel/*') ? "mm-show" : "" }}" aria-expanded="false">
-                        <li class="{{ request()->is('artikel/data/*') ? "mm-active" : "" }}" data-key="t-data"><a href="{{ route('artikel.artikel.index') }}">Data Artikel</a></li>
                         <li class="{{ request()->is('artikel/kategori/*') ? "mm-active" : "" }}" data-key="t-kategori"><a href="{{ route('artikel.kategori.index') }}">Kategori</a></li>
+                        <li class="{{ request()->is('artikel/data/*') ? "mm-active" : "" }}" data-key="t-data"><a href="{{ route('artikel.artikel.index') }}">Data Artikel</a></li>
+                        <li class="{{ request()->is('pengumuman/*') ? "mm-active" : "" }}" data-key="t-pengumuman"><a href="{{ route('pengumuman.index') }}">Pengumuman</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="{{ request()->is('pengumuman/*') ? "mm-active" : "" }}" href="{{ route('pengumuman.index') }}">
-                        <i data-feather="list"></i>
-                        <span data-key="t-pengumuman">Pengumuman</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="{{ request()->is('pengajar/*') ? "mm-active" : "" }}" href="{{ route('pengajar.index') }}">
-                        <i data-feather="users"></i>
-                        <span data-key="t-staff">Staff Pengajar</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="{{ request()->is('komplain/*') ? "mm-active" : "" }}" href="{{ route('komplain.index') }}">
-                        <i data-feather="rss"></i>
-                        <span data-key="t-komplain">Data Komplain</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="{{ request()->is('download/*') ? "mm-active" : "" }}" href="{{ route('download.index') }}">
+                    <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="download"></i>
-                        <span data-key="t-download">File Download</span>
+                        <span data-key="t-download">Data File</span>
                     </a>
-                </li>
-                <li>
-                    <a class="{{ request()->is('berkas/*') ? "mm-active" : "" }}" href="{{ route('berkas.index') }}">
-                        <i data-feather="archive"></i>
-                        <span data-key="t-download">Berkas</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="{{ request()->is('persuratan/*') ? "mm-active" : "" }}" href="{{ route('persuratan.index') }}">
-                        <i data-feather="mail"></i>
-                        <span data-key="t-persuratan">Persuratan</span>
-                    </a>
+                    <ul class="sub-menu {{ request()->is('download/*')|| request()->is('berkas/*') || request()->is('persuratan/*') ? "mm-show" : "" }}" aria-expanded="false">
+                        <li class="{{ request()->is('download/*') ? "mm-active" : "" }}" data-key="t-download"><a href="{{ route('download.index') }}">Data Unduhan</a></li>
+                        <li class="{{ request()->is('berkas/*') ? "mm-active" : "" }}" data-key="t-berkas"><a href="{{ route('berkas.index') }}">Data Berkas</a></li>
+                        <li class="{{ request()->is('persuratan/*') ? "mm-active" : "" }}" data-key="t-persuratan"><a href="{{ route('persuratan.index') }}">Data Persuratan</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
