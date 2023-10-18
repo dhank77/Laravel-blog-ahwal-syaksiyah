@@ -53,6 +53,7 @@
                                     <td>{{ $a->jabatan }}</td>
                                     <td>{{ $a->keahlian }}</td>
                                     <td>
+                                        <a href="{{ route('pengajar.berkas', $a->id) }}" class="btn btn-success btn-sm">Berkas</a>
                                         <a href="{{ route('pengajar.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                         <a href="{{ route('pengajar.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
                                     </td>
@@ -60,7 +61,6 @@
                             @endforeach
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

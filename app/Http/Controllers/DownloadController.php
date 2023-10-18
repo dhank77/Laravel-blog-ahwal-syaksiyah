@@ -27,6 +27,9 @@ class DownloadController extends Controller
 
     public function delete(Download $download)
     {
+        if($download->file != ""){
+            Storage::delete($download->file);
+        }
         $cr = $download->delete();
         if($cr){
             return redirect(route("download.index"))->with('success', 'Berhasil menghapus data');

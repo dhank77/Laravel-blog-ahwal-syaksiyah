@@ -83,6 +83,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('pengajar')->middleware('role:admin')->group(function () {
         Route::get('/', [PengajarController::class, 'index'])->name('pengajar.index');
         Route::get('/add', [PengajarController::class, 'add'])->name('pengajar.add');
+        Route::get('/berkas/{pengajar}', [PengajarController::class, 'berkas'])->name('pengajar.berkas');
+        Route::get('/download-berkas/{pengajar}', [PengajarController::class, 'download'])->name('pengajar.download');
         Route::post('/store', [PengajarController::class, 'store'])->name('pengajar.store');
         Route::get('/edit/{pengajar}', [PengajarController::class, 'edit'])->name('pengajar.edit');
         Route::get('/delete/{pengajar}', [PengajarController::class, 'delete'])->name('pengajar.delete');

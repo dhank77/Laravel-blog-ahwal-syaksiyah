@@ -13,7 +13,7 @@ function status($status)
             return "<div class='badge rounded-pill bg-primary'>Publish</div>";
         case '0':
             return "<div class='badge rounded-pill bg-secondary'>Draft</div>";
-        
+
         default:
             break;
     }
@@ -101,9 +101,9 @@ function get_kategori_all($id)
     $exp = explode(',', $id);
     $send = '';
     foreach ($exp as $key => $value) {
-        if($key == 0){
+        if ($key == 0) {
             $send = Kategori::where('id', $value)->value('nama');
-        }else{
+        } else {
             $send .= ", " . Kategori::where('id', $value)->value('nama');
         }
     }
@@ -131,9 +131,10 @@ function roles()
     return auth()->user()->getRoleNames()[0];
 }
 
-function getRomawi($bln){
+function getRomawi($bln)
+{
 
-    switch ($bln){
+    switch ($bln) {
         case 1:
             return "I";
             break;
@@ -171,5 +172,23 @@ function getRomawi($bln){
             return "XII";
             break;
     }
+}
 
- }
+function formatSizeUnits($bytes)
+{
+    if ($bytes >= 1073741824) {
+        $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+    } elseif ($bytes >= 1048576) {
+        $bytes = number_format($bytes / 1048576, 2) . ' MB';
+    } elseif ($bytes >= 1024) {
+        $bytes = number_format($bytes / 1024, 2) . ' KB';
+    } elseif ($bytes > 1) {
+        $bytes = $bytes . ' bytes';
+    } elseif ($bytes == 1) {
+        $bytes = $bytes . ' byte';
+    } else {
+        $bytes = '0 bytes';
+    }
+
+    return $bytes;
+}
