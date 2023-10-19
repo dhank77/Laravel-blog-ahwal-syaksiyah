@@ -78,6 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('komplain')->middleware('role:admin')->group(function () {
         Route::get('/', [KomplainController::class, 'index'])->name('komplain.index');
         Route::get('/json', [KomplainController::class, 'json'])->name('komplain.json');
+        Route::get('/download', [KomplainController::class, 'download'])->name('komplain.download');
         Route::get('/delete/{komplain}', [KomplainController::class, 'delete'])->name('komplain.delete');
     });
     Route::prefix('pengajar')->middleware('role:admin')->group(function () {

@@ -13,6 +13,12 @@ class KomplainController extends Controller
         return view('komplain.index');
     }
 
+    function download()
+    {
+        $data = Komplain::latest()->get();
+        return view('komplain.download', compact('data'));
+    }
+
     function json()
     {
         $data = Komplain::latest();

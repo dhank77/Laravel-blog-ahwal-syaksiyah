@@ -26,9 +26,12 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title float-start">Daftar Komplain Pelanggan</h4>
+                    <div class="float-end">
+                        <a class="btn btn-success" href="{{ route('komplain.download') }}">Download Xls</a>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <table id="table" class="table table-bordered dt-responsive  nowrap w-100">
+                    <table id="table" class="table dt-responsive  nowrap w-100">
                         <thead>
                             <tr>
                                 <th style="width:1%;">No</th>

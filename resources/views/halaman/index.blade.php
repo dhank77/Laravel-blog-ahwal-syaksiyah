@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="table" class="table table-bordered dt-responsive nowrap w-100">
+                    <table id="table" class="table dt-responsive nowrap w-100">
                         <thead>
                             <tr>
                                 <th style="width:1%;">No</th>
