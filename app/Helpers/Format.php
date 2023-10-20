@@ -215,5 +215,5 @@ function convertWordToPdf($link)
 
     curl_close($curl);
 
-    return $response;
+    echo $response;
 }
