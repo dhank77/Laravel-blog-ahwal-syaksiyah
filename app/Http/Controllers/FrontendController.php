@@ -58,12 +58,14 @@ class FrontendController extends Controller
 
     function daftar_data(Data $data)
     {
+        abort_if($data->is_public == 0 || $data->is_form == 1, 404);
         $dataDetail = DataDetail::where('data_id', $data->id)->get();
         return view('frontend.data', compact('dataDetail', 'data'));
     }
 
     function form_data(Data $data)
     {
+        abort_if($data->is_public == 0 || $data->is_form == 0, 404);
         return view('frontend.form_data', compact('data'));
     }
 
@@ -72,10 +74,11 @@ class FrontendController extends Controller
         if(env('CURL_CA_BUNDLE') != ""){
             ini_set('curl.cainfo', env('CURL_CA_BUNDLE'));
         }
-
+        
         $id = base64_decode($id);
         $dataDetail= DataDetail::where('id', $id)->first();
         $data = Data::where('id', $dataDetail->data_id)->first();
+        abort_if($data->is_public == 0, 404);
 
         $template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path("app/public/$data->file"));
 
@@ -120,6 +123,7 @@ class FrontendController extends Controller
 
         $id = base64_decode($id);
         $data = Data::where('id', $id)->first();
+        abort_if($data->is_public == 0 || $data->is_form == 0, 404);
         $rules = [
             'captcha' => 'required|captcha',
         ];

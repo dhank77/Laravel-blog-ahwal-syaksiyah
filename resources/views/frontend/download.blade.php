@@ -19,8 +19,8 @@
             <div class="blog-box">
                 <h4>Download Data</h4>
                 <div class="card">
-                    <div class="card-body">
-                        <table id="datatable" class="table table-striped table-bordered table-hover" width="100%">
+                    <div class="card-body table-responsive">
+                        <table id="datatable" class="table table-striped table-bordered  table-hover" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center" width="1%">No</th>
@@ -35,9 +35,9 @@
                                         <td class="text-left">{{ $d->nama }}</td>
                                         <td class="text-center">
                                             @if($d->is_form == 1)
-                                                <a href="{{ route('form_data', $d->id) }}" class="btn btn-primary btn-sm"> Isi Data</a>
+                                                <a href="{{ route('form_data', $d->id) }}" class="btn btn-primary btn-sm"> <b>Isi Form</b></a>
                                             @else
-                                                <a href="{{ route('daftar_data', $d->id) }}" class="btn btn-primary btn-sm"> Lihat Daftar Data</a>
+                                                <a href="{{ route('daftar_data', $d->id) }}" class="btn btn-success btn-sm"> <b>Lihat Data</b></a>
                                             @endif
                                         </td>
                                     </tr>
@@ -51,7 +51,7 @@
             <div class="blog-box">
                 <h4>Download Format</h4>
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <table id="datatable2" class="table table-striped table-bordered table-hover" width="100%">
                             <thead>
                                 <tr>
