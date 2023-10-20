@@ -69,6 +69,10 @@ class FrontendController extends Controller
 
     function create_pdf($id)
     {
+        if(env('CURL_CA_BUNDLE') != ""){
+            ini_set('curl.cainfo', env('CURL_CA_BUNDLE'));
+        }
+
         $id = base64_decode($id);
         $dataDetail= DataDetail::where('id', $id)->first();
         $data = Data::where('id', $dataDetail->data_id)->first();
@@ -91,7 +95,11 @@ class FrontendController extends Controller
         $paramsUrl = url("new-result" . date("ymdhis") . ".docx");
         set_time_limit(0); 
         $link = "https://psg4-word-view.officeapps.live.com/wv/WordViewer/request.pdf?WOPIsrc=http%3A%2F%2Fpsg3-view-wopi%2Ewopi%2Eonline%2Eoffice%2Enet%3A808%2Foh%2Fwopi%2Ffiles%2F%40%2FwFileId%3FwFileId%3D$paramsUrl&access_token=1&access_token_ttl=0&z=dce785126488e4f952cc69b50e330603d7517b89c1f01bd14796eee9b097a030&type=downloadpdf&useNamedAction=1";
-        $file = file_get_contents($link);
+        $file = @file_get_contents($link);
+
+        if ($file === false) {
+            return "Error: " . error_get_last()['message'];
+        }
 
         $name = 'new-result.pdf';
         $savePdfPath = public_path($name);
@@ -109,7 +117,9 @@ class FrontendController extends Controller
 
     function form_data_store($id)
     {
-        
+        if(env('CURL_CA_BUNDLE') != ""){
+            ini_set('curl.cainfo', env('CURL_CA_BUNDLE'));
+        }
 
         $id = base64_decode($id);
         $data = Data::where('id', $id)->first();
@@ -149,7 +159,11 @@ class FrontendController extends Controller
         $paramsUrl = url("new-result" . date("ymdhis") . ".docx");
         set_time_limit(0); 
         $link = "https://psg4-word-view.officeapps.live.com/wv/WordViewer/request.pdf?WOPIsrc=http%3A%2F%2Fpsg3-view-wopi%2Ewopi%2Eonline%2Eoffice%2Enet%3A808%2Foh%2Fwopi%2Ffiles%2F%40%2FwFileId%3FwFileId%3D$paramsUrl&access_token=1&access_token_ttl=0&z=dce785126488e4f952cc69b50e330603d7517b89c1f01bd14796eee9b097a030&type=downloadpdf&useNamedAction=1";
-        $file = file_get_contents($link);
+        $file = @file_get_contents($link);
+
+        if ($file === false) {
+            return "Error: " . error_get_last()['message'];
+        }
 
         $name = 'new-result.pdf';
         $savePdfPath = public_path($name);
