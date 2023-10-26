@@ -47,6 +47,27 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
+                                <label for="pddikti" class="col-sm-2 form-label align-self-center mb-lg-0">Link PDDikti</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="pddikti" id="pddikti"
+                                        placeholder="PDDikti" value="{{ $pengajar->pddikti }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="sinta" class="col-sm-2 form-label align-self-center mb-lg-0">Link Sinta</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="sinta" id="sinta"
+                                        placeholder="Sinta" value="{{ $pengajar->sinta }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="scholar" class="col-sm-2 form-label align-self-center mb-lg-0">Link Scholar</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="scholar" id="scholar"
+                                        placeholder="Scholar" value="{{ $pengajar->scholar }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
                                 <label for="gambar"
                                     class="col-sm-2 form-label align-self-center mb-lg-0">Foto</label>
                                 <div class="col-sm-10">

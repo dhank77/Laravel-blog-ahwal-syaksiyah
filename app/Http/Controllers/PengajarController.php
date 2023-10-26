@@ -70,6 +70,9 @@ class PengajarController extends Controller
             'nama' => 'required|string',
             'jabatan' => 'required|string',
             'keahlian' => 'required',
+            'pddikti' => 'nullable',
+            'sinta' => 'nullable',
+            'scholar' => 'nullable',
             'gambar' => 'max:2048|mimes:png,jpg,jpeg',
         ];
         

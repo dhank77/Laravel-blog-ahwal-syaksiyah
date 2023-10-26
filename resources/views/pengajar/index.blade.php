@@ -39,6 +39,7 @@
                                 <th>Nama Lengkap</th>
                                 <th style="width:20%;">Jabatan</th>
                                 <th style="width:20%;">Keahlian</th>
+                                <th style="width:20%;">Link</th>
                                 <th style="width:1%;">Opsi</th>
                             </tr>
                         </thead>
@@ -52,6 +53,23 @@
                                     <td>{{ $a->nama }}</td>
                                     <td>{{ $a->jabatan }}</td>
                                     <td>{{ $a->keahlian }}</td>
+                                    <td>
+                                        @if($a->pddikti != "")
+                                            <a href="{{ $a->pddikti }}" class="text-primary" target="_blank"><span class="text-success">✓</span> PDDikti</a> <br/>
+                                        @else
+                                            <span class="text-danger">X</span> <span>PDDikti</span> <br/>
+                                        @endif
+                                        @if($a->sinta != "")
+                                            <a href="{{ $a->sinta }}" class="text-primary" target="_blank"><span class="text-success">✓</span> Sinta</a> <br/>
+                                        @else
+                                            <span class="text-danger">X</span> <span>Sinta</span> <br/>
+                                        @endif
+                                        @if($a->scholar != "")
+                                            <a href="{{ $a->scholar }}" class="text-primary" target="_blank"><span class="text-success">✓</span> Scholar</a>
+                                        @else
+                                            <span class="text-danger">X</span> <span>Scholar</span> <br/>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ route('pengajar.berkas', $a->id) }}" class="btn btn-success btn-sm">Berkas</a>
                                         <a href="{{ route('pengajar.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
