@@ -51,8 +51,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-10 ms-auto">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="button" class="btn btn-danger">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="button" class="btn btn-danger">Batal</button>
                                 </div>
                             </div>
                         </form>

@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="table" class="table dt-responsive nowrap w-100">
+                    <table id="table" class="table dt-responsive">
                         <thead>
                             <tr>
                                 <th style="width:1%;">No</th>
@@ -41,22 +41,6 @@
                                 <th style="width:1%;">Opsi</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
-                            @foreach ($halaman as $k => $a)
-                                <tr>
-                                    <td>{{ $k + 1 }}</td>
-                                    <td>
-                                        <img src="{{ asset("storage/$a->gambar") }}" style="width:100px; height:50px;" />
-                                    </td>
-                                    <td>{{ $a->judul }}</td>
-                                    <td>{{ dmyhi($a->created_at) }}</td>
-                                    <td>
-                                        <a href="{{ route('utama.halaman.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('utama.halaman.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody> --}}
                     </table>
 
                 </div>

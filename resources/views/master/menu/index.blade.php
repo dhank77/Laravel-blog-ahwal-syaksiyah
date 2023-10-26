@@ -84,8 +84,8 @@
 
                             <div class="row">
                                 <div class="col-sm-10 ms-auto">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="button" class="btn btn-danger">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="button" class="btn btn-danger">Batal</button>
                                 </div>
                             </div>
                         </form>
@@ -114,13 +114,9 @@
                                         <a href="{{ route('utama.menu.down', $m->id) }}" class="btn btn-sm btn-dark"><i
                                                 class="fas fa-arrow-circle-down"></i></a>
                                     @endif
-                                    @if (!in_array($m->nama, ['Berita', 'Pengumuman', 'Staff Pengajar', 'Komplain Pelanggan', 'Download File']))
-                                        <a href="#"
-                                            onclick="editMenu('{{ $m->id }}', '{{ $m->nama }}', '{{ $m->link }}', '{{ $m->parent_id }}')"
-                                            class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
-                                        <a href="{{ route('utama.menu.delete', $m->id) }}"
-                                            class="btn btn-sm btn-danger swalUmum"><i class="fas fa-trash"></i></a>
-                                    @endif
+                                    <a href="#" onclick="editMenu('{{ $m->id }}', '{{ $m->nama }}', '{{ $m->link }}', '{{ $m->parent_id }}')"
+                                        class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                                    <a href="{{ route('utama.menu.delete', $m->id) }}" class="btn btn-sm btn-danger swalUmum"><i class="fas fa-trash"></i></a>
                                 </div>
                             </h5>
                             <div style="margin-left:50px;">
