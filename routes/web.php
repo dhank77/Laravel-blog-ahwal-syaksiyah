@@ -18,6 +18,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\SambutanController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\ShortController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +37,7 @@ Auth::routes(['register' => false]);
 Route::get('index/{locale}', [HomeController::class, 'lang']);
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/link/{slug}', [FrontendController::class, 'short'])->name('short');
 Route::get('/komplain-pelanggan', [FrontendController::class, 'komplain'])->name('komplain');
 Route::post('/store-komplain-pelanggan', [FrontendController::class, 'komplain_store'])->name('komplain.store');
 Route::get('/staff-pengajar', [FrontendController::class, 'pengajar'])->name('pengajar');
@@ -80,6 +82,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/json', [KomplainController::class, 'json'])->name('komplain.json');
         Route::get('/download', [KomplainController::class, 'download'])->name('komplain.download');
         Route::get('/delete/{komplain}', [KomplainController::class, 'delete'])->name('komplain.delete');
+    });
+    Route::prefix('short')->middleware('role:admin')->group(function () {
+        Route::get('/', [ShortController::class, 'index'])->name('short.index');
+        Route::get('/json', [ShortController::class, 'json'])->name('short.json');
+        Route::get('/add', [ShortController::class, 'add'])->name('short.add');
+        Route::get('/edit/{short}', [ShortController::class, 'edit'])->name('short.edit');
+        Route::post('/store', [ShortController::class, 'store'])->name('short.store');
+        Route::get('/delete/{short}', [ShortController::class, 'delete'])->name('short.delete');
     });
     Route::prefix('pengajar')->middleware('role:admin')->group(function () {
         Route::get('/', [PengajarController::class, 'index'])->name('pengajar.index');

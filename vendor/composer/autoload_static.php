@@ -701,6 +701,7 @@ class ComposerStaticInitda61cbaf43b5f7e7941fb89aac5a9ef8
         'App\\Models\\Master\\Menu' => __DIR__ . '/../..' . '/app/Models/Master/Menu.php',
         'App\\Models\\Pengajar' => __DIR__ . '/../..' . '/app/Models/Pengajar.php',
         'App\\Models\\Pengumuman' => __DIR__ . '/../..' . '/app/Models/Pengumuman.php',
+        'App\\Models\\Short' => __DIR__ . '/../..' . '/app/Models/Short.php',
         'App\\Models\\Testimoni' => __DIR__ . '/../..' . '/app/Models/Testimoni.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

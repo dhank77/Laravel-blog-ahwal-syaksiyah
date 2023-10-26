@@ -23,27 +23,34 @@
                         @foreach($pengajar as $key => $value)
                             <div class="col-lg-4 col-md-4">
                                 <div class="teacher-post">
-                                    <a href="#">
-                                        <img src="{{ asset("storage/$value->gambar") }}" alt="foto-{{ $value->nama }}" class="rounded" style="height:400px;">
-                                        <div class="hover-post">
-                                            <h4 class="mb-2">{{ $value->nama }}</h4>
-                                            <span>Jabatan : {{ $value->jabatan }}</span> <br/>
-                                            <span>Keahlian : {{ $value->keahlian }}</span>
-                                        </div>
-                                    </a>
-									<div class="d-flex justify-content-center">
-										<a target="_blank" href="{{ $value->pddikti }}" class="text-center mr-2 p-2 rounded">
-											<img style="width:50px; height:50px;" src="/pddikti.png" alt="pddikti">
-											<p>PDDikti</p>
-										</a>
-										<a target="_blank" href="{{ $value->sinta }}" class="text-center mr-2 p-2">
-											<img style="width:50px; height:50px;" src="/sinta.png" alt="sinta">
-											<p>Sinta</p>
-										</a>
-										<a target="_blank" href="{{ $value->scholar }}" class="text-center p-2">
-											<img style="width:50px; height:50px;" src="/scholar.png" alt="scholar">
-											<p>Scholar</p>
-										</a>
+									
+                                    <div class="card">
+										<div class="card-footer">
+											<a href="#">
+												<img src="{{ asset("storage/$value->gambar") }}" alt="foto-{{ $value->nama }}" class="rounded" style="height:400px;">
+												<div class="hover-post">
+													<h4 class="mb-2">{{ $value->nama }}</h4>
+													<span>Jabatan : {{ $value->jabatan }}</span> <br/>
+													<span>Keahlian : {{ $value->keahlian }}</span>
+												</div>
+											</a>
+										</div>
+										<div class="card-body p-0">
+											<div class="d-flex justify-content-center">
+												<a target="_blank" href="{{ $value->pddikti }}" class="text-center mr-2 p-2 rounded">
+													<img style="width:50px; height:50px;" src="/pddikti.png" alt="pddikti">
+													<p>PDDikti</p>
+												</a>
+												<a target="_blank" href="{{ $value->sinta }}" class="text-center mr-2 p-2">
+													<img style="width:50px; height:50px;" src="/sinta.png" alt="sinta">
+													<p>Sinta</p>
+												</a>
+												<a target="_blank" href="{{ $value->scholar }}" class="text-center p-2">
+													<img style="width:50px; height:50px;" src="/scholar.png" alt="scholar">
+													<p>Scholar</p>
+												</a>
+											</div>
+										</div>
 									</div>
                                 </div>
                             </div>

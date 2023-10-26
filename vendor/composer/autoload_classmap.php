@@ -56,6 +56,7 @@ return array(
     'App\\Models\\Master\\Menu' => $baseDir . '/app/Models/Master/Menu.php',
     'App\\Models\\Pengajar' => $baseDir . '/app/Models/Pengajar.php',
     'App\\Models\\Pengumuman' => $baseDir . '/app/Models/Pengumuman.php',
+    'App\\Models\\Short' => $baseDir . '/app/Models/Short.php',
     'App\\Models\\Testimoni' => $baseDir . '/app/Models/Testimoni.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

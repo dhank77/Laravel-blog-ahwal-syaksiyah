@@ -12,6 +12,7 @@ use App\Models\Master\Kategori;
 use App\Models\Master\Komponen;
 use App\Models\Pengajar;
 use App\Models\Pengumuman;
+use App\Models\Short;
 use App\Models\Testimoni;
 use Share;
 
@@ -24,6 +25,13 @@ class FrontendController extends Controller
         $testimoni = Testimoni::latest()->get();
         $pengumuman = Pengumuman::latest()->limit(5)->get();
         return view('frontend.index', compact('banner', 'sambutan', 'testimoni', 'pengumuman'));
+    }
+
+    function short($slug)
+    {
+        $short = Short::where('slug', $slug)->value('url_tujuan');
+        abort_if(is_null($short),404);
+        return redirect($short);
     }
 
     public function komplain()

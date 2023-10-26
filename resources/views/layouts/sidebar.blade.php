@@ -51,6 +51,12 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="{{ route('short.index') }}">
+                        <i data-feather="external-link"></i>
+                        <span data-key="t-external-link">Short Link</span>
+                    </a>
+                </li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="settings"></i>
                         <span data-key="t-setting">Setting Website</span>
