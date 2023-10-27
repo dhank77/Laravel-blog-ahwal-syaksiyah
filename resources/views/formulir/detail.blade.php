@@ -27,7 +27,7 @@
                 <div class="card-header">
                     <h4 class="card-title float-start">Daftar Formulir : {{ $formulir->nama }} <br/>
                         Link : <a href="{{ url("form/$formulir->slug") }}">{{ url("form/$formulir->slug") }}</a> <br/>
-                        Jumlah Pendaftar : {{ jumlahPendaftarFormulir($formulir->id) }} Peserta
+                        Jumlah Pendaftar : <span class="text-success">{{ jumlahPendaftarFormulir($formulir->id) }} Peserta</span> 
                     </h4>
                     <div class="float-end">
                         <a href="{{ route('formulir.download_file', $formulir->id) }}" class="btn btn-primary mr-4">Download Semua berkas (Zip File)</a>
