@@ -22,18 +22,7 @@ use App\Http\Controllers\ShortController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Auth::routes(['register' => false]);
-//Language Translation
 Route::get('index/{locale}', [HomeController::class, 'lang']);
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
@@ -44,8 +33,8 @@ Route::get('/staff-pengajar', [FrontendController::class, 'pengajar'])->name('pe
 Route::get('/berita', [FrontendController::class, 'berita'])->name('berita');
 Route::get('/pengumuman', [FrontendController::class, 'pengumuman'])->name('pengumuman');
 Route::get('/download-file', [FrontendController::class, 'download'])->name('download');
-Route::get('/daftar-data/{data}', [FrontendController::class, 'daftar_data'])->name('daftar_data');
-Route::get('/form-data/{data}', [FrontendController::class, 'form_data'])->name('form_data');
+Route::get('/data/{slug}', [FrontendController::class, 'daftar_data'])->name('daftar_data');
+Route::get('/form/{slug}', [FrontendController::class, 'form_data'])->name('form_data');
 Route::get('/create-pdf/{id}', [FrontendController::class, 'create_pdf'])->name('create_pdf');
 Route::post('/form_data_store/{id}', [FrontendController::class, 'form_data_store'])->name('form_data_store');
 Route::get('/kategori/{kategori}', [FrontendController::class, 'kategori'])->name('kategori');

@@ -64,15 +64,17 @@ class FrontendController extends Controller
         return view('frontend.download', compact('download', 'data'));
     }
 
-    function daftar_data(Data $data)
+    function daftar_data($slug)
     {
+        $data = Data::orderBy('nama')->where('slug', $slug)->first();
         abort_if($data->is_public == 0 || $data->is_form == 1, 404);
         $dataDetail = DataDetail::where('data_id', $data->id)->get();
         return view('frontend.data', compact('dataDetail', 'data'));
     }
 
-    function form_data(Data $data)
+    function form_data($slug)
     {
+        $data = Data::orderBy('nama')->where('slug', $slug)->first();
         abort_if($data->is_public == 0 || $data->is_form == 0, 404);
         return view('frontend.form_data', compact('data'));
     }

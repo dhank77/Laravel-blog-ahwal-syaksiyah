@@ -677,6 +677,7 @@ class ComposerStaticInitda61cbaf43b5f7e7941fb89aac5a9ef8
         'App\\Http\\Controllers\\PengajarController' => __DIR__ . '/../..' . '/app/Http/Controllers/PengajarController.php',
         'App\\Http\\Controllers\\PengumumanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PengumumanController.php',
         'App\\Http\\Controllers\\SambutanController' => __DIR__ . '/../..' . '/app/Http/Controllers/SambutanController.php',
+        'App\\Http\\Controllers\\ShortController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShortController.php',
         'App\\Http\\Controllers\\TestimoniController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestimoniController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

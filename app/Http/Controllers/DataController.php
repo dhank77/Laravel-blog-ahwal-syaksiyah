@@ -56,6 +56,15 @@ class DataController extends Controller
         
         $data = request()->except('_token', 'id');
 
+        if(!$id){
+            $slug = Str::slug(request('nama'));
+        }else{
+            $slug = Data::where('id', $id)->value('slug');
+            if($slug == ""){
+                $slug = Str::slug(request('nama'));
+            }
+        }
+
         if(request()->file('file')){
             if($id){
                 $file = Data::where('id', $id)->value('file');
@@ -64,6 +73,8 @@ class DataController extends Controller
 
             $data['file'] = request()->file('file')->storeAs("uploads/format", Str::slug(request('nama')) . "-" . date("ymdhis") . "." . request()->file('file')->extension());
         }
+
+        $data['slug'] = $slug;
 
         $cr = Data::updateOrCreate(['id' => $id], $data);
         if($cr){

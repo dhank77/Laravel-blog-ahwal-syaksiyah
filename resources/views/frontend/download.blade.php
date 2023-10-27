@@ -35,9 +35,9 @@
                                         <td class="text-left">{{ $d->nama }}</td>
                                         <td class="text-center">
                                             @if($d->is_form == 1)
-                                                <a href="{{ route('form_data', $d->id) }}" class="btn btn-primary btn-sm"> <b>Isi Form</b></a>
+                                                <a href="{{ route('form_data', $d->slug) }}" class="btn btn-primary btn-sm"> <b>Isi Form</b></a>
                                             @else
-                                                <a href="{{ route('daftar_data', $d->id) }}" class="btn btn-success btn-sm"> <b>Lihat Data</b></a>
+                                                <a href="{{ route('daftar_data', $d->slug) }}" class="btn btn-success btn-sm"> <b>Lihat Data</b></a>
                                             @endif
                                         </td>
                                     </tr>

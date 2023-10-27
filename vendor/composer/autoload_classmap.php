@@ -32,6 +32,7 @@ return array(
     'App\\Http\\Controllers\\PengajarController' => $baseDir . '/app/Http/Controllers/PengajarController.php',
     'App\\Http\\Controllers\\PengumumanController' => $baseDir . '/app/Http/Controllers/PengumumanController.php',
     'App\\Http\\Controllers\\SambutanController' => $baseDir . '/app/Http/Controllers/SambutanController.php',
+    'App\\Http\\Controllers\\ShortController' => $baseDir . '/app/Http/Controllers/ShortController.php',
     'App\\Http\\Controllers\\TestimoniController' => $baseDir . '/app/Http/Controllers/TestimoniController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
