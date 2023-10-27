@@ -16,7 +16,7 @@ class HalamanController extends Controller
 
     function json()
     {
-        $data = Halaman::latest()->get();
+        $data = Halaman::latest();
 
         return DataTables::of($data)
             ->addIndexColumn()

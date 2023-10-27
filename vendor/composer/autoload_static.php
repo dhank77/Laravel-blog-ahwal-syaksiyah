@@ -695,6 +695,8 @@ class ComposerStaticInitda61cbaf43b5f7e7941fb89aac5a9ef8
         'App\\Models\\Data' => __DIR__ . '/../..' . '/app/Models/Data.php',
         'App\\Models\\DataDetail' => __DIR__ . '/../..' . '/app/Models/DataDetail.php',
         'App\\Models\\Download' => __DIR__ . '/../..' . '/app/Models/Download.php',
+        'App\\Models\\Formulir' => __DIR__ . '/../..' . '/app/Models/Formulir.php',
+        'App\\Models\\FormulirDetail' => __DIR__ . '/../..' . '/app/Models/FormulirDetail.php',
         'App\\Models\\Halaman' => __DIR__ . '/../..' . '/app/Models/Halaman.php',
         'App\\Models\\Komplain' => __DIR__ . '/../..' . '/app/Models/Komplain.php',
         'App\\Models\\Master\\Kategori' => __DIR__ . '/../..' . '/app/Models/Master/Kategori.php',

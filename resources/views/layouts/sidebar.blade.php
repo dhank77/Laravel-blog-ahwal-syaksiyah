@@ -48,6 +48,7 @@
                         <li class="{{ request()->is('download/*') ? "mm-active" : "" }}" data-key="t-download"><a href="{{ route('download.index') }}">Data Unduhan</a></li>
                         <li class="{{ request()->is('berkas/*') ? "mm-active" : "" }}" data-key="t-berkas"><a href="{{ route('berkas.index') }}">Data Berkas</a></li>
                         <li class="{{ request()->is('persuratan/*') ? "mm-active" : "" }}" data-key="t-persuratan"><a href="{{ route('persuratan.index') }}">Data Persuratan</a></li>
+                        <li class="{{ request()->is('formulir/*') ? "mm-active" : "" }}" data-key="t-formulir"><a href="{{ route('formulir.index') }}">Data Formulir</a></li>
                     </ul>
                 </li>
                 <li>

@@ -5,10 +5,10 @@
        ================================================== -->
     <section class="page-banner-section">
         <div class="container">
-            <h1>Form Data</h1>
+            <h1>Form Pengisian Surat</h1>
             <ul class="page-depth">
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Form Data</a></li>
+                <li><a href="#">Form Pengisian Surat</a></li>
             </ul>
         </div>
     </section>
@@ -17,7 +17,7 @@
     <section class="blog-section">
         <div class="container">
             <div class="blog-box">
-                <h4>Form Data : {{ $data->nama }}</h4>
+                <h4>Surat : {{ $data->nama }}</h4>
                 <div class="card">
                     <div class="card-body">
                         <form method="post" action="{{ route('form_data_store', base64_encode($data->id)) }}">

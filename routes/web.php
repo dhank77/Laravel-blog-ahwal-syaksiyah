@@ -18,6 +18,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\SambutanController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\FormulirController;
 use App\Http\Controllers\ShortController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -34,9 +35,11 @@ Route::get('/berita', [FrontendController::class, 'berita'])->name('berita');
 Route::get('/pengumuman', [FrontendController::class, 'pengumuman'])->name('pengumuman');
 Route::get('/download-file', [FrontendController::class, 'download'])->name('download');
 Route::get('/data/{slug}', [FrontendController::class, 'daftar_data'])->name('daftar_data');
-Route::get('/form/{slug}', [FrontendController::class, 'form_data'])->name('form_data');
+Route::get('/surat/{slug}', [FrontendController::class, 'form_data'])->name('form_data');
+Route::get('/form/{slug}', [FrontendController::class, 'isi_form'])->name('isi_form');
 Route::get('/create-pdf/{id}', [FrontendController::class, 'create_pdf'])->name('create_pdf');
 Route::post('/form_data_store/{id}', [FrontendController::class, 'form_data_store'])->name('form_data_store');
+Route::post('/isi_form_store/{id}', [FrontendController::class, 'isi_form_store'])->name('isi_form_store');
 Route::get('/kategori/{kategori}', [FrontendController::class, 'kategori'])->name('kategori');
 
 Route::middleware('auth')->group(function () {
@@ -126,6 +129,18 @@ Route::middleware('auth')->group(function () {
         Route::post('/import', [DataController::class, 'import'])->name('persuratan.import');
         Route::get('/param_delete/{dataDetail}', [DataController::class, 'param_delete'])->name('persuratan.param_delete');
         Route::get('/download/{id}', [DataController::class, 'download'])->name('persuratan.download');
+    });
+    Route::prefix('formulir')->middleware('role:admin')->group(function () {
+        Route::get('/', [FormulirController::class, 'index'])->name('formulir.index');
+        Route::get('/add', [FormulirController::class, 'add'])->name('formulir.add');
+        Route::get('/json', [FormulirController::class, 'json'])->name('formulir.json');
+        Route::get('/edit/{formulir}', [FormulirController::class, 'edit'])->name('formulir.edit');
+        Route::post('/store', [FormulirController::class, 'store'])->name('formulir.store');
+        Route::get('/delete/{formulir}', [FormulirController::class, 'delete'])->name('formulir.delete');
+        Route::get('/detail/{formulir}', [FormulirController::class, 'detail'])->name('formulir.detail');
+
+        Route::get('/download_file/{formulir}', [FormulirController::class, 'download_file'])->name('formulir.download_file');
+        Route::get('/download_xls/{formulir}', [FormulirController::class, 'download_xls'])->name('formulir.download_xls');
     });
     
     Route::prefix('artikel')->group(function () {

@@ -43,7 +43,7 @@ class BerkasController extends Controller
         $rules = [
             'nama' => 'required|string',
             'pengajar_id' => 'nullable',
-            'file' => 'max:2048|max:2048|mimes:png,jpg,jpeg,doc,docx,pdf,xls,xlsx,ppt,pptx',
+            'file' => 'max:2048|mimes:png,jpg,jpeg,doc,docx,pdf,xls,xlsx,ppt,pptx',
         ];
         
         $id = request('id');

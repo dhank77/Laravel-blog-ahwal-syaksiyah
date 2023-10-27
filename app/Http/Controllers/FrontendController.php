@@ -7,6 +7,8 @@ use App\Models\Banner;
 use App\Models\Data;
 use App\Models\DataDetail;
 use App\Models\Download;
+use App\Models\Formulir;
+use App\Models\FormulirDetail;
 use App\Models\Komplain;
 use App\Models\Master\Kategori;
 use App\Models\Master\Komponen;
@@ -15,6 +17,7 @@ use App\Models\Pengumuman;
 use App\Models\Short;
 use App\Models\Testimoni;
 use Share;
+use Illuminate\Support\Str;
 
 class FrontendController extends Controller
 {
@@ -77,6 +80,13 @@ class FrontendController extends Controller
         $data = Data::orderBy('nama')->where('slug', $slug)->first();
         abort_if($data->is_public == 0 || $data->is_form == 0, 404);
         return view('frontend.form_data', compact('data'));
+    }
+
+    function isi_form($slug)
+    {
+        $formulir = Formulir::orderBy('nama')->where('slug', $slug)->first();
+        abort_if($formulir->is_aktif == 0, 404);
+        return view('frontend.isi_formulir', compact('formulir'));
     }
 
     function create_pdf($id)
@@ -185,6 +195,53 @@ class FrontendController extends Controller
         }
 
         return redirect($name);
+    }
+
+    function isi_form_store($id)
+    {
+        $id = base64_decode($id);
+        $data = Formulir::where('id', $id)->first();
+        abort_if($data->is_aktif == 0, 404);
+        $rules = [
+            'captcha' => 'required|captcha',
+        ];
+
+        for ($i=1; $i <= 9 ; $i++) { 
+            $params = "param$i";
+            if($data->$params == 1){
+                $rules[$params] = "required";
+            }
+        }
+        for ($i=1; $i <= 5 ; $i++) { 
+            $files = "file$i";
+            if($data->$files == 1){
+                $rules[$files] = "required|max:2048|mimes:png,jpg,jpeg,doc,docx,pdf,xls,xlsx,ppt,pptx";
+            }
+        }
+        request()->validate($rules);
+        $send = request()->except('captcha', '_token');
+
+        for ($i=1; $i <= 5 ; $i++) { 
+            $files = "file$i";
+            if($data->param1 == 1){
+                $namaFile =  Str::slug(request('param1'));
+            }else{
+                $namaFile = rand(111111,999999);
+            }
+            if($data->$files == 1 && request()->file($files)){
+                $path = "/formulir/$data->slug";
+                $send[$files] = request()->file($files)->storeAs($path, $namaFile . "-" . $files . "-" . date("ymdhis") . "." . request()->file($files)->extension());
+            }
+        }
+
+        $send['formulir_id'] = $id;
+        $cr = FormulirDetail::create($send);
+        if($cr){
+            return redirect()->back()->with('success', 'Berhasil mengisi form!');
+        }else{
+            return redirect()->back()->with('error', 'Gagal mengisi form!');
+        }
+        
     }
 
     public function kategori(Kategori $kategori)

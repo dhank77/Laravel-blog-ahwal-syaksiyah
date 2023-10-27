@@ -50,6 +50,8 @@ return array(
     'App\\Models\\Data' => $baseDir . '/app/Models/Data.php',
     'App\\Models\\DataDetail' => $baseDir . '/app/Models/DataDetail.php',
     'App\\Models\\Download' => $baseDir . '/app/Models/Download.php',
+    'App\\Models\\Formulir' => $baseDir . '/app/Models/Formulir.php',
+    'App\\Models\\FormulirDetail' => $baseDir . '/app/Models/FormulirDetail.php',
     'App\\Models\\Halaman' => $baseDir . '/app/Models/Halaman.php',
     'App\\Models\\Komplain' => $baseDir . '/app/Models/Komplain.php',
     'App\\Models\\Master\\Kategori' => $baseDir . '/app/Models/Master/Kategori.php',

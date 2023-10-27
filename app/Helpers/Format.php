@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Artikel;
+use App\Models\FormulirDetail;
 use App\Models\Master\Kategori;
 use App\Models\Master\Komponen;
 use App\Models\Master\Menu;
@@ -218,4 +219,8 @@ function convertWordToPdf($link)
     curl_close($curl);
 
     return $response;
+}
+
+function jumlahPendaftarFormulir($id){
+    return FormulirDetail::where('formulir_id', $id)->count();
 }
