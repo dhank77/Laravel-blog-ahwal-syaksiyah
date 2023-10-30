@@ -89,6 +89,7 @@
                             <tr>
                                 <th style="width:1%;">No</th>
                                 <th>Download</th>
+                                <th>Link</th>
                                 @if($data->is_nama == 1)
                                     <th>Nama</th>
                                 @endif
@@ -113,6 +114,9 @@
                                     <td>{{ $k + 1 }}</td>
                                     <td>
                                         <a href="{{ route('persuratan.download', $a->id) }}" class="btn btn-warning btn-sm">Download</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('filesurat', [$data->slug, base64_encode($a->id)]) }}">{{ route('filesurat', [$data->slug, base64_encode($a->id)]) }}</a>
                                     </td>
                                     @if($data->is_nama == 1)
                                         <td>{{ $a->nama }}</td>

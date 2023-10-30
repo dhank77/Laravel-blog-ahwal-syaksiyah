@@ -36,6 +36,7 @@ Route::get('/pengumuman', [FrontendController::class, 'pengumuman'])->name('peng
 Route::get('/download-file', [FrontendController::class, 'download'])->name('download');
 Route::get('/data/{slug}', [FrontendController::class, 'daftar_data'])->name('daftar_data');
 Route::get('/surat/{slug}', [FrontendController::class, 'form_data'])->name('form_data');
+Route::get('/filesurat/{slug}/{id}', [FrontendController::class, 'filesurat'])->name('filesurat');
 Route::get('/form/{slug}', [FrontendController::class, 'isi_form'])->name('isi_form');
 Route::get('/create-pdf/{id}', [FrontendController::class, 'create_pdf'])->name('create_pdf');
 Route::post('/form_data_store/{id}', [FrontendController::class, 'form_data_store'])->name('form_data_store');

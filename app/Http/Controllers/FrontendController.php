@@ -82,6 +82,51 @@ class FrontendController extends Controller
         return view('frontend.form_data', compact('data'));
     }
 
+    function filesurat($slug, $id)
+    {
+        $id = base64_decode($id);
+        if(env('CURL_CA_BUNDLE') != ""){
+            ini_set('curl.cainfo', env('CURL_CA_BUNDLE'));
+        }
+        $dataDetail = DataDetail::where('id', $id)->first();
+        abort_if(is_null($dataDetail), 404);
+        $data = Data::where('slug', $slug)->first();
+        abort_if(is_null($data), 404);
+
+        $template = new \PhpOffice\PhpWord\TemplateProcessor(storage_path("app/public/$data->file"));
+
+        $template->setValue('nama', $dataDetail->nama);
+        $template->setValue('nim', $dataDetail->nim);
+        $template->setValue('bulan_romawi', getRomawi(date("m")));
+        $template->setValue('tahun_ini', date("Y"));
+        $template->setValue('tanggal_hari_ini', tanggal_indo(date("Y-m-d")));
+        for ($i=1; $i <= 9 ; $i++) { 
+            $params = "param$i";
+            $template->setValue($params, $dataDetail->$params);
+        }
+ 
+        $saveDocPath = public_path('new-result' . date("ymdhis") . '.docx');
+        $template->saveAs($saveDocPath);
+
+        $paramsUrl = url("new-result" . date("ymdhis") . ".docx");
+        set_time_limit(0); 
+        $link = "https://psg4-word-view.officeapps.live.com/wv/WordViewer/request.pdf?WOPIsrc=http%3A%2F%2Fpsg3-view-wopi%2Ewopi%2Eonline%2Eoffice%2Enet%3A808%2Foh%2Fwopi%2Ffiles%2F%40%2FwFileId%3FwFileId%3D$paramsUrl&access_token=1&access_token_ttl=0&z=dce785126488e4f952cc69b50e330603d7517b89c1f01bd14796eee9b097a030&type=downloadpdf&useNamedAction=1";
+        $file = file_get_contents($link);
+
+        $name = 'new-result.pdf';
+        $savePdfPath = public_path($name);
+        if (file_exists($savePdfPath) ) {
+            unlink($savePdfPath);
+        }
+        file_put_contents($name, $file);
+        
+        if (file_exists($saveDocPath) ) {
+            unlink($saveDocPath);
+        }
+
+        return redirect($name);
+    }
+
     function isi_form($slug)
     {
         $formulir = Formulir::orderBy('nama')->where('slug', $slug)->first();
