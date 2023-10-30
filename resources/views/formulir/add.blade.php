@@ -57,6 +57,10 @@
                                             <label class="form-check-label text-danger" for="{{ $params }}1"><b>Wajib Terisi</b></label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <input {{ $formulir->$params == 3 ? "checked" : "" }} class="form-check-input" type="radio" name="{{ $params }}" id="{{ $params }}3" value="3">
+                                            <label class="form-check-label text-success" for="{{ $params }}3"><b>Wajib Terisi & Unik (Tidak Boleh Duplikat)</b></label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
                                             <input {{ $formulir->$params == 2 ? "checked" : "" }} class="form-check-input" type="radio" name="{{ $params }}" id="{{ $params }}2" value="2">
                                             <label class="form-check-label text-primary" for="{{ $params }}2"><b>Boleh Kosong</b></label>
                                         </div>

@@ -342,6 +342,12 @@
         </script>
     @endif
     @if (session()->has('error'))
+        <script>
+            Swal.fire({
+                title: "{{ session('error') }}",
+                icon: "error",
+            })
+        </script>
         <script src="/frontend/js/studiare-plugins.min.js"></script>
     @endif
     @stack('js')

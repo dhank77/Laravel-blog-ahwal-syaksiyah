@@ -31,12 +31,12 @@
                                 @if($formulir->$params != "")
                                     <div class="mb-3 row">
                                         <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">{{ $formulir->$param_nama }}
-                                            @if($formulir->$params == 1)
+                                            @if($formulir->$params == 1 || $formulir->$params == 3)
                                             <span class="text-danger"><b>*</b></span>
                                             @endif
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text" {{ $formulir->$params == 1 ? "required" : "" }} class="form-control" name="{{ $params }}" id="{{ $params }}" value="{{ old($params) }}"
+                                            <input type="text" {{ ($formulir->$params == 1 || $formulir->$params == 3) ? "required" : "" }} class="form-control" name="{{ $params }}" id="{{ $params }}" value="{{ old($params) }}"
                                                 placeholder="{{ $formulir->$param_nama }}" />
                                         </div>
                                     </div>

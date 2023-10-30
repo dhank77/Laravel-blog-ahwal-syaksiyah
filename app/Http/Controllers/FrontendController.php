@@ -251,12 +251,28 @@ class FrontendController extends Controller
             'captcha' => 'required|captcha',
         ];
 
+        $params_uniq = [];
         for ($i=1; $i <= 9 ; $i++) { 
             $params = "param$i";
             if($data->$params == 1){
                 $rules[$params] = "required";
             }
+            if($data->$params == 3){
+                array_push($params_uniq, $i);
+            }
         }
+
+        foreach ($params_uniq as $key => $value) {
+            $params = "param$value";
+            $paramNama = "param_nama$value";
+            $keterangan = $data->$paramNama;
+            $reqParam = request($params);
+            $cek = FormulirDetail::where("formulir_id", $id)->where($params, $reqParam)->first();
+            if($cek){
+                return redirect()->back()->with('error', "$keterangan $reqParam telah ada pada sistem!");
+            }
+        }
+
         for ($i=1; $i <= 5 ; $i++) { 
             $files = "file$i";
             if($data->$files == 1){
