@@ -70,7 +70,7 @@ class FrontendController extends Controller
     function daftar_data($slug)
     {
         $data = Data::orderBy('nama')->where('slug', $slug)->first();
-        abort_if($data->is_public == 0 || $data->is_form == 1, 404);
+        abort_if(is_null($data) || $data->is_public == 0 || $data->is_form == 1, 404);
         $dataDetail = DataDetail::where('data_id', $data->id)->get();
         return view('frontend.data', compact('dataDetail', 'data'));
     }
@@ -78,7 +78,7 @@ class FrontendController extends Controller
     function form_data($slug)
     {
         $data = Data::orderBy('nama')->where('slug', $slug)->first();
-        abort_if($data->is_public == 0 || $data->is_form == 0, 404);
+        abort_if(is_null($data) || $data->is_public == 0 || $data->is_form == 0, 404);
         return view('frontend.form_data', compact('data'));
     }
 
