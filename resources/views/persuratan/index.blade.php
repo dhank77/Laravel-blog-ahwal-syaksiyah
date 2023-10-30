@@ -39,6 +39,7 @@
                                 <th style="width:10%;">File</th>
                                 <th>Surat</th>
                                 <th style="width:1%;">Publik?</th>
+                                <th style="width:10%;">Link Publik</th>
                                 <th style="width:1%;">Opsi</th>
                             </tr>
                         </thead>
@@ -59,6 +60,15 @@
                                             <span class="text-primary">YA</span>
                                         @else
                                             <span class="text-danger">TIDAK</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($a->is_public == 1 && $a->is_form == 1)
+                                            <a href="{{ route('form_data', $a->slug) }}">{{ route('form_data', $a->slug) }}</a>
+                                        @elseif($a->is_public == 1 && $a->is_form == 0)
+                                            <a href="{{ route('daftar_data', $a->slug) }}">{{ route('daftar_data', $a->slug) }}</a>
+                                        @else
+                                            <span class="text-danger">-</span>
                                         @endif
                                     </td>
                                     <td>
