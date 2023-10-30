@@ -49,7 +49,7 @@
                                 @endphp
                                 @if($formulir->$files == 1)
                                     <div class="mb-3 row">
-                                        <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Upload {{ $formulir->$file_nama }}</label>
+                                        <label for="judul" class="col-sm-2 form-label align-self-center mb-lg-0">Upload {{ $formulir->$file_nama }} <span class="text-danger"><b>*</b></span></label>
                                         <div class="col-sm-10">
                                             <input required type="file" class="form-control" name="{{ $files }}" id="{{ $files }}"
                                                 placeholder="{{ $formulir->$file_nama }}" />
