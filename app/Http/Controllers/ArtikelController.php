@@ -103,7 +103,7 @@ class ArtikelController extends Controller
                 Storage::delete($img);
             }
 
-            $data['gambar'] = request()->file('gambar')->storeAs("uploads/artikel", $slug . "." . request()->file('gambar')->extension());
+            $data['gambar'] = request()->file('gambar')->storeAs("uploads/artikel", $slug . "-" .  date("ymdhis") . "." . request()->file('gambar')->extension());
         }
 
         $cr = Artikel::updateOrCreate(['id' => $id], $data);

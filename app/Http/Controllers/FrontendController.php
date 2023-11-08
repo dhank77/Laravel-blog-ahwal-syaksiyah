@@ -50,7 +50,7 @@ class FrontendController extends Controller
 
     public function berita()
     {
-        $berita = Artikel::with('kategori')->latest()->paginate(9);
+        $berita = Artikel::where('status', 1)->with('kategori')->latest()->paginate(9);
         return view('frontend.berita', compact('berita'));
     }
 
@@ -318,6 +318,9 @@ class FrontendController extends Controller
         $slug = "$model/$slug";
         $data = $qry::where('slug', $slug)->first();
         abort_if(!$data, 404);
+        if($model == 'artikel'){
+            abort_if($data->status == 0, 404);
+        }
         $share = Share::currentPage()
                         ->facebook()
                         ->twitter()

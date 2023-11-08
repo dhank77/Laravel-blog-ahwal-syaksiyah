@@ -80,7 +80,7 @@ class HalamanController extends Controller
                 Storage::delete($img);
             }
 
-            $data['gambar'] = request()->file('gambar')->storeAs("uploads/halaman", $slug . "." . request()->file('gambar')->extension());
+            $data['gambar'] = request()->file('gambar')->storeAs("uploads/halaman", $slug . "-" .  date("ymdhis") . "." . request()->file('gambar')->extension());
         }
 
         $cr = Halaman::updateOrCreate(['id' => $id], $data);

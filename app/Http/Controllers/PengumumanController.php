@@ -80,7 +80,7 @@ class PengumumanController extends Controller
                 Storage::delete($img);
             }
 
-            $data['gambar'] = request()->file('gambar')->storeAs("uploads/pengumuman", $slug . "." . request()->file('gambar')->extension());
+            $data['gambar'] = request()->file('gambar')->storeAs("uploads/pengumuman", $slug . "-" .  date("ymdhis") . "." . request()->file('gambar')->extension());
         }
 
         $cr = Pengumuman::updateOrCreate(['id' => $id], $data);

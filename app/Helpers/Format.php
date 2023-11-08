@@ -113,7 +113,12 @@ function get_kategori_all($id)
 
 function get_5artikel($slug)
 {
-    $artikel = Artikel::with('kategori')->where("slug", "!=", $slug)->latest()->limit(5)->get();
+    $artikel = Artikel::where('status', 1)
+                        ->with('kategori')
+                        ->where("slug", "!=", $slug)
+                        ->latest()
+                        ->limit(4)
+                        ->get();
     return $artikel;
 }
 
