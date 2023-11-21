@@ -19,6 +19,7 @@ use App\Http\Controllers\SambutanController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\FormulirController;
+use App\Http\Controllers\Master\LokasiFileController;
 use App\Http\Controllers\ShortController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -142,6 +143,15 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/download_file/{formulir}', [FormulirController::class, 'download_file'])->name('formulir.download_file');
         Route::get('/download_xls/{formulir}', [FormulirController::class, 'download_xls'])->name('formulir.download_xls');
+    });
+    Route::prefix('lokasi-file')->middleware('role:admin')->group(function () {
+        Route::get('/', [LokasiFileController::class, 'index'])->name('lokasiFile.index');
+        Route::get('/add', [LokasiFileController::class, 'add'])->name('lokasiFile.add');
+        Route::get('/edit/{lokasiFile}', [LokasiFileController::class, 'edit'])->name('lokasiFile.edit');
+        Route::post('/store', [LokasiFileController::class, 'store'])->name('lokasiFile.store');
+        Route::get('/delete/{lokasiFile}', [LokasiFileController::class, 'delete'])->name('lokasiFile.delete');
+        Route::get('/lihat/{lokasiFile}', [LokasiFileController::class, 'lihat'])->name('lokasiFile.lihat');
+        Route::get('/download/{lokasiFile}', [LokasiFileController::class, 'download'])->name('lokasiFile.download');
     });
     
     Route::prefix('artikel')->group(function () {

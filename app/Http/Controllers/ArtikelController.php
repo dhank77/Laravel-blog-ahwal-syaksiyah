@@ -89,7 +89,7 @@ class ArtikelController extends Controller
         
         $id = request('id');
         if(!$id){
-            $slug = "artikel/" . Str::slug(request('judul'));
+            $slug = "artikel/" . Str::slug(request('judul')) ."-". generateRandomString(3);
             $rules['gambar'] = "required|max:2048|mimes:png,jpg,jpeg";
         }else{
             $slug = Artikel::where('id', $id)->value('slug');

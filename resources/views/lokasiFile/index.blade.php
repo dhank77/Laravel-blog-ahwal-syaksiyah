@@ -14,10 +14,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Data Berkas
+            Data Lokasi File
         @endslot
         @slot('title')
-            Modul Berkas
+            Berkas
         @endslot
     @endcomponent
 
@@ -25,33 +25,33 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-start">Daftar Berkas</h4>
+                    <h4 class="card-title float-start">Daftar Lokasi File</h4>
                     <div class="float-end">
-                        <a class="btn btn-danger" href="{{ route('lokasiFile.index') }}">Lokasi File</a>
-                        <a class="btn btn-primary" href="{{ route('berkas.add') }}">+ Tambah</a>
+                        <a class="btn btn-primary" href="{{ route('lokasiFile.add') }}">+ Tambah</a>
                     </div>
                 </div>
+                <!--end card-header-->
                 <div class="card-body">
                     <table id="datatable" class="table dt-responsive  nowrap w-100">
                         <thead>
                             <tr>
-                                <th style="width:1%;">No</th>
+                                <th>No</th>
                                 <th>Nama</th>
-                                <th style="width:10%;">File</th>
-                                <th style="width:1%;">Opsi</th>
+                                <th>Slug</th>
+                                <th>Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($download as $k => $a)
+                            @foreach ($lokasiFile as $key => $value)
                                 <tr>
-                                    <td>{{ $k + 1 }}</td>
-                                    <td>{{ $a->nama }}</td>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $value->nama }}</td>
+                                    <td>{{ $value->slug }}</td>
                                     <td>
-                                        <a href="{{ asset("storage/$a->file") }}">Lihat File</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('berkas.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('berkas.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
+                                        <a class="btn btn-warning btn-sm" href="{{ route('lokasiFile.lihat', $value->id) }}">Lihat File</a>
+                                        <a class="btn btn-success btn-sm" href="{{ route('lokasiFile.download', $value->id) }}">Download File</a>
+                                        <a class="btn btn-primary btn-sm" href="{{ route('lokasiFile.edit', $value->id) }}">Edit</a>
+                                        <a class="btn btn-danger btn-sm swalUmum" href="{{ route('lokasiFile.delete', $value->id) }}">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -60,7 +60,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> <!-- end col -->
     </div>
 @endsection
 
@@ -74,4 +74,5 @@
     <script src="{{ asset('assets/libs/datatables.net-responsive/datatables.net-responsive.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
 @endsection

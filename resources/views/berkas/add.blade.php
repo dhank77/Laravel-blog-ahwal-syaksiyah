@@ -33,6 +33,17 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
+                                <label for="gambar" class="col-sm-2 form-label align-self-center mb-lg-0">Lokasi File</label>
+                                <div class="col-sm-10">
+                                    <select data-trigger class="form-control" name="lokasi_id">
+                                        <option selected disabled>Pilih</option>
+                                        @foreach ($lokasiFile as $item)
+                                            <option value='{"id":"{{ $item->id }}","slug":"{{ $item->slug }}"}'>{{ $item->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
                                 <label for="gambar"
                                     class="col-sm-2 form-label align-self-center mb-lg-0">File</label>
                                 <div class="col-sm-10">

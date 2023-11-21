@@ -66,7 +66,7 @@ class HalamanController extends Controller
         
         $id = request('id');
         if(!$id){
-            $slug = "halaman/" . Str::slug(request('judul'));
+            $slug = "halaman/" . Str::slug(request('judul')) ."-". generateRandomString(3);
             $rules['gambar'] = "required|max:2048|mimes:png,jpg,jpeg";
         }else{
             $slug = Halaman::where('id', $id)->value('slug');

@@ -66,7 +66,7 @@ class PengumumanController extends Controller
         
         $id = request('id');
         if(!$id){
-            $slug = "pengumuman/" . Str::slug(request('judul'));
+            $slug = "pengumuman/" . Str::slug(request('judul'))."-". generateRandomString(3);
             $rules['gambar'] = "required|max:2048|mimes:png,jpg,jpeg,webp";
         }else{
             $slug = Pengumuman::where('id', $id)->value('slug');

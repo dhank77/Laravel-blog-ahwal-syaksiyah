@@ -79,11 +79,11 @@ class FormulirController extends Controller
         $formulir = request()->except('_token', 'id');
 
         if(!$id){
-            $slug = Str::slug(request('nama'));
+            $slug = Str::slug(request('nama')) ."-". generateRandomString(3);
         }else{
             $slug = Formulir::where('id', $id)->value('slug');
             if($slug == ""){
-                $slug = Str::slug(request('nama'));
+                $slug = Str::slug(request('nama')) ."-". generateRandomString(3);
             }
         }
 

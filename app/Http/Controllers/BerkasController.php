@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Download;
+use App\Models\Master\LokasiFile;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,12 +18,14 @@ class BerkasController extends Controller
     public function add()
     {
         $download  = new Download();
-        return view('berkas.add', compact('download'));
+        $lokasiFile = LokasiFile::orderBy('nama')->get();
+        return view('berkas.add', compact('download', 'lokasiFile'));
     }
 
     public function edit(Download $download)
     {
-        return view('berkas.add', compact('download'));
+        $lokasiFile = LokasiFile::orderBy('nama')->get();
+        return view('berkas.add', compact('download', 'lokasiFile'));
     }
 
     public function delete(Download $download)
@@ -52,15 +55,23 @@ class BerkasController extends Controller
         }
         $data = request()->validate($rules);
         $data['is_public'] = 0;
+        $slug_lokasi = "";
+        if(request('lokasi_id') != ""){
+            $lokasi = json_decode(request('lokasi_id'), true);
+            $data['lokasi_id'] = $lokasi['id'];
+            $slug_lokasi = $lokasi['slug'];
+        }
 
         $pengajar_id = request('pengajar_id');
         if(request()->file('file')){
             if($id){
-                $img = Download::where('id', $id)->value('gambar');
+                $img = Download::where('id', $id)->value('file');
                 Storage::delete($img);
             }
             if($pengajar_id != ""){
                 $path =  "/uploads" . "/" . $pengajar_id ;
+            }elseif($slug_lokasi != ""){
+                $path =  "/uploads/berkas" . "/" . $slug_lokasi ;
             }else{
                 $path = "uploads/berkas";
             }

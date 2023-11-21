@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Berkas
+    Daftar File {{ $lokasiFile->nama }}
 @endsection
 
 @section('css')
@@ -14,10 +14,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Data Berkas
+            Data File
         @endslot
         @slot('title')
-            Modul Berkas
+            Daftar File {{ $lokasiFile->nama }}
         @endslot
     @endcomponent
 
@@ -25,33 +25,33 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-start">Daftar Berkas</h4>
+                    <h4 class="card-title float-start">Daftar File</h4>
                     <div class="float-end">
-                        <a class="btn btn-danger" href="{{ route('lokasiFile.index') }}">Lokasi File</a>
-                        <a class="btn btn-primary" href="{{ route('berkas.add') }}">+ Tambah</a>
+                        <a href="{{ route('lokasiFile.download', $lokasiFile->id) }}" class="btn btn-success mr-4">Download semua berkas (Zip File)</a>
                     </div>
                 </div>
+                <!--end card-header-->
                 <div class="card-body">
                     <table id="datatable" class="table dt-responsive  nowrap w-100">
                         <thead>
                             <tr>
-                                <th style="width:1%;">No</th>
+                                <th>No</th>
                                 <th>Nama</th>
-                                <th style="width:10%;">File</th>
-                                <th style="width:1%;">Opsi</th>
+                                <th>Download</th>
+                                <th>Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($download as $k => $a)
+                            @foreach ($file as $key => $value)
                                 <tr>
-                                    <td>{{ $k + 1 }}</td>
-                                    <td>{{ $a->nama }}</td>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $value->nama }}</td>
                                     <td>
-                                        <a href="{{ asset("storage/$a->file") }}">Lihat File</a>
+                                        <a href="{{ asset("storage/$value->file") }}">Lihat File</a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('berkas.edit', $a->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('berkas.delete', $a->id) }}" class="btn btn-danger btn-sm swalUmum">Hapus</a>
+                                        <a class="btn btn-primary btn-sm" href="{{ route('berkas.edit', $value->id) }}">Edit</a>
+                                        <a class="btn btn-danger btn-sm swalUmum" href="{{ route('berkas.delete', $value->id) }}">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -60,7 +60,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> <!-- end col -->
     </div>
 @endsection
 
@@ -74,4 +74,5 @@
     <script src="{{ asset('assets/libs/datatables.net-responsive/datatables.net-responsive.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
 @endsection
