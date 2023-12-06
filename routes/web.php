@@ -113,6 +113,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('berkas')->middleware('role:admin')->group(function () {
         Route::get('/', [BerkasController::class, 'index'])->name('berkas.index');
         Route::get('/add', [BerkasController::class, 'add'])->name('berkas.add');
+        Route::get('/json', [BerkasController::class, 'json'])->name('berkas.json');
         Route::get('/edit/{download}', [BerkasController::class, 'edit'])->name('berkas.edit');
         Route::post('/store', [BerkasController::class, 'store'])->name('berkas.store');
         Route::get('/delete/{download}', [BerkasController::class, 'delete'])->name('berkas.delete');

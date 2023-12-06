@@ -38,7 +38,7 @@
                                     <select data-trigger class="form-control" name="lokasi_id">
                                         <option selected disabled>Pilih</option>
                                         @foreach ($lokasiFile as $item)
-                                            <option value='{"id":"{{ $item->id }}","slug":"{{ $item->slug }}"}'>{{ $item->nama }}</option>
+                                            <option {{ $download->lokasi_id == $item->id ? "selected" : "" }} value='{"id":"{{ $item->id }}","slug":"{{ $item->slug }}"}'>{{ $item->nama }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -47,6 +47,9 @@
                                 <label for="gambar"
                                     class="col-sm-2 form-label align-self-center mb-lg-0">File</label>
                                 <div class="col-sm-10">
+                                    @if($download->file != "")
+                                        <a href="{{ asset("storage/$download->file") }}" class="btn btn-primary btn-sm mb-2">File Saat Ini</a>
+                                    @endif
                                     <input type="file" class="form-control" name="file" id="file" />
                                 </div>
                             </div>

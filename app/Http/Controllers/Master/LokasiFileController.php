@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Download;
 use App\Models\Master\LokasiFile;
 use Illuminate\Support\Str;
+use ZipArchive;
+use Illuminate\Support\Facades\File;
 
 class LokasiFileController extends Controller
 {
@@ -19,6 +21,27 @@ class LokasiFileController extends Controller
     {
         $file = Download::where('lokasi_id', $lokasiFile->id)->latest()->get();
         return view('lokasiFile.lihat', compact('file', 'lokasiFile'));
+    }
+
+    function download(LokasiFile $lokasiFile)
+    {
+        $zip = new ZipArchive;
+        $slug = $lokasiFile->slug;
+        if (true === ($zip->open("$slug.zip", ZipArchive::CREATE | ZipArchive::OVERWRITE))) {
+            $path = storage_path("app/public/uploads/berkas/$slug");
+            $files = File::allFiles($path);
+            
+            foreach ($files as $file) {
+                $name = basename($file);
+                if ($name !== '.gitignore') {
+                    $zip->addFile(storage_path("app/public/uploads/berkas/$slug/$name"), $name);
+                }
+            }
+            $zip->close();
+        }
+
+        return response()->download(public_path("$slug.zip"), "$slug.zip");
+        
     }
 
     public function add()
