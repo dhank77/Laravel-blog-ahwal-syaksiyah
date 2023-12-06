@@ -24,6 +24,8 @@ return new class extends Migration
             $table->date('tanggal_lahir')->nullable();
             $table->text('alamat')->nullable();
             $table->text('pekerjaan')->nullable();
+            $table->string('no_hp')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }

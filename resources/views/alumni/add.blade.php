@@ -88,6 +88,20 @@
                                         placeholder="Pekerjaan" value="{{ $alumni->pekerjaan }}">
                                 </div>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="no_hp" class="col-sm-2 form-label align-self-center mb-lg-0">Nomor HP</label>
+                                <div class="col-sm-10">
+                                    <input type="number" min="0" class="form-control" name="no_hp" id="no_hp" autocomplete="false"
+                                        placeholder="Nomor HP" value="{{ $alumni->no_hp }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="email" class="col-sm-2 form-label align-self-center mb-lg-0">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" name="email" id="email" autocomplete="false"
+                                        placeholder="Email" value="{{ $alumni->email }}">
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-sm-10 ms-auto">
                                     <button type="submit" class="btn btn-primary">Simpan</button>

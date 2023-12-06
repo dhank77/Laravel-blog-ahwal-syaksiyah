@@ -22,6 +22,9 @@ class AlumniController extends Controller
             ->addColumn('ttl', function ($data) {
                 return "$data->tempat_lahir, " . tanggal_indo($data->tanggal_lahir);
             })
+            ->addColumn('kontak', function ($data) {
+                return "$data->email, $data->no_hp";
+            })
             ->addColumn('action', function ($data) {
                 $button = '<a href='. route("alumni.edit", $data->id) . ' class="btn btn-primary btn-sm">Edit</a>';
                 $button .= '<a href='. route("alumni.delete", $data->id) . ' class="btn btn-danger btn-sm swalUmum" onclick="deleted(event)">Hapus</a>';
@@ -54,6 +57,8 @@ class AlumniController extends Controller
             'asal_daerah' => 'nullable',
             'alamat' => 'nullable',
             'pekerjaan' => 'nullable',
+            'email' => 'nullable',
+            'no_hp' => 'nullable',
         ];
         
         $id = request('id');
