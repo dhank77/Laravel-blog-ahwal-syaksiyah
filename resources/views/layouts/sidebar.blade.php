@@ -25,6 +25,7 @@
                         <li><a href="{{ route('utama.menu.index') }}" data-key="t-menu">Menu Website</a></li>
                         <li><a href="{{ route('utama.halaman.index') }}" data-key="t-halaman">Data Halaman</a></li>
                         <li><a href="{{ route('pengajar.index') }}" data-key="t-pengajar">Staff Pengajar</a></li>
+                        <li><a href="{{ route('alumni.index') }}" data-key="t-alumni">Data Alumni</a></li>
                         <li><a href="{{ route('komplain.index') }}" data-key="t-komplain">Data Komplain</a></li>
                     </ul>
                 </li>
@@ -49,13 +50,8 @@
                         <li class="{{ request()->is('berkas/*') ? "mm-active" : "" }}" data-key="t-berkas"><a href="{{ route('berkas.index') }}">Data Berkas</a></li>
                         <li class="{{ request()->is('persuratan/*') ? "mm-active" : "" }}" data-key="t-persuratan"><a href="{{ route('persuratan.index') }}">Data Persuratan</a></li>
                         <li class="{{ request()->is('formulir/*') ? "mm-active" : "" }}" data-key="t-formulir"><a href="{{ route('formulir.index') }}">Data Formulir</a></li>
+                        <li class="{{ request()->is('short/*') ? "mm-active" : "" }}" data-key="t-short"><a href="{{ route('short.index') }}">Short Link</a></li>
                     </ul>
-                </li>
-                <li>
-                    <a href="{{ route('short.index') }}">
-                        <i data-feather="external-link"></i>
-                        <span data-key="t-external-link">Short Link</span>
-                    </a>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">

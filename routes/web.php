@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\Admin\SuperadminController;
+use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BerkasController;
@@ -87,6 +88,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{short}', [ShortController::class, 'edit'])->name('short.edit');
         Route::post('/store', [ShortController::class, 'store'])->name('short.store');
         Route::get('/delete/{short}', [ShortController::class, 'delete'])->name('short.delete');
+    });
+    Route::prefix('database-alumni')->middleware('role:admin')->group(function () {
+        Route::get('/', [AlumniController::class, 'index'])->name('alumni.index');
+        Route::get('/json', [AlumniController::class, 'json'])->name('alumni.json');
+        Route::get('/add', [AlumniController::class, 'add'])->name('alumni.add');
+        Route::get('/edit/{alumni}', [AlumniController::class, 'edit'])->name('alumni.edit');
+        Route::post('/store', [AlumniController::class, 'store'])->name('alumni.store');
+        Route::get('/delete/{alumni}', [AlumniController::class, 'delete'])->name('alumni.delete');
     });
     Route::prefix('pengajar')->middleware('role:admin')->group(function () {
         Route::get('/', [PengajarController::class, 'index'])->name('pengajar.index');
