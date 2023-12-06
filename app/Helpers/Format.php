@@ -7,6 +7,22 @@ use App\Models\Master\Komponen;
 use App\Models\Master\Menu;
 use Illuminate\Support\Str;
 
+function cleanString($input) {
+    $cleanedString = preg_replace('/[^a-zA-Z0-9_]/', '', $input);
+    return $cleanedString;
+}
+
+
+function validateInput($input) {
+    $pattern = '/^[a-zA-Z0-9_]+$/';
+
+    if (preg_match($pattern, $input)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function status($status)
 {
     switch ($status) {

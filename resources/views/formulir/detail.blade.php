@@ -27,7 +27,16 @@
                 <div class="card-header">
                     <h4 class="card-title float-start">Daftar Formulir : {{ $formulir->nama }} <br/>
                         Link : <a href="{{ url("form/$formulir->slug") }}">{{ url("form/$formulir->slug") }}</a> <br/>
+                        @php
+                            $slugEnc = base64_encode($formulir->id . "~" . "ahwal-unismuh" . "~". $formulir->slug);
+                            $urlPublik = url("daftar-form/$slugEnc");
+                            $urlCek = url("cek-form/$formulir->slug");
+                        @endphp
                         Jumlah Pendaftar : <span class="text-success">{{ jumlahPendaftarFormulir($formulir->id) }} Peserta</span> 
+                        <hr>
+                        Link Publik Untuk Mengecek Pendaftar <br>
+                        Daftar Semua : <a href="{{ $urlPublik }}" class="text-danger">Link Disini</a> <br/>
+                        Cek Per Data : <a href="{{ $urlCek }}" class="text-danger">Link Disini</a> <br/>
                     </h4>
                     <div class="float-end">
                         <a href="{{ route('formulir.download_file', $formulir->id) }}" class="btn btn-primary mr-4">Download Semua berkas (Zip File)</a>

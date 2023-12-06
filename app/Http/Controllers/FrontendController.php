@@ -134,6 +134,26 @@ class FrontendController extends Controller
         return view('frontend.isi_formulir', compact('formulir'));
     }
 
+    function cek_form($slug)
+    {
+        $formulir = Formulir::orderBy('nama')->where('slug', $slug)->first();
+        abort_if($formulir->is_aktif == 0, 404);
+        return view('frontend.cek_formulir', compact('formulir'));
+    }
+
+    function daftar_form($slug)
+    {
+        $exp = explode("~", base64_decode($slug));
+        abort_if(count($exp) != 3, 404);
+        $id = $exp[0];
+        $slug = end($exp);
+        $formulir = Formulir::orderBy('nama')->where('id', $id)->where('slug', $slug)->first();
+        abort_if(!$formulir || $formulir->is_aktif == 0, 404);
+
+        $data = FormulirDetail::where('formulir_id', $formulir->id)->get();
+        return view('frontend.daftar_formulir', compact('data', 'formulir'));
+    }
+
     function create_pdf($id)
     {
         if(env('CURL_CA_BUNDLE') != ""){
@@ -242,11 +262,40 @@ class FrontendController extends Controller
         return redirect($name);
     }
 
+    function cek_form_store($id)
+    {
+        $id = base64_decode($id);
+        $data = Formulir::where('id', $id)->first();
+        abort_if(!$data || $data->is_aktif == 0, 404);
+        $cari = "";
+        $req = cleanString(request('cek'));
+
+        for ($i=1; $i <= 9 ; $i++) { 
+            $params = "param$i";
+            if($data->$params == 1){
+                if($cari == ""){
+                    $cari .= "($params LIKE '%$req%')";
+                }else{
+                    $cari .= " OR ($params LIKE '%$req%')";
+                }
+            }
+        }
+        $cari = FormulirDetail::where('formulir_id', $data->id)
+                                ->whereRaw($cari)
+                                ->first();
+        if($req == ""){
+            $cari = false;
+        }
+
+        $formulir = $data;
+        return view('frontend.hasil_formulir', compact('formulir','cari'));
+    }
+
     function isi_form_store($id)
     {
         $id = base64_decode($id);
         $data = Formulir::where('id', $id)->first();
-        abort_if($data->is_aktif == 0, 404);
+        abort_if(!$data || $data->is_aktif == 0, 404);
         $rules = [
             'captcha' => 'required|captcha',
         ];

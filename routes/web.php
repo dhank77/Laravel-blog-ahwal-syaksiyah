@@ -39,9 +39,12 @@ Route::get('/data/{slug?}', [FrontendController::class, 'daftar_data'])->name('d
 Route::get('/surat/{slug?}', [FrontendController::class, 'form_data'])->name('form_data');
 Route::get('/filesurat/{slug?}/{id}', [FrontendController::class, 'filesurat'])->name('filesurat');
 Route::get('/form/{slug?}', [FrontendController::class, 'isi_form'])->name('isi_form');
+Route::get('/cek-form/{slug?}', [FrontendController::class, 'cek_form'])->name('cek_form');
+Route::get('/daftar-form/{slug?}', [FrontendController::class, 'daftar_form'])->name('daftar_form');
 Route::get('/create-pdf/{id}', [FrontendController::class, 'create_pdf'])->name('create_pdf');
 Route::post('/form_data_store/{id}', [FrontendController::class, 'form_data_store'])->name('form_data_store');
 Route::post('/isi_form_store/{id}', [FrontendController::class, 'isi_form_store'])->name('isi_form_store');
+Route::post('/cek-form-data/{id}', [FrontendController::class, 'cek_form_store'])->name('cek_form_store');
 Route::get('/kategori/{kategori}', [FrontendController::class, 'kategori'])->name('kategori');
 
 Route::middleware('auth')->group(function () {
