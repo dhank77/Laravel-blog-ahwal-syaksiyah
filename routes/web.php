@@ -95,6 +95,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/add', [AlumniController::class, 'add'])->name('alumni.add');
         Route::get('/edit/{alumni}', [AlumniController::class, 'edit'])->name('alumni.edit');
         Route::post('/store', [AlumniController::class, 'store'])->name('alumni.store');
+        Route::post('/import', [AlumniController::class, 'import'])->name('alumni.import');
         Route::get('/delete/{alumni}', [AlumniController::class, 'delete'])->name('alumni.delete');
     });
     Route::prefix('pengajar')->middleware('role:admin')->group(function () {

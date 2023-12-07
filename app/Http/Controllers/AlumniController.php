@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\AlumniImport;
 use App\Models\Alumni;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 
 class AlumniController extends Controller
@@ -80,5 +82,25 @@ class AlumniController extends Controller
         }else{
             return redirect(route("alumni.index"))->with('error', 'Gagal menghapus data');
         }
+    }
+
+    function import()
+    {
+        $rules = [
+            'file' => 'max:2048|max:2048|mimes:xls,xlsx,csv',
+        ];
+
+        request()->validate($rules);
+
+        $file = request()->file('file');
+
+        try {
+            Excel::import(new AlumniImport, $file);
+            return redirect(route('alumni.index'))->with('success', 'Berhasil import data');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            return redirect(route('alumni.index'))->with('error', 'Terjadi Kesalahan');
+        }
+
     }
 }

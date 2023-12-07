@@ -12,6 +12,16 @@ function cleanString($input) {
     return $cleanedString;
 }
 
+function convertTanggalImport($input) {
+    if(is_numeric($input)){
+        $tgl = ($input - 25569) * 86400;
+    }else{
+        $tgl = str_replace('/', '-', $input);
+        $tgl = strtotime($tgl);
+    }
+    $tanggal_sk = date('Y-m-d', $tgl);
+    return $tanggal_sk;
+}
 
 function validateInput($input) {
     $pattern = '/^[a-zA-Z0-9_]+$/';

@@ -27,6 +27,36 @@
                 <div class="card-header">
                     <h4 class="card-title float-start">Daftar Database Alumni</h4>
                     <div class="float-end">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Import Data
+                          </button>
+                          <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
+                            <div class="modal-dialog">
+                                <form action="{{ route('alumni.import') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="myModalLabel">Import Database Alumni</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3 row">
+                                                <label for="file"
+                                                    class="col-sm-2 form-label align-self-center mb-lg-0">File</label>
+                                                <div class="col-sm-10">
+                                                    <a href="{{ asset("import/alumni.xlsx") }}" class="text-primary"><b>Dowmload Format</b></a>
+                                                    <input type="file" class="form-control" name="file" id="file" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Import</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <a class="btn btn-success" href="{{ route('alumni.add') }}">+ Tambah</a>
                     </div>
                 </div>
