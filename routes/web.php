@@ -36,6 +36,8 @@ Route::get('/staff-pengajar', [FrontendController::class, 'pengajar'])->name('pe
 Route::get('/berita', [FrontendController::class, 'berita'])->name('berita');
 Route::get('/pengumuman', [FrontendController::class, 'pengumuman'])->name('pengumuman');
 Route::get('/download-file', [FrontendController::class, 'download'])->name('download');
+Route::get('/daftar-alumni', [FrontendController::class, 'daftar_alumni'])->name('daftar_alumni');
+Route::get('/json_daftar_alumni', [FrontendController::class, 'json_daftar_alumni'])->name('json_daftar_alumni');
 Route::get('/data/{slug?}', [FrontendController::class, 'daftar_data'])->name('daftar_data');
 Route::get('/surat/{slug?}', [FrontendController::class, 'form_data'])->name('form_data');
 Route::get('/filesurat/{slug?}/{id}', [FrontendController::class, 'filesurat'])->name('filesurat');

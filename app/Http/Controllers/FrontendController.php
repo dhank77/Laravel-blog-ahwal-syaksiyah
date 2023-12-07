@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumni;
 use App\Models\Artikel;
 use App\Models\Banner;
 use App\Models\Data;
@@ -18,6 +19,7 @@ use App\Models\Short;
 use App\Models\Testimoni;
 use Share;
 use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class FrontendController extends Controller
 {
@@ -65,6 +67,19 @@ class FrontendController extends Controller
         $download = Download::orderBy('nama')->where('is_public', 1)->get();
         $data = Data::orderBy('nama')->where('is_public', 1)->get();
         return view('frontend.download', compact('download', 'data'));
+    }
+
+    function daftar_alumni()
+    {
+        return view('frontend.alumni');
+    }
+
+    function json_daftar_alumni()
+    {
+        $data = Alumni::orderBy('nama');
+        return DataTables::of($data)
+                ->addIndexColumn()
+                ->make(true);
     }
 
     function daftar_data($slug)

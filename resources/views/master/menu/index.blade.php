@@ -92,6 +92,38 @@
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title float-start">Daftar Menu Bawaan</h4>
+                </div>
+                <div class="card-body">
+                    <div class="general-label">
+                        <ul>
+                            <li>
+                                <a target="_blank" href="/berita">/berita</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="/staff-pengajar">/staff-pengajar</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="/download-file">/download-file</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="/download-surat">/download-surat</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="/komplain-pelanggan">/komplain-pelanggan</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="/pengumuman">/pengumuman</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="/daftar-alumni">/daftar-alumni</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-7">
             <div class="card">
