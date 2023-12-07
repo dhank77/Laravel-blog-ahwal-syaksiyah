@@ -95,6 +95,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [AlumniController::class, 'index'])->name('alumni.index');
         Route::get('/json', [AlumniController::class, 'json'])->name('alumni.json');
         Route::get('/add', [AlumniController::class, 'add'])->name('alumni.add');
+        Route::get('/download', [AlumniController::class, 'download'])->name('alumni.download');
         Route::get('/edit/{alumni}', [AlumniController::class, 'edit'])->name('alumni.edit');
         Route::post('/store', [AlumniController::class, 'store'])->name('alumni.store');
         Route::post('/import', [AlumniController::class, 'import'])->name('alumni.import');

@@ -27,6 +27,7 @@
                 <div class="card-header">
                     <h4 class="card-title float-start">Daftar Database Alumni</h4>
                     <div class="float-end">
+                        <a class="btn btn-success" href="{{ route('alumni.download') }}">Download Xls</a>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                             Import Data
                           </button>

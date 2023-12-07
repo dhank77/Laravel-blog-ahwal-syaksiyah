@@ -42,6 +42,12 @@ class AlumniController extends Controller
         return view('alumni.add', compact('alumni'));
     }
 
+    function download()
+    {
+        $data = Alumni::orderBy('nama')->get();
+        return view('alumni.download', compact('data'));
+    }
+
     public function edit(Alumni $alumni)
     {
         return view('alumni.add', compact('alumni'));
