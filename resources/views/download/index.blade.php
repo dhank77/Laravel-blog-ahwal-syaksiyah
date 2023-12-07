@@ -38,7 +38,7 @@
                                 <th>Nama</th>
                                 <th style="width:10%;">Tipe</th>
                                 <th style="width:10%;">Size</th>
-                                <th style="width:10%;">Download</th>
+                                <th style="width:10%;">Unduh</th>
                                 <th style="width:1%;">Opsi</th>
                             </tr>
                         </thead>
