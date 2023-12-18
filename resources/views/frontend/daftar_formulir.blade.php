@@ -27,7 +27,7 @@
                                                 $params = "param$i";
                                                 $param_nama = "param_nama$i";
                                             @endphp
-                                            @if($formulir->$params == 1)
+                                            @if($formulir->$params == 1 || $formulir->$params == 3)
                                                 <th class="text-center">{{ $formulir->$param_nama }}</th>
                                             @endif
                                         @endfor
@@ -51,7 +51,7 @@
                                                     $params = "param$i";
                                                     $param_nama = "param_nama$i";
                                                 @endphp
-                                                @if($formulir->$params == 1)
+                                                @if($formulir->$params == 1 || $formulir->$params == 3)
                                                     <td class="text-center">{{ $d->$params }}</td>
                                                 @endif
                                             @endfor

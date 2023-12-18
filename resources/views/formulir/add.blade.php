@@ -6,10 +6,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Modul Persuratan
+            Modul Formulir
         @endslot
         @slot('title')
-            Tambah Persuratan
+            Tambah Formulir
         @endslot
     @endcomponent
 

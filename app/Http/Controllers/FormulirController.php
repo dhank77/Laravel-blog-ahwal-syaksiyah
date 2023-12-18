@@ -129,4 +129,94 @@ class FormulirController extends Controller
         return view("formulir.download", compact("formulirDetail","formulir"));
     }
 
+    // Formulir Detail
+    function detail_add(Formulir $formulir)
+    {
+        $formulirDetail = new FormulirDetail();
+        return view("formulir.detail_edit", compact("formulir","formulirDetail"));
+    }
+
+    function detail_edit(Formulir $formulir, FormulirDetail $formulirDetail)
+    {
+        abort_if($formulir->id != $formulirDetail->formulir_id, 404);
+        return view("formulir.detail_edit", compact("formulir","formulirDetail"));
+    }
+
+    function detail_store(Formulir $formulir)
+    {
+        $data = $formulir;
+        $id = $formulir->id;
+        $fdId = request('id');
+        $rules = [];
+
+        $params_uniq = [];
+        for ($i=1; $i <= 9 ; $i++) { 
+            $params = "param$i";
+            if($data->$params == 1){
+                $rules[$params] = "required";
+            }
+            if($data->$params == 3){
+                array_push($params_uniq, $i);
+            }
+        }
+
+        foreach ($params_uniq as $key => $value) {
+            $params = "param$value";
+            $paramNama = "param_nama$value";
+            $keterangan = $data->$paramNama;
+            $reqParam = request($params);
+            $cek = FormulirDetail::where("formulir_id", $id)->where($params, $reqParam)->first();
+            if($cek){
+                return redirect()->back()->with('error', "$keterangan $reqParam telah ada pada sistem!");
+            }
+        }
+
+        for ($i=1; $i <= 5 ; $i++) { 
+            $files = "file$i";
+            if($data->$files == 1 && $fdId == ""){
+                $rules[$files] = "required|max:2048|mimes:png,jpg,jpeg,doc,docx,pdf,xls,xlsx,ppt,pptx";
+            }
+        }
+        request()->validate($rules);
+        $send = request()->except('captcha', '_token', 'file1', 'file2', 'file3', 'file4', 'file5');
+
+        for ($i=1; $i <= 5 ; $i++) { 
+            $files = "file$i";
+            if($data->param1 == 1){
+                $namaFile =  Str::slug(request('param1'));
+            }else{
+                $namaFile = rand(111111,999999);
+            }
+            if($data->$files == 1 && request()->file($files)){
+                $path = "/formulir/$data->slug";
+                $send[$files] = request()->file($files)->storeAs($path, $namaFile . "-" . $files . "-" . date("ymdhis") . "." . request()->file($files)->extension());
+            }
+        }
+
+        $send['formulir_id'] = $id;
+        $cr = FormulirDetail::updateOrCreate(['id' => $fdId], $send);
+        if($cr){
+            return redirect(route("formulir.detail", $id))->with('success', 'Berhasil mengisi form!');
+        }else{
+            return redirect(route("formulir.detail", $id))->with('error', 'Gagal mengisi form!');
+        }
+    }
+    
+    function detail_delete(Formulir $formulir, FormulirDetail $formulirDetail)
+    {
+        abort_if($formulir->id != $formulirDetail->formulir_id, 404);
+        for ($i=1; $i <= 5; $i++) { 
+            $field = "file$i";
+            if($formulirDetail->$field != ""){
+                Storage::delete($formulirDetail->$field);
+            }
+        }
+        $cr = $formulirDetail->delete();
+        if($cr){
+            return redirect()->back()->with('success', 'Berhasil menghapus formulir');
+        }else{
+            return redirect()->back()->with('error', 'Gagal menghapus formulir');
+        }
+    }
+
 }

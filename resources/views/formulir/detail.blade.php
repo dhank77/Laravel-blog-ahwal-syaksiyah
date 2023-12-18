@@ -41,6 +41,7 @@
                     <div class="float-end">
                         <a href="{{ route('formulir.download_file', $formulir->id) }}" class="btn btn-primary mr-4">Download Semua berkas (Zip File)</a>
                         <a class="btn btn-success" href="{{ route('formulir.download_xls', $formulir->id) }}">Download Xls</a>
+                        <a class="btn btn-info" href="{{ route('formulir.detail_add', $formulir->id) }}">Tambah</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -66,6 +67,7 @@
                                         <th style="width:1%;">{{ $formulir->$file_nama }}</th>
                                     @endif
                                 @endfor
+                                <th>Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -95,6 +97,10 @@
                                             </td>
                                         @endif
                                     @endfor
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" href="{{ route("formulir.detail_edit", [$fD->formulir_id, $fD->id]) }}">Edit</a>
+                                        <a class="btn btn-sm btn-danger swalUmum" onclick="deleted(event)" href="{{ route("formulir.detail_delete", [$fD->formulir_id, $fD->id]) }}">Hapus</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

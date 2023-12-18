@@ -287,9 +287,9 @@ class FrontendController extends Controller
 
         for ($i=1; $i <= 9 ; $i++) { 
             $params = "param$i";
-            if($data->$params == 1){
+            if($data->$params == 1 || $data->$params == 3){
                 if($cari == ""){
-                    $cari .= "($params LIKE '%$req%')";
+                    $cari = "($params LIKE '%$req%')";
                 }else{
                     $cari .= " OR ($params LIKE '%$req%')";
                 }

@@ -158,6 +158,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/delete/{formulir}', [FormulirController::class, 'delete'])->name('formulir.delete');
         Route::get('/detail/{formulir}', [FormulirController::class, 'detail'])->name('formulir.detail');
 
+        Route::get('/formulir-detail-add/{formulir}', [FormulirController::class, 'detail_add'])->name('formulir.detail_add');
+        Route::post('/formulir-detail-store/{formulir}', [FormulirController::class, 'detail_store'])->name('formulir.detail_store');
+        Route::get('/formulir-detail-edit/{formulir}/{formulirDetail}', [FormulirController::class, 'detail_edit'])->name('formulir.detail_edit');
+        Route::get('/formulir-detail-delete/{formulir}/{formulirDetail}', [FormulirController::class, 'detail_delete'])->name('formulir.detail_delete');
+
         Route::get('/download_file/{formulir}', [FormulirController::class, 'download_file'])->name('formulir.download_file');
         Route::get('/download_xls/{formulir}', [FormulirController::class, 'download_xls'])->name('formulir.download_xls');
     });
