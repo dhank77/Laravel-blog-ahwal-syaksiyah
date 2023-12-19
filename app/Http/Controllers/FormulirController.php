@@ -160,14 +160,16 @@ class FormulirController extends Controller
             }
         }
 
-        foreach ($params_uniq as $key => $value) {
-            $params = "param$value";
-            $paramNama = "param_nama$value";
-            $keterangan = $data->$paramNama;
-            $reqParam = request($params);
-            $cek = FormulirDetail::where("formulir_id", $id)->where($params, $reqParam)->first();
-            if($cek){
-                return redirect()->back()->with('error', "$keterangan $reqParam telah ada pada sistem!");
+        if($fdId == ""){
+            foreach ($params_uniq as $key => $value) {
+                $params = "param$value";
+                $paramNama = "param_nama$value";
+                $keterangan = $data->$paramNama;
+                $reqParam = request($params);
+                $cek = FormulirDetail::where("formulir_id", $id)->where($params, $reqParam)->first();
+                if($cek){
+                    return redirect()->back()->with('error', "$keterangan $reqParam telah ada pada sistem!");
+                }
             }
         }
 
