@@ -230,7 +230,7 @@ function convertWordToPdf($link)
     $curl = curl_init();
 
     $link = urlencode($link);
-    $url = "https://psg4-word-view.officeapps.live.com/wv/WordViewer/request.pdf?WOPIsrc=http%3A%2F%2Fpsg3-view-wopi%2Ewopi%2Eonline%2Eoffice%2Enet%3A808%2Foh%2Fwopi%2Ffiles%2F%40%2FwFileId%3FwFileId%3D$link&access_token=1&access_token_ttl=0&z=dce785126488e4f952cc69b50e330603d7517b89c1f01bd14796eee9b097a030&type=downloadpdf&useNamedAction=1";
+    $url = "https://psg4-word-view.officeapps.live.com/wv/WordViewer/request.pdf?WOPIsrc=http%3A%2F%2Fpsg4-view-wopi%2Ewopi%2Eonline%2Eoffice%2Enet%3A808%2Foh%2Fwopi%2Ffiles%2F%40%2FwFileId%3FwFileId%3D$link&access_token=1&access_token_ttl=0&z=dce785126488e4f952cc69b50e330603d7517b89c1f01bd14796eee9b097a030&type=downloadpdf&useNamedAction=1";
     curl_setopt_array($curl, array(
         CURLOPT_URL => "$url",
         CURLOPT_RETURNTRANSFER => true,
