@@ -54,7 +54,9 @@
                             $param_nama = "param_nama$i";
                         @endphp
                         @if($formulir->$params != "")
-                            <td>'{{ $a->$params }}</td>
+                            <td>
+                                @if(is_numeric($a->$params))'@endif{{ $a->$params }}
+                            </td>
                         @endif
                     @endfor
                     @for($i = 1; $i <= 5; $i++)

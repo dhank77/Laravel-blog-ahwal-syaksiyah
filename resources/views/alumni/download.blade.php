@@ -38,7 +38,7 @@
                 <tr>
                     <td style="text-align:center;">{{ $k + 1 }}.</td>
                     <td>{{ $d->nama }}</td>
-                    <td>{{ $d->nim }}</td>
+                    <td>'{{ $d->nim }}</td>
                     <td>{{ $d->angkatan }}</td>
                     <td>{{ $d->tahun_lulus }}</td>
                     <td>{{ $d->asal_daerah }}</td>

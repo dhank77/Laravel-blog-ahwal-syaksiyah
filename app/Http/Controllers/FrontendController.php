@@ -368,7 +368,10 @@ class FrontendController extends Controller
         $send['formulir_id'] = $id;
         $cr = FormulirDetail::create($send);
         if($cr){
-            return redirect()->back()->with('success', 'Berhasil mengisi form!');
+            // return redirect()->back()->with('success', 'Berhasil mengisi form!');
+            $formulir = $data;
+            $data = FormulirDetail::where('formulir_id', $formulir->id)->get();
+            return view("frontend.pesan_selesai", compact("formulir", 'data'));
         }else{
             return redirect()->back()->with('error', 'Gagal mengisi form!');
         }

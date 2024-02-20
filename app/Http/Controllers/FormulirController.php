@@ -71,12 +71,13 @@ class FormulirController extends Controller
     {
         $rules = [
             'nama' => 'required|string',
+            'pesan_selesai' => 'required',
         ];
 
         $id = request('id');
         request()->validate($rules);
         
-        $formulir = request()->except('_token', 'id');
+        $formulir = request()->except('_token', 'id', 'files');
 
         if(!$id){
             $slug = Str::slug(request('nama')) ."-". generateRandomString(3);

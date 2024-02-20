@@ -1,8 +1,6 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <!-- page-banner-section
-       ================================================== -->
     <section class="page-banner-section">
         <div class="container">
             <h1>Form Pengisian Surat</h1>
@@ -12,7 +10,6 @@
             </ul>
         </div>
     </section>
-    <!-- End page-banner-section -->
 
     <section class="blog-section">
         <div class="container">
