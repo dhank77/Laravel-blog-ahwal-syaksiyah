@@ -703,6 +703,7 @@ class ComposerStaticInitda61cbaf43b5f7e7941fb89aac5a9ef8
         'App\\Models\\Formulir' => __DIR__ . '/../..' . '/app/Models/Formulir.php',
         'App\\Models\\FormulirDetail' => __DIR__ . '/../..' . '/app/Models/FormulirDetail.php',
         'App\\Models\\Halaman' => __DIR__ . '/../..' . '/app/Models/Halaman.php',
+        'App\\Models\\Judul' => __DIR__ . '/../..' . '/app/Models/Judul.php',
         'App\\Models\\Komplain' => __DIR__ . '/../..' . '/app/Models/Komplain.php',
         'App\\Models\\Master\\Kategori' => __DIR__ . '/../..' . '/app/Models/Master/Kategori.php',
         'App\\Models\\Master\\Komponen' => __DIR__ . '/../..' . '/app/Models/Master/Komponen.php',

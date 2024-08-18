@@ -58,6 +58,7 @@ return array(
     'App\\Models\\Formulir' => $baseDir . '/app/Models/Formulir.php',
     'App\\Models\\FormulirDetail' => $baseDir . '/app/Models/FormulirDetail.php',
     'App\\Models\\Halaman' => $baseDir . '/app/Models/Halaman.php',
+    'App\\Models\\Judul' => $baseDir . '/app/Models/Judul.php',
     'App\\Models\\Komplain' => $baseDir . '/app/Models/Komplain.php',
     'App\\Models\\Master\\Kategori' => $baseDir . '/app/Models/Master/Kategori.php',
     'App\\Models\\Master\\Komponen' => $baseDir . '/app/Models/Master/Komponen.php',

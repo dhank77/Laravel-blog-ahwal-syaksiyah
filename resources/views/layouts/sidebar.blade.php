@@ -51,6 +51,7 @@
                         <li class="{{ request()->is('persuratan/*') ? "mm-active" : "" }}" data-key="t-persuratan"><a href="{{ route('persuratan.index') }}">Data Persuratan</a></li>
                         <li class="{{ request()->is('formulir/*') ? "mm-active" : "" }}" data-key="t-formulir"><a href="{{ route('formulir.index') }}">Data Formulir</a></li>
                         <li class="{{ request()->is('short/*') ? "mm-active" : "" }}" data-key="t-short"><a href="{{ route('short.index') }}">Short Link</a></li>
+                        <li class="{{ request()->is('judul/*') ? "mm-active" : "" }}" data-key="t-judul"><a href="{{ route('judul.index') }}">Pengajuan Judul</a></li>
                     </ul>
                 </li>
                 <li>

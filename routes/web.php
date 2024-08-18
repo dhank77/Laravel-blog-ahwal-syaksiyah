@@ -22,6 +22,7 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\FormulirController;
 use App\Http\Controllers\Master\LokasiFileController;
 use App\Http\Controllers\ShortController;
+use App\Http\Controllers\JudulController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -165,6 +166,23 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/download_file/{formulir}', [FormulirController::class, 'download_file'])->name('formulir.download_file');
         Route::get('/download_xls/{formulir}', [FormulirController::class, 'download_xls'])->name('formulir.download_xls');
+    });
+    Route::prefix('judul')->middleware('role:admin')->group(function () {
+        Route::get('/', [JudulController::class, 'index'])->name('judul.index');
+        Route::get('/add', [JudulController::class, 'add'])->name('judul.add');
+        Route::get('/json', [JudulController::class, 'json'])->name('judul.json');
+        Route::get('/edit/{judul}', [JudulController::class, 'edit'])->name('judul.edit');
+        Route::post('/store', [JudulController::class, 'store'])->name('judul.store');
+        Route::get('/delete/{judul}', [JudulController::class, 'delete'])->name('judul.delete');
+        Route::get('/detail/{judul}', [JudulController::class, 'detail'])->name('judul.detail');
+
+        Route::get('/judul-detail-add/{judul}', [JudulController::class, 'detail_add'])->name('judul.detail_add');
+        Route::post('/judul-detail-store/{judul}', [JudulController::class, 'detail_store'])->name('judul.detail_store');
+        Route::get('/judul-detail-edit/{judul}/{judulDetail}', [JudulController::class, 'detail_edit'])->name('judul.detail_edit');
+        Route::get('/judul-detail-delete/{judul}/{judulDetail}', [JudulController::class, 'detail_delete'])->name('judul.detail_delete');
+
+        Route::get('/download_file/{judul}', [JudulController::class, 'download_file'])->name('judul.download_file');
+        Route::get('/download_xls/{judul}', [JudulController::class, 'download_xls'])->name('judul.download_xls');
     });
     Route::prefix('lokasi-file')->middleware('role:admin')->group(function () {
         Route::get('/', [LokasiFileController::class, 'index'])->name('lokasiFile.index');
