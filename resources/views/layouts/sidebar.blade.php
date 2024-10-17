@@ -27,6 +27,7 @@
                         <li><a href="{{ route('pengajar.index') }}" data-key="t-pengajar">Staff Pengajar</a></li>
                         <li><a href="{{ route('alumni.index') }}" data-key="t-alumni">Data Alumni</a></li>
                         <li><a href="{{ route('komplain.index') }}" data-key="t-komplain">Data Komplain</a></li>
+                        <li><a href="{{ route('survey.index') }}" data-key="t-survey">Data Survey</a></li>
                     </ul>
                 </li>
                 <li>
@@ -60,6 +61,7 @@
                         <span data-key="t-setting">Setting Website</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('setting.soalSurvey.index') }}" data-key="t-soal-survey">Soal Survey</a></li>
                         <li><a href="{{ route('setting.banner.index') }}" data-key="t-banner">Banner</a></li>
                         <li><a href="{{ route('setting.sambutan.index') }}" data-key="t-sambutan">Sambutan</a></li>
                         <li><a href="{{ route('setting.testimoni.index') }}" data-key="t-testimoni">Testimoni</a></li>

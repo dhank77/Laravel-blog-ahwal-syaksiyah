@@ -23,6 +23,8 @@ use App\Http\Controllers\FormulirController;
 use App\Http\Controllers\Master\LokasiFileController;
 use App\Http\Controllers\ShortController;
 use App\Http\Controllers\JudulController;
+use App\Http\Controllers\SoalSurveyController;
+use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,6 +52,8 @@ Route::post('/form_data_store/{id}', [FrontendController::class, 'form_data_stor
 Route::post('/isi_form_store/{id}', [FrontendController::class, 'isi_form_store'])->name('isi_form_store');
 Route::post('/cek-form-data/{id}', [FrontendController::class, 'cek_form_store'])->name('cek_form_store');
 Route::get('/kategori/{kategori}', [FrontendController::class, 'kategori'])->name('kategori');
+Route::get('/survey', [FrontendController::class, 'survey'])->name('survey');
+Route::post('/survey', [FrontendController::class, 'surveyStore'])->name('survey.store');
 
 Route::middleware('auth')->group(function () {
 
@@ -83,6 +87,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/json', [KomplainController::class, 'json'])->name('komplain.json');
         Route::get('/download', [KomplainController::class, 'download'])->name('komplain.download');
         Route::get('/delete/{komplain}', [KomplainController::class, 'delete'])->name('komplain.delete');
+    });
+    Route::prefix('survey')->middleware('role:admin')->group(function () {
+        Route::get('/', [SurveyController::class, 'index'])->name('survey.index');
+        Route::get('/json', [SurveyController::class, 'json'])->name('survey.json');
+        Route::get('/download', [SurveyController::class, 'download'])->name('survey.download');
+        Route::get('/delete/{survey}', [SurveyController::class, 'delete'])->name('survey.delete');
+        Route::get('/detail/{survey}', [SurveyController::class, 'detail'])->name('survey.detail');
     });
     Route::prefix('short')->middleware('role:admin')->group(function () {
         Route::get('/', [ShortController::class, 'index'])->name('short.index');
@@ -243,6 +254,13 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit/{testimoni}', [TestimoniController::class, 'edit'])->name('setting.testimoni.edit');
             Route::post('/store', [TestimoniController::class, 'store'])->name('setting.testimoni.store');
             Route::get('/delete/{testimoni}', [TestimoniController::class, 'delete'])->name('setting.testimoni.delete');
+        });
+        Route::prefix('soal-survey')->group(function () {
+            Route::get('/', [SoalSurveyController::class, 'index'])->name('setting.soalSurvey.index');
+            Route::get('/add', [SoalSurveyController::class, 'add'])->name('setting.soalSurvey.add');
+            Route::get('/edit/{soalSurvey}', [SoalSurveyController::class, 'edit'])->name('setting.soalSurvey.edit');
+            Route::post('/store', [SoalSurveyController::class, 'store'])->name('setting.soalSurvey.store');
+            Route::get('/delete/{soalSurvey}', [SoalSurveyController::class, 'delete'])->name('setting.soalSurvey.delete');
         });
         Route::prefix('sambutan')->group(function () {
             Route::get('/', [SambutanController::class, 'index'])->name('setting.sambutan.index');

@@ -16,6 +16,8 @@ use App\Models\Master\Komponen;
 use App\Models\Pengajar;
 use App\Models\Pengumuman;
 use App\Models\Short;
+use App\Models\SoalSurvey;
+use App\Models\Survey;
 use App\Models\Testimoni;
 use Share;
 use Illuminate\Support\Str;
@@ -423,6 +425,37 @@ class FrontendController extends Controller
             return redirect(route("komplain"))->with('success', 'Berhasil memberikan komplain');
         }else{
             return redirect(route("komplain"))->with('error', 'Gagal memberikan komplain');
+        }
+    }
+
+    public function survey() 
+    {
+        $soalSurvey = SoalSurvey::where('is_active', 1)->get();
+        return view('frontend.survey', compact('soalSurvey'));    
+    }
+
+    public function surveyStore() 
+    {
+        $validation = [
+            'nama' => 'required|string',
+            'posisi' => 'required|string',
+            'nim' => 'nullable',
+            'captcha' => 'required|captcha',
+        ];
+        $soalSurvey = SoalSurvey::where('is_active', 1)->get();
+        foreach ($soalSurvey as $key => $value) {
+            $nilai = $key + 1;
+            $validation["idsurvey$nilai"] = 'required';
+            $validation["survey$nilai"] = 'required';
+        }
+
+        $data = request()->validate($validation);
+        unset($data['captcha']);
+        $cr = Survey::create($data);
+        if($cr){
+            return redirect(route("survey"))->with('success', 'Berhasil memberikan survey');
+        }else{
+            return redirect(route("survey"))->with('error', 'Gagal memberikan survey');
         }
     }
 }

@@ -13,8 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('juduls', function (Blueprint $table) {
+        Schema::create('soal_surveys', function (Blueprint $table) {
             $table->id();
+            $table->text("soal");
+            $table->string("pilihan1")->nullable();
+            $table->string("pilihan2")->nullable();
+            $table->string("pilihan3")->nullable();
+            $table->string("pilihan4")->nullable();
+            $table->string("pilihan5")->nullable();
+            $table->tinyInteger("is_active")->default(1);
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('juduls');
+        Schema::dropIfExists('soal_surveys');
     }
 };
