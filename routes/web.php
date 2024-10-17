@@ -52,8 +52,8 @@ Route::post('/form_data_store/{id}', [FrontendController::class, 'form_data_stor
 Route::post('/isi_form_store/{id}', [FrontendController::class, 'isi_form_store'])->name('isi_form_store');
 Route::post('/cek-form-data/{id}', [FrontendController::class, 'cek_form_store'])->name('cek_form_store');
 Route::get('/kategori/{kategori}', [FrontendController::class, 'kategori'])->name('kategori');
-Route::get('/survey', [FrontendController::class, 'survey'])->name('survey');
-Route::post('/survey', [FrontendController::class, 'surveyStore'])->name('survey.store');
+Route::get('/form-survey', [FrontendController::class, 'survey'])->name('survey');
+Route::post('/form-survey', [FrontendController::class, 'surveyStore'])->name('survey.store');
 
 Route::middleware('auth')->group(function () {
 
